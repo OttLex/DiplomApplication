@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
 using Npgsql;
 
 namespace WinFormsAppDiplom
@@ -20,22 +21,29 @@ namespace WinFormsAppDiplom
         {
             InitializeComponent();
             cl1.CreateMyButton(btn1, "не тыкай", this, 50, 50, 120, 50, Click_My_Button);
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=TestDb,User ID=postgres;Password=admin1");
-            conn.Open();
-            NpgsqlCommand comm = new NpgsqlCommand();
-            comm.Connection = conn;
-            comm.CommandType = CommandType.Text;
-            comm.CommandText = "SELECT * FROM sprActivity ";
-            NpgsqlDataReader dr = comm.ExecuteReader();
-            if (dr.HasRows)
+
+
+            string connectionString = "Server=(localdb)\\mssqllocaldb;Database=master;Trusted_Connection=True;";
+            string sqlExpression = "SELECT * FROM Users";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                DataTable dt = new DataTable();
-                dt.Load(dr);
-                dataGridView1.DataSource = dt;
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows) // если есть данные
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+                        dataGridView1.DataSource = dt;
+                    }
+                }
+                Console.Read();
 
             }
-            comm.Dispose();
-            conn.Close();
+            
         }
 
         public void Click_My_Button(object sender, EventArgs e)
