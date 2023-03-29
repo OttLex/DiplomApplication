@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace Model.ModelsSpr
 {
-    public class OperationType:AbstractSpr
+    public class ActivityType:AbstractSpr
     {
-        public int id { get; set; }
-        public string name { get; set; }
+        int Id;
+        string Name;
     }
 }
