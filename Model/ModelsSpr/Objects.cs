@@ -1,11 +1,15 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Model
 {
     public class Objects:AbstractSpr
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public bool morph { get; set; }
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public bool Morph { get; set; }
     }
 }

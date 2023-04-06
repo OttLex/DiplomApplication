@@ -15,7 +15,7 @@ namespace Service
         public string GetObjectName(int id)
         {
             var repo = new ObjectsRepository(connectionString);
-            return repo.GetObject(id).name;             
+            return repo.GetObject(id).Name;             
         }
 
     }
