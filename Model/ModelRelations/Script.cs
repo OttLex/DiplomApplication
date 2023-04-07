@@ -10,12 +10,12 @@ namespace Model.ModelRelations
     public class Script: AbstractRel
     {
         [Key]
-        public int Id;
+        public int Id { get; set; }
         [Required]
-        public int IdBlocks;
+        public int IdBlocks { get; set; }
         [Required]
-        public int IdBackground;
+        public int IdBackground { get; set; }
         [Required]
-        public int IdActivity;
+        public int IdActivity { get; set; }
     }
 }

@@ -10,9 +10,9 @@ namespace Model.ModelsSpr
     public class ActivityType:AbstractSpr
     {
         [Key]
-        int Id;
+        public int Id { get; set; }
         [Required]
-        string Name;
-        string Description;
+        public string Name { get; set; }
+        public string Description { get; set; } = "";
     }
 }

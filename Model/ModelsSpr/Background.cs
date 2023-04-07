@@ -10,9 +10,9 @@ namespace Model.ModelsSpr
     public class Background:AbstractSpr
     {
         [Key]
-        public int Id;
+        public int Id { get; set; }
         [Required]
-        public string Name;
-        public string? Description;
+        public string Name { get; set; }
+        public string Description { get; set; } = "";
     }
 }

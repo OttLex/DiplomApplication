@@ -10,14 +10,14 @@ namespace Model.ModelsSpr
     public class Activity:AbstractSpr
     {
         [Key]
-        public int Id;
+        public int Id { get; set; }
         [Required]
-        public string Name;
-        public int? ObjectId;
+        public string Name { get; set; }
+        public int? ObjectId { get; set; }
         [Required]
-        public int NumberOfZoom;
+        public int NumberOfZoom { get; set; }
         [Required]
-        public int ActivityTypeId;
-        public string? Description;
+        public int ActivityTypeId { get; set; }
+        public string Description { get; set; } = "";
     }
 }

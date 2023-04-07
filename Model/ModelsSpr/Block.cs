@@ -10,11 +10,11 @@ namespace Model.ModelsSpr
     public class Block:AbstractSpr
     {
         [Key]
-        public int Id;
+        public int Id { get; set; }
         [Required]
-        public int IdBackground;
+        public int IdBackground { get; set; }
         [Required]
-        public string Name;
-        public string? Description;
+        public string Name { get; set; }
+        public string Description { get; set; } = "";
     }
 }

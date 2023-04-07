@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Model.EF;
 using Microsoft.Data.SqlClient;
 using Npgsql;
 
@@ -20,6 +21,12 @@ namespace WinFormsAppDiplom
         public Form1()
         {
             InitializeComponent();
+
+            using (var context = new AppDBContext())
+            {
+                //context.Database.EnsureCreated();
+            }
+
             cl1.CreateMyButton(btn1, "не тыкай", this, 50, 50, 120, 50, Click_My_Button);
 
 

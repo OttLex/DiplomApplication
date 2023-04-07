@@ -10,12 +10,12 @@ namespace Model.ModelRelations
     public class ObjectCast:AbstractRel
     {
         [Key]
-        public int Id;
+        public int Id { get; set; }
         [Required]
-        public int IdCastType;
+        public int IdCastType { get; set; }
         [Required]
-        public int IdObject;
+        public int IdObject { get; set; }
         [Required]
-        public int IdStep;
+        public int IdStep { get; set; }
     }
 }

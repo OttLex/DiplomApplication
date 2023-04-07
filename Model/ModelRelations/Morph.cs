@@ -10,10 +10,10 @@ namespace Model.ModelRelations
     public class Morph:AbstractRel
     {
         [Key]
-        public int Id;
+        public int Id { get; set; }
         [Required]
-        public int IdMorph;
+        public int IdMorph { get; set; }
         [Required]
-        public int IdObjectInTheComposition;
+        public int IdObjectInTheComposition { get; set; }
     }
 }

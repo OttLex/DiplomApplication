@@ -10,8 +10,8 @@ namespace Model.ModelsSpr
     public class CastType:AbstractSpr
     {
         [Key]
-        public int Id;
+        public int Id { get; set; }
         [Required]
-        public string Name;
+        public string Name { get; set; }
     }
 }
