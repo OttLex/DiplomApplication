@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Model
+namespace Model.ModelSpr
 {
     public class Objects:AbstractSpr
     {

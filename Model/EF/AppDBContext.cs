@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.ModelRelations;
-using Model.ModelsSpr;
+using Model.ModelSpr;
 
 namespace Model.EF
 {
@@ -15,6 +15,8 @@ namespace Model.EF
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=ScenarioEditor;Trusted_Connection=True;");
+            
+            //optionsBuilder.UseSqlServer("Server=localhost;Database=ScenarioEditor;Trusted_Connection=True;MultiSubnetFailover=True;");
         }
 
         public DbSet<Morph> Morph => Set<Morph>();
@@ -24,7 +26,7 @@ namespace Model.EF
         public DbSet<ActivityType> ActivityType => Set<ActivityType>();
         public DbSet<Background> Background => Set<Background>();
         public DbSet<Block> Block => Set<Block>();
-        public DbSet<CastType> CastType => Set<CastType>();
+        //public DbSet<CastType> CastType => Set<CastType>();
         public DbSet<CastTypes> CastTypes => Set<CastTypes>();
         public DbSet<Objects> Objects => Set<Objects>();
 
@@ -37,7 +39,7 @@ namespace Model.EF
         public AppDBContext() 
         {
             Database.EnsureDeleted();
-            //Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
     }

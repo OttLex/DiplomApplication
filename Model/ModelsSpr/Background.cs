@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model.ModelsSpr
+namespace Model.ModelSpr
 {
     public class Background:AbstractSpr
     {
