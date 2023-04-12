@@ -34,6 +34,9 @@ namespace Model.EF
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Script>()
+            .HasIndex(u => u.NumberOfStep)
+            .IsUnique();
         }
 
         public AppDBContext() 

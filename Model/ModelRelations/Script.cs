@@ -1,9 +1,10 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Model.ModelRelations
 {
@@ -13,6 +14,7 @@ namespace Model.ModelRelations
         public int Id { get; set; }
         [Required]
         public int IdScript { get; set; }
+        [Required]
         public int NumberOfStep { get; set; }
         [Required]
         public int IdBlocks { get; set; }
