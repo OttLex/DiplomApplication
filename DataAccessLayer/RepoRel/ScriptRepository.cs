@@ -4,23 +4,23 @@ using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data;
+using System;
 
 namespace DataAccessLayer.RepoRel
 {
-    public class ObjectCastRepository : IRepository<ObjectCast>
+    public class ScriptRepository : IRepository<Script>
     {
-        const string _tableName = "ObjectCast";
+        const string _tableName = "Script";
         string connectionString = null;
-        public ObjectCastRepository(string conn)
+        public ScriptRepository(string conn)
         {
             connectionString = conn;
         }
-
-        public void Create(ObjectCast obj)
+        public void Create(Script obj)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"insert into {_tableName} values({obj.IdCastType}, {obj.IdObject}, {obj.IdStep})");
+                db.Query($@"insert into {_tableName} values({obj.IdBlocks}, {obj.IdBackground}, {obj.IdActivity})");
             }
         }
 
@@ -32,27 +32,27 @@ namespace DataAccessLayer.RepoRel
             }
         }
 
-        public ObjectCast GetObject(int id)
+        public Script GetObject(int id)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                return db.Query<ObjectCast>($"SELECT * FROM {_tableName} where id= {id}").FirstOrDefault();
+                return db.Query<Script>($"SELECT * FROM {_tableName} where IdStep= {id}").FirstOrDefault();
             }
         }
 
-        public List<ObjectCast> GetObjects()
+        public List<Script> GetObjects()
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                return db.Query<ObjectCast>("SELECT * FROM " + _tableName).ToList();
+                return db.Query<Script>("SELECT * FROM " + _tableName).ToList();
             }
         }
 
-        public void Update(ObjectCast obj)
+        public void Update(Script obj)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"UPDATE {_tableName} SET IdCastType = {obj.IdCastType}, IdObject={obj.IdObject}, IdStep={obj.IdStep} WHERE id={obj.Id}");
+                db.Query($@"UPDATE {_tableName} SET IdBlocks = {obj.IdBlocks}, IdBackground={obj.IdBackground}, IdActivity={obj.IdActivity} WHERE IdStep={obj.IdStep}");
             }
         }
     }

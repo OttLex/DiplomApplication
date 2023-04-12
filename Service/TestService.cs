@@ -1,6 +1,8 @@
 ﻿using System;
+using DataAccessLayer;
 using DataAccessLayer.RepoSpr;
 using Model;
+using Model.ModelSpr;
 
 namespace Service
 {
@@ -14,7 +16,7 @@ namespace Service
 
         public string GetObjectName(int id)
         {
-            var repo = new ObjectsRepository(connectionString);
+            IRepository<Objects> repo = new ObjectsRepository(connectionString);
             return repo.GetObject(id).Name;             
         }
 

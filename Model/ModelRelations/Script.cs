@@ -11,6 +11,8 @@ namespace Model.ModelRelations
     {
         [Key]
         public int Id { get; set; }
+        public int IdScript { get; set; }
+        public int IdStep { get; set; }
         [Required]
         public int IdBlocks { get; set; }
         [Required]

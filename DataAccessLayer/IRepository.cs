@@ -10,8 +10,8 @@ namespace DataAccessLayer
     {
         void Create(T obj);
         void Delete(int id);
+        void Update(T obj);
         T GetObject(int id);
         List<T> GetObjects();
-        void Update(T obj);
     }
 }

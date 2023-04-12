@@ -8,20 +8,20 @@ using System;
 
 namespace DataAccessLayer.RepoSpr
 {
-    public class CastTypesRepository : IRepository<CastTypes>
+    public class BackgroundRepository : IRepository<Background>
     {
-        const string _tableName = "CastTypes";
+        const string _tableName = "Background";
         string connectionString = null;
-        public CastTypesRepository(string conn)
+        public BackgroundRepository(string conn)
         {
             connectionString = conn;
         }
 
-        public void Create(CastTypes obj)
+        public void Create(Background obj)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"insert into {_tableName} values('{obj.CastName}')");
+                db.Query($@"insert into {_tableName} values('{obj.Name}', '{obj.Description}')");
             }
         }
 
@@ -33,27 +33,27 @@ namespace DataAccessLayer.RepoSpr
             }
         }
 
-        public CastTypes GetObject(int id)
+        public Background GetObject(int id)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                return db.Query<CastTypes>($"SELECT * FROM {_tableName} where Id= {id}").FirstOrDefault();
+                return db.Query<Background>($"SELECT * FROM {_tableName} where Id= {id}").FirstOrDefault();
             }
         }
 
-        public List<CastTypes> GetObjects()
+        public List<Background> GetObjects()
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                return db.Query<CastTypes>("SELECT * FROM " + _tableName).ToList();
+                return db.Query<Background>("SELECT * FROM " + _tableName).ToList();
             }
         }
 
-        public void Update(CastTypes obj)
+        public void Update(Background obj)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"UPDATE {_tableName} SET CastName= '{obj.CastName}' WHERE id={obj.Id}");
+                db.Query($@"UPDATE {_tableName} SET Name= '{obj.Name}', Description= '{obj.Description}' WHERE id={obj.Id}");
             }
         }
     }

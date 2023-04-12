@@ -16,7 +16,6 @@ namespace Model.EF
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=ScenarioEditor;Trusted_Connection=True;");
             
-            //optionsBuilder.UseSqlServer("Server=localhost;Database=ScenarioEditor;Trusted_Connection=True;MultiSubnetFailover=True;");
         }
 
         public DbSet<Morph> Morph => Set<Morph>();
@@ -26,20 +25,20 @@ namespace Model.EF
         public DbSet<ActivityType> ActivityType => Set<ActivityType>();
         public DbSet<Background> Background => Set<Background>();
         public DbSet<Block> Block => Set<Block>();
+
         //public DbSet<CastType> CastType => Set<CastType>();
         public DbSet<CastTypes> CastTypes => Set<CastTypes>();
         public DbSet<Objects> Objects => Set<Objects>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // использование Fluent API
             base.OnModelCreating(modelBuilder);
         }
 
         public AppDBContext() 
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
         }
 
     }

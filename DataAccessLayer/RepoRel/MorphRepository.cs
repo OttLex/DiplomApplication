@@ -1,27 +1,26 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
-using Model.ModelSpr;
-using System;
+using Model.ModelRelations;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace DataAccessLayer.RepoSpr
+namespace DataAccessLayer.RepoRel
 {
-    public class ObjectsRepository : IRepository<Objects>
+    public class MorphRepository : IRepository<Morph>
     {
-        const string _tableName= "Objects";
+        const string _tableName = "Morph";
         string connectionString = null;
-        public ObjectsRepository(string conn)
+        public MorphRepository(string conn)
         {
             connectionString = conn;
         }
 
-        public void Create(Objects obj)
+        public void Create(Morph obj)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-               db.Query($@"insert into {_tableName} values('{obj.Name}', {obj.Morph})");
+                db.Query($@"insert into {_tableName} values({obj.IdMorph}, {obj.IdObjectInTheComposition})");
             }
         }
 
@@ -29,31 +28,31 @@ namespace DataAccessLayer.RepoSpr
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"delete {_tableName}  where id= {id}");
+                db.Query($@"delete {_tableName}  where Id= {id}");
             }
         }
 
-        public Objects GetObject(int id)
+        public Morph GetObject(int id)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                return db.Query<Objects>($"SELECT * FROM {_tableName} where id= {id}" ).FirstOrDefault();
+                return db.Query<Morph>($"SELECT * FROM {_tableName} where id= {id}").FirstOrDefault();
             }
         }
 
-        public List<Objects> GetObjects()
+        public List<Morph> GetObjects()
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                return db.Query<Objects>("SELECT * FROM " + _tableName).ToList();
+                return db.Query<Morph>("SELECT * FROM " + _tableName).ToList();
             }
         }
 
-        public void Update(Objects obj)
+        public void Update(Morph obj)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"UPDATE {_tableName} SET Name = '{obj.Name}', Morph={obj.Morph} WHERE id={obj.Id}");
+                db.Query($@"UPDATE {_tableName} SET IdObjectInTheComposition={obj.IdObjectInTheComposition} WHERE Id={obj.Id}");                
             }
         }
     }

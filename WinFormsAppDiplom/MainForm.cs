@@ -14,17 +14,17 @@ using Npgsql;
 
 namespace WinFormsAppDiplom
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         button cl1 = new button();
         Button btn1;
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
 
             using (var context = new AppDBContext())
             {
-                //context.Database.EnsureCreated();
+                context.Database.EnsureCreated();
             }
 
             cl1.CreateMyButton(btn1, "не тыкай", this, 50, 50, 120, 50, Click_My_Button);
