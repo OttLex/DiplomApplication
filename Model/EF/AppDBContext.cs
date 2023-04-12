@@ -25,6 +25,7 @@ namespace Model.EF
         public DbSet<ActivityType> ActivityType => Set<ActivityType>();
         public DbSet<Background> Background => Set<Background>();
         public DbSet<Block> Block => Set<Block>();
+        public DbSet<ListOfScripts> ListOfScripts => Set<ListOfScripts>();
 
         //public DbSet<CastType> CastType => Set<CastType>();
         public DbSet<CastTypes> CastTypes => Set<CastTypes>();

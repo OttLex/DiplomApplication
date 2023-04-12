@@ -36,7 +36,7 @@ namespace DataAccessLayer.RepoRel
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                return db.Query<Script>($"SELECT * FROM {_tableName} where IdStep= {id}").FirstOrDefault();
+                return db.Query<Script>($"SELECT * FROM {_tableName} where Id= {id}").FirstOrDefault();
             }
         }
 
@@ -52,7 +52,7 @@ namespace DataAccessLayer.RepoRel
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"UPDATE {_tableName} SET IdBlocks = {obj.IdBlocks}, IdBackground={obj.IdBackground}, IdActivity={obj.IdActivity} WHERE IdStep={obj.IdStep}");
+                db.Query($@"UPDATE {_tableName} SET IdBlocks = {obj.IdBlocks}, IdBackground={obj.IdBackground}, IdActivity={obj.IdActivity} WHERE Id={obj.Id} and IdScript={obj.IdScript}");
             }
         }
     }
