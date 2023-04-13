@@ -32,8 +32,6 @@ namespace WinFormsAppDiplom
                 context.Database.EnsureCreated();
             }
 
-            cl1.CreateMyButton(btn1, "не тыкай", this, 50, 50, 120, 50, Click_My_Button);
-
 
             string connectionString = "Server=(localdb)\\mssqllocaldb;Database=ScenarioEditor;Trusted_Connection=True;";
             string sqlExpression = "SELECT * FROM Objects";

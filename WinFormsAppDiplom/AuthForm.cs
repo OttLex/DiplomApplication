@@ -28,7 +28,7 @@ namespace WinFormsAppDiplom
             if (result != null)
             {
                 new MainForm(_connectionString, result).Show();
-                this.Close();
+                this.Hide();
             }
             else
             {
