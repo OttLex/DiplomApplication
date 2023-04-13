@@ -11,16 +11,21 @@ using System.Windows.Forms;
 using Model.EF;
 using Microsoft.Data.SqlClient;
 using Npgsql;
+using Model.ModelsSpr;
 
 namespace WinFormsAppDiplom
 {
     public partial class MainForm : Form
     {
-        button cl1 = new button();
-        Button btn1;
-        public MainForm()
+        private string _connectionString;
+        private User _currentUser;
+
+        public MainForm(string connString, User user)
         {
             InitializeComponent();
+
+            _connectionString = connString;
+            _currentUser = user;
 
             using (var context = new AppDBContext())
             {

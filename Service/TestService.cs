@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using DataAccessLayer;
 using DataAccessLayer.RepoSpr;
+using DataAccessLayer.RepoRel;
 using Model;
 using Model.ModelSpr;
+using Model.ModelRelations;
 
 namespace Service
 {
@@ -18,6 +21,11 @@ namespace Service
         {
             IRepository<Objects> repo = new ObjectsRepository(connectionString);
             return repo.GetObject(id).Name;             
+        }
+
+        public List<ListOfScripts> GetAllScripts()
+        {
+            return new List<ListOfScripts>();
         }
 
     }
