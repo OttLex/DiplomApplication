@@ -21,6 +21,7 @@ namespace Model.EF
 
         public DbSet<Morph> Morph => Set<Morph>();
         public DbSet<ObjectCast> ObjectCast => Set<ObjectCast>();
+        public DbSet<ScriptData> ScriptData => Set<ScriptData>();
         public DbSet<Script> Script => Set<Script>();
         public DbSet<Activity> Activity => Set<Activity>();
         public DbSet<ActivityType> ActivityType => Set<ActivityType>();
@@ -30,14 +31,13 @@ namespace Model.EF
         public DbSet<Block> Block => Set<Block>();
         public DbSet<ListOfScripts> ListOfScripts => Set<ListOfScripts>();
 
-        //public DbSet<CastType> CastType => Set<CastType>();
         public DbSet<CastTypes> CastTypes => Set<CastTypes>();
         public DbSet<Objects> Objects => Set<Objects>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Script>()
+            modelBuilder.Entity<ScriptData>()
             .HasIndex(u => u.NumberOfStep)
             .IsUnique();
 
@@ -48,6 +48,10 @@ namespace Model.EF
             modelBuilder.Entity<Access>().HasData(
                         new Access { Id = 1, Name = "Developer" },
                         new Access { Id = 2, Name = "Reader"});
+
+            modelBuilder.Entity<Script>().HasData(
+                            new Script { Id = 1, Name = "First scenario" },
+                            new Script { Id = 2, Name = "Second scenario", Description= "Same as first, but coller!" });
         }
 
         public AppDBContext() 

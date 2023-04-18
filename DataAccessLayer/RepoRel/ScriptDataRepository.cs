@@ -8,15 +8,15 @@ using System;
 
 namespace DataAccessLayer.RepoRel
 {
-    public class ScriptRepository : IRepository<Script>
+    public class ScriptDataRepository : IRepository<ScriptData>
     {
-        const string _tableName = "Script";
+        const string _tableName = "ScriptData";
         string connectionString = null;
-        public ScriptRepository(string conn)
+        public ScriptDataRepository(string conn)
         {
             connectionString = conn;
         }
-        public void Create(Script obj)
+        public void Create(ScriptData obj)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
@@ -32,23 +32,23 @@ namespace DataAccessLayer.RepoRel
             }
         }
 
-        public Script GetObject(int id)
+        public ScriptData GetObject(int id)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                return db.Query<Script>($"SELECT * FROM {_tableName} where Id= {id}").FirstOrDefault();
+                return db.Query<ScriptData>($"SELECT * FROM {_tableName} where Id= {id}").FirstOrDefault();
             }
         }
 
-        public List<Script> GetObjects()
+        public List<ScriptData> GetObjects()
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                return db.Query<Script>("SELECT * FROM " + _tableName).ToList();
+                return db.Query<ScriptData>("SELECT * FROM " + _tableName).ToList();
             }
         }
 
-        public void Update(Script obj)
+        public void Update(ScriptData obj)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {

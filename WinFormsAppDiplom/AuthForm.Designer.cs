@@ -31,8 +31,8 @@
             this.AuthLabel = new System.Windows.Forms.Label();
             this.UserNameTextBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.AuthButton = new System.Windows.Forms.Button();
+            this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,16 +70,6 @@
             this.panel1.Size = new System.Drawing.Size(448, 273);
             this.panel1.TabIndex = 2;
             // 
-            // PasswordTextBox
-            // 
-            this.PasswordTextBox.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PasswordTextBox.Location = new System.Drawing.Point(99, 125);
-            this.PasswordTextBox.Name = "PasswordTextBox";
-            this.PasswordTextBox.PasswordChar = '*';
-            this.PasswordTextBox.PlaceholderText = "Пароль";
-            this.PasswordTextBox.Size = new System.Drawing.Size(250, 22);
-            this.PasswordTextBox.TabIndex = 2;
-            // 
             // AuthButton
             // 
             this.AuthButton.Location = new System.Drawing.Point(159, 207);
@@ -89,6 +79,17 @@
             this.AuthButton.Text = "Войти";
             this.AuthButton.UseVisualStyleBackColor = true;
             this.AuthButton.Click += new System.EventHandler(this.AuthButton_Click);
+            // 
+            // PasswordTextBox
+            // 
+            this.PasswordTextBox.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PasswordTextBox.Location = new System.Drawing.Point(99, 125);
+            this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.PasswordChar = '*';
+            this.PasswordTextBox.PlaceholderText = "Пароль";
+            this.PasswordTextBox.Size = new System.Drawing.Size(250, 22);
+            this.PasswordTextBox.TabIndex = 2;
+            this.PasswordTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.AuthForm_KeyUp);
             // 
             // AuthForm
             // 

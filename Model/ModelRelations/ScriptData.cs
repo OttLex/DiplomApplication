@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Model.ModelRelations
 {
-    public class Script: AbstractRel
+    public class ScriptData: AbstractRel
     {
         [Key]
         public int Id { get; set; }
