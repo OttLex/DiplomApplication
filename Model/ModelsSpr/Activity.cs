@@ -13,9 +13,11 @@ namespace Model.ModelSpr
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        public int? ObjectId { get; set; }
         [Required]
-        public int NumberOfZoom { get; set; }
+        public int IdBackground { get; set; }
+        public int? ObjectId { get; set; }
+        //[Required]
+        //public int NumberOfZoom { get; set; }
         [Required]
         public int ActivityTypeId { get; set; }
         public string Description { get; set; } = "";

@@ -18,8 +18,8 @@ namespace Model.ModelRelations
         public int NumberOfStep { get; set; }
         [Required]
         public int IdBlocks { get; set; }
-        [Required]
-        public int IdBackground { get; set; }
+        //[Required]
+        //public int IdBackground { get; set; }
         [Required]
         public int IdActivity { get; set; }
     }

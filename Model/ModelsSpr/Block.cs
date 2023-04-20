@@ -12,7 +12,7 @@ namespace Model.ModelSpr
         [Key]
         public int Id { get; set; }
         [Required]
-        public int IdBackground { get; set; }
+        public int IdScript { get; set; }
         [Required]
         public string Name { get; set; }
         public string Description { get; set; } = "";

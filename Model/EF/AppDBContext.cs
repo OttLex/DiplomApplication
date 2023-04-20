@@ -29,7 +29,7 @@ namespace Model.EF
         public DbSet<Access> Access => Set<Access>();
         public DbSet<Background> Background => Set<Background>();
         public DbSet<Block> Block => Set<Block>();
-        public DbSet<ListOfScripts> ListOfScripts => Set<ListOfScripts>();
+        //public DbSet<ListOfScripts> ListOfScripts => Set<ListOfScripts>();
 
         public DbSet<CastTypes> CastTypes => Set<CastTypes>();
         public DbSet<Objects> Objects => Set<Objects>();
@@ -52,6 +52,12 @@ namespace Model.EF
             modelBuilder.Entity<Script>().HasData(
                             new Script { Id = 1, Name = "First scenario" },
                             new Script { Id = 2, Name = "Second scenario", Description= "Same as first, but coller!" });
+
+            modelBuilder.Entity<ActivityType>().HasData(
+                            new ActivityType { Id = 1, Name = "Zoom" },
+                            new ActivityType { Id = 2, Name = "Hidden object"},
+                            new ActivityType { Id = 3, Name = "Dialog"},
+                            new ActivityType { Id = 4, Name = "Mini-game" });
         }
 
         public AppDBContext() 
