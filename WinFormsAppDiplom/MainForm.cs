@@ -176,14 +176,18 @@ namespace WinFormsAppDiplom
                 _currentWorkScript.Name = row.Cells[1].Value.ToString();
                 _currentWorkScript.Description = row.Cells[2].Value.ToString();
 
-
-                treeViewMainForm = new();
-
+                ConfigureTreeView();
             }
             else
             {
                 MessageBox.Show("Выделите нужный сценарий.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+        }
+
+        private void ConfigureTreeView()
+        {
+            treeViewMainForm = new();
 
         }
     }
