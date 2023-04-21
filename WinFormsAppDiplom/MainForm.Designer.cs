@@ -56,7 +56,6 @@
             this.labelBlock = new System.Windows.Forms.Label();
             this.tabPageBackground = new System.Windows.Forms.TabPage();
             this.dataGridViewBackground = new System.Windows.Forms.DataGridView();
-            this.buttonChoseBackground = new System.Windows.Forms.Button();
             this.buttonCancelBackground = new System.Windows.Forms.Button();
             this.buttonApplyBackground = new System.Windows.Forms.Button();
             this.buttonDeleteBackground = new System.Windows.Forms.Button();
@@ -68,6 +67,7 @@
             this.tabPageActivity = new System.Windows.Forms.TabPage();
             this.tabPageObjects = new System.Windows.Forms.TabPage();
             this.panelMainForm = new System.Windows.Forms.Panel();
+            this.textBoxSearchBackground = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMainForm)).BeginInit();
             this.splitContainerMainForm.Panel1.SuspendLayout();
             this.splitContainerMainForm.Panel2.SuspendLayout();
@@ -116,8 +116,8 @@
             this.tabControlScenario.Controls.Add(this.tabPageScript);
             this.tabControlScenario.Controls.Add(this.tabPageBlock);
             this.tabControlScenario.Controls.Add(this.tabPageBackground);
-            this.tabControlScenario.Controls.Add(this.tabPageActivity);
             this.tabControlScenario.Controls.Add(this.tabPageObjects);
+            this.tabControlScenario.Controls.Add(this.tabPageActivity);
             this.tabControlScenario.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabControlScenario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlScenario.ItemSize = new System.Drawing.Size(61, 30);
@@ -382,8 +382,8 @@
             // 
             // tabPageBackground
             // 
+            this.tabPageBackground.Controls.Add(this.textBoxSearchBackground);
             this.tabPageBackground.Controls.Add(this.dataGridViewBackground);
-            this.tabPageBackground.Controls.Add(this.buttonChoseBackground);
             this.tabPageBackground.Controls.Add(this.buttonCancelBackground);
             this.tabPageBackground.Controls.Add(this.buttonApplyBackground);
             this.tabPageBackground.Controls.Add(this.buttonDeleteBackground);
@@ -410,17 +410,6 @@
             this.dataGridViewBackground.RowTemplate.Height = 25;
             this.dataGridViewBackground.Size = new System.Drawing.Size(731, 310);
             this.dataGridViewBackground.TabIndex = 28;
-            // 
-            // buttonChoseBackground
-            // 
-            this.buttonChoseBackground.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonChoseBackground.Location = new System.Drawing.Point(525, 6);
-            this.buttonChoseBackground.Name = "buttonChoseBackground";
-            this.buttonChoseBackground.Size = new System.Drawing.Size(126, 45);
-            this.buttonChoseBackground.TabIndex = 27;
-            this.buttonChoseBackground.Text = "Зафиксировать для работы";
-            this.buttonChoseBackground.UseVisualStyleBackColor = true;
-            this.buttonChoseBackground.Click += new System.EventHandler(this.buttonChoseBackground_Click);
             // 
             // buttonCancelBackground
             // 
@@ -537,6 +526,16 @@
             this.panelMainForm.Size = new System.Drawing.Size(1011, 487);
             this.panelMainForm.TabIndex = 0;
             // 
+            // textBoxSearchBackground
+            // 
+            this.textBoxSearchBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSearchBackground.Location = new System.Drawing.Point(525, 24);
+            this.textBoxSearchBackground.Name = "textBoxSearchBackground";
+            this.textBoxSearchBackground.PlaceholderText = "Введите запрос для поиска.";
+            this.textBoxSearchBackground.Size = new System.Drawing.Size(204, 26);
+            this.textBoxSearchBackground.TabIndex = 29;
+            this.textBoxSearchBackground.TextChanged += new System.EventHandler(this.textBoxSearchBackground_TextChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -600,7 +599,6 @@
         private TabPage tabPageActivity;
         private TabPage tabPageObjects;
         private DataGridView dataGridViewBackground;
-        private Button buttonChoseBackground;
         private Button buttonCancelBackground;
         private Button buttonApplyBackground;
         private Button buttonDeleteBackground;
@@ -609,5 +607,6 @@
         private TextBox textBoxNameBackground;
         private Button buttonCreateBackground;
         private Label labelBackground;
+        private TextBox textBoxSearchBackground;
     }
 }

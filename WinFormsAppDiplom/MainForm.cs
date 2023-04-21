@@ -52,15 +52,15 @@ namespace WinFormsAppDiplom
 
             ConfigureRepositorys();
         }
- 
+
         private void ConfigureRepositorys()
         {
             _scriptDataRepository = new ScriptDataRepository(_connectionString);
             _scriptRepository = new ScriptRepository(_connectionString);
             _blockRepository = new BlockRepository(_connectionString);
-            _backgroundRepository= new BackgroundRepository(_connectionString);
+            _backgroundRepository = new BackgroundRepository(_connectionString);
         }
-     
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             FillDataGridViewScript();
@@ -186,7 +186,7 @@ namespace WinFormsAppDiplom
         private void ChangeEnalableScriptButtons(bool isEnalable)
         {
             buttonApplyScript.Enabled = isEnalable;
-            buttonCancelScript.Enabled = isEnalable;  
+            buttonCancelScript.Enabled = isEnalable;
         }
         private void ChangeEnalableBlockButtons(bool isEnalable)
         {
@@ -227,9 +227,9 @@ namespace WinFormsAppDiplom
         {
             if (dataGridViewBlock.CurrentCell != null)
             {
-               var row= dataGridViewBlock.CurrentCell.OwningRow;
-               if (row != null)
-               {
+                var row = dataGridViewBlock.CurrentCell.OwningRow;
+                if (row != null)
+                {
                     _currentEditableBlock = new();
                     _currentEditableBlock.Id = (int)row.Cells[0].Value;
                     textBoxNameBlock.Text = row.Cells[1].Value.ToString();
@@ -376,7 +376,7 @@ namespace WinFormsAppDiplom
             if (dataGridViewScript.CurrentCell != null)
             {
                 var row = dataGridViewScript.CurrentCell.OwningRow;
-                _scriptRepository.Delete(Convert.ToInt32(row.Cells[0].Value));                
+                _scriptRepository.Delete(Convert.ToInt32(row.Cells[0].Value));
             }
             else
             {
@@ -439,8 +439,8 @@ namespace WinFormsAppDiplom
                 var row = dataGridViewBlock.CurrentCell.OwningRow;
                 _currentWorkBlock = new();
                 _currentWorkBlock.Id = (int)row.Cells[0].Value;
-                _currentWorkBlock.Name = row.Cells[1].Value.ToString();
-                _currentWorkBlock.Description = row.Cells[2].Value.ToString();
+                _currentWorkBlock.Name = row.Cells[2].Value.ToString();
+                _currentWorkBlock.Description = row.Cells[3].Value.ToString();
 
                 ConfigureTreeView();
             }
@@ -470,30 +470,59 @@ namespace WinFormsAppDiplom
 
         }
 
+        private void textBoxSearchBackground_TextChanged(object sender, EventArgs e)
+        {
+            // (dataGridViewBackground.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name like '{0}%'", textBoxSearchBackground.Text);
+
+            BindingSource bs = new BindingSource();
+            bs.DataSource = dataGridViewBackground.DataSource;
+            bs.Filter = "Name " + " LIKE '" + textBoxSearchBackground.Text + "%'";          
+            dataGridViewBackground.DataSource = bs;
+
+            if (textBoxSearchBackground.Text == "")
+            {
+                //MessageBox.Show("Ничего не найдено.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dataGridViewBackground.DataSource = _backgroundRepository.GetObjects();
+            }
+        }
+
 
         private void ConfigureTreeView()
         {
-            treeViewMainForm.Nodes.Clear();
-
-            TreeNode scriptNode = new TreeNode(_currentWorkScript.Name);
-
-            var repo = new BlockRepository(_connectionString);
-            List<Block> listOfBlocksByScript= repo.GetObjects(_currentWorkScript.Id);
-            if (listOfBlocksByScript.Count!=0)
+            if (_currentWorkScript.Name != null)
             {
-                foreach (var block in listOfBlocksByScript)
-                {
-                    scriptNode.Nodes.Add(block.Name);
-                }
-            }
+                treeViewMainForm.Nodes.Clear();
 
-            treeViewMainForm.Nodes.Add(scriptNode);
+                TreeNode scriptNode = new TreeNode(_currentWorkScript.Name);
+
+                var repo = new BlockRepository(_connectionString);
+                List<Block> listOfBlocksByScript = repo.GetObjects(_currentWorkScript.Id);
+                if (listOfBlocksByScript.Count != 0)
+                {
+                    foreach (var block in listOfBlocksByScript)
+                    {
+                        if (_currentWorkBlock != null && block.Name == _currentWorkBlock.Name)
+                        {
+                            TreeNode currentBlock = new TreeNode(block.Name);
+                            currentBlock.BackColor = Color.LightGreen;
+                            scriptNode.Nodes.Add(currentBlock);
+                        }
+                        else
+                        {
+                            scriptNode.Nodes.Add(block.Name);
+                        }
+                    }
+
+                }
+
+                treeViewMainForm.Nodes.Add(scriptNode);
+            }
         }
 
         private void tabControlScenario_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var indexSelectedTab= tabControlScenario.SelectedIndex;
-            
+            var indexSelectedTab = tabControlScenario.SelectedIndex;
+
             switch (indexSelectedTab)
             {
                 default:
