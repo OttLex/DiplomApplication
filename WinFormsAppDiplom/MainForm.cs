@@ -35,11 +35,21 @@ namespace WinFormsAppDiplom
         private Background _currentEditableBackground;
         private Background _currentWorkBackground;
 
+        private Objects _currentEditableObjects;
+        private Objects _currentWorkObjects;
+
+        private Morph _currentEditableMorph;
+        private Morph _currentWorkMorph;
+
+
+
 
         private IRepository<ScriptData> _scriptDataRepository;
         private IRepository<Script> _scriptRepository;
         private IRepository<Block> _blockRepository;
         private IRepository<Background> _backgroundRepository;
+        private IRepository<Objects> _objectRepository;
+        private IRepository<Morph> _morphRepository;
 
 
         public MainForm(string connString, User user)
@@ -59,6 +69,8 @@ namespace WinFormsAppDiplom
             _scriptRepository = new ScriptRepository(_connectionString);
             _blockRepository = new BlockRepository(_connectionString);
             _backgroundRepository = new BackgroundRepository(_connectionString);
+            _objectRepository = new ObjectsRepository(_connectionString);
+            _morphRepository = new MorphRepository(_connectionString);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -101,6 +113,15 @@ namespace WinFormsAppDiplom
             dataGridViewBackground.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewBackground.Columns[1].HeaderText = "Название";
             dataGridViewBackground.Columns[2].HeaderText = "Описание";
+        }
+        private void FillDataGridViewObjects()
+        {
+            dataGridViewObjects.DataSource = _objectRepository.GetObjects();
+            dataGridViewObjects.Columns[0].Visible = false;
+            dataGridViewObjects.AutoSize = true;
+            dataGridViewObjects.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewObjects.Columns[1].HeaderText = "Название";
+            dataGridViewObjects.Columns[2].HeaderText = "Составной";
         }
 
 
@@ -166,6 +187,58 @@ namespace WinFormsAppDiplom
             }
         }
 
+        private void buttonCreateObject_Click(object sender, EventArgs e)
+        {
+            if (textBoxNameBackground.Text != "")
+            {
+                var obj = new Objects();
+
+                obj.Name = textBoxNameBackground.Text;
+                obj.Morph = checkBoxIsMorph.Checked;
+
+                _objectRepository.Create(obj);
+                FillDataGridViewObjects();
+
+                if(checkBoxIsMorph.Checked == true)
+                {
+                    int id;
+                    var res= _objectRepository.GetObjects().LastOrDefault();
+                    if (res != null)
+                    {
+                        id=res.Id;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ошибка поиска id созданного объекта.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        CleanObjectsTextBoxes();
+                        return;
+                    }
+
+                    if (dataGridViewRecipeToMorph.DataSource!=null)
+                    {
+                        foreach(var objInComposition in (List<Objects>)dataGridViewRecipeToMorph.DataSource)
+                        {
+                            Morph morph = new Morph();
+                            morph.IdMorph = id;
+                            morph.IdObjectInTheComposition = objInComposition.Id;
+                        }
+                    }
+
+                }
+
+                CleanObjectsTextBoxes();
+                ConfigureTreeView();
+            }
+            else
+            {
+                MessageBox.Show("Заполните поля ввода.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void CreateMorphByObj()
+        {
+
+        }
 
         private void CleanScriptTextBoxes()
         {
@@ -181,6 +254,12 @@ namespace WinFormsAppDiplom
         {
             textBoxNameBackground.Text = "";
             textBoxDescriptionBackground.Text = "";
+        }
+
+        private void CleanObjectsTextBoxes()
+        {
+            textBoxNameObjects.Text = "";
+            checkBoxIsMorph.Checked = false;
         }
 
         private void ChangeEnalableScriptButtons(bool isEnalable)
@@ -472,20 +551,36 @@ namespace WinFormsAppDiplom
 
         private void textBoxSearchBackground_TextChanged(object sender, EventArgs e)
         {
-            // (dataGridViewBackground.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name like '{0}%'", textBoxSearchBackground.Text);
 
-            BindingSource bs = new BindingSource();
-            bs.DataSource = dataGridViewBackground.DataSource;
-            bs.Filter = "Name " + " LIKE '" + textBoxSearchBackground.Text + "%'";          
-            dataGridViewBackground.DataSource = bs;
-
-            if (textBoxSearchBackground.Text == "")
+            if (dataGridViewBackground.DataSource != null && textBoxSearchBackground.Text != "")
             {
-                //MessageBox.Show("Ничего не найдено.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dataGridViewBackground.DataSource = _backgroundRepository.GetObjects();
+                List<Background> tempList = (List<Background>)dataGridViewBackground.DataSource;
+
+
+                List<Background> result = (from row in tempList
+                                           where row.Name.Contains(textBoxSearchBackground.Text)
+                                           select row).ToList();
+
+                List<Background> newList = new List<Background>();
+                newList.AddRange(result);
+
+                dataGridViewBackground.DataSource = newList;
+
+                return;
             }
+
+            dataGridViewBackground.DataSource = _backgroundRepository.GetObjects();
+
         }
 
+        private void checkBoxIsMorph_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxSearchMorph.Enabled = checkBoxIsMorph.Checked;
+            dataGridViewObjects.Enabled = checkBoxIsMorph.Checked;
+            buttonAddToMorph.Enabled = checkBoxIsMorph.Checked;
+            buttonDefineFromMorph.Enabled = checkBoxIsMorph.Checked;
+            dataGridViewRecipeToMorph.Enabled = checkBoxIsMorph.Checked;
+        }
 
         private void ConfigureTreeView()
         {
@@ -534,8 +629,13 @@ namespace WinFormsAppDiplom
                 case 2:
                     FillDataGridViewBackground();
                     break;
+                case 3:
+                    FillDataGridViewObjects();
+                    break;
             }
 
         }
+
+
     }
 }

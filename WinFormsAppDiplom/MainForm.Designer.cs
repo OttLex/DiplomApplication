@@ -55,6 +55,7 @@
             this.buttonCreateBlock = new System.Windows.Forms.Button();
             this.labelBlock = new System.Windows.Forms.Label();
             this.tabPageBackground = new System.Windows.Forms.TabPage();
+            this.textBoxSearchBackground = new System.Windows.Forms.TextBox();
             this.dataGridViewBackground = new System.Windows.Forms.DataGridView();
             this.buttonCancelBackground = new System.Windows.Forms.Button();
             this.buttonApplyBackground = new System.Windows.Forms.Button();
@@ -64,10 +65,26 @@
             this.textBoxNameBackground = new System.Windows.Forms.TextBox();
             this.buttonCreateBackground = new System.Windows.Forms.Button();
             this.labelBackground = new System.Windows.Forms.Label();
-            this.tabPageActivity = new System.Windows.Forms.TabPage();
             this.tabPageObjects = new System.Windows.Forms.TabPage();
+            this.tabPageActivity = new System.Windows.Forms.TabPage();
             this.panelMainForm = new System.Windows.Forms.Panel();
-            this.textBoxSearchBackground = new System.Windows.Forms.TextBox();
+            this.tabPageActivityTypes = new System.Windows.Forms.TabPage();
+            this.tabPageTests = new System.Windows.Forms.TabPage();
+            this.textBoxSearchObjects = new System.Windows.Forms.TextBox();
+            this.dataGridViewObjects = new System.Windows.Forms.DataGridView();
+            this.buttonCacelObjects = new System.Windows.Forms.Button();
+            this.buttonApplyObjects = new System.Windows.Forms.Button();
+            this.buttonDeleteObjects = new System.Windows.Forms.Button();
+            this.buttonLoadObjects = new System.Windows.Forms.Button();
+            this.textBoxNameObjects = new System.Windows.Forms.TextBox();
+            this.buttonCreateObject = new System.Windows.Forms.Button();
+            this.labelObjects = new System.Windows.Forms.Label();
+            this.checkBoxIsMorph = new System.Windows.Forms.CheckBox();
+            this.textBoxSearchMorph = new System.Windows.Forms.TextBox();
+            this.dataGridViewObjToMorph = new System.Windows.Forms.DataGridView();
+            this.buttonAddToMorph = new System.Windows.Forms.Button();
+            this.buttonDefineFromMorph = new System.Windows.Forms.Button();
+            this.dataGridViewRecipeToMorph = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMainForm)).BeginInit();
             this.splitContainerMainForm.Panel1.SuspendLayout();
             this.splitContainerMainForm.Panel2.SuspendLayout();
@@ -80,7 +97,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBlock)).BeginInit();
             this.tabPageBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBackground)).BeginInit();
+            this.tabPageObjects.SuspendLayout();
             this.panelMainForm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjects)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjToMorph)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecipeToMorph)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerMainForm
@@ -117,7 +138,9 @@
             this.tabControlScenario.Controls.Add(this.tabPageBlock);
             this.tabControlScenario.Controls.Add(this.tabPageBackground);
             this.tabControlScenario.Controls.Add(this.tabPageObjects);
+            this.tabControlScenario.Controls.Add(this.tabPageActivityTypes);
             this.tabControlScenario.Controls.Add(this.tabPageActivity);
+            this.tabControlScenario.Controls.Add(this.tabPageTests);
             this.tabControlScenario.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabControlScenario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlScenario.ItemSize = new System.Drawing.Size(61, 30);
@@ -400,6 +423,16 @@
             this.tabPageBackground.Text = "Фоны";
             this.tabPageBackground.UseVisualStyleBackColor = true;
             // 
+            // textBoxSearchBackground
+            // 
+            this.textBoxSearchBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSearchBackground.Location = new System.Drawing.Point(525, 24);
+            this.textBoxSearchBackground.Name = "textBoxSearchBackground";
+            this.textBoxSearchBackground.PlaceholderText = "Введите запрос для поиска.";
+            this.textBoxSearchBackground.Size = new System.Drawing.Size(204, 26);
+            this.textBoxSearchBackground.TabIndex = 29;
+            this.textBoxSearchBackground.TextChanged += new System.EventHandler(this.textBoxSearchBackground_TextChanged);
+            // 
             // dataGridViewBackground
             // 
             this.dataGridViewBackground.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -497,6 +530,31 @@
             this.labelBackground.TabIndex = 19;
             this.labelBackground.Text = "Выберете фон для редактирования или создайте новый.";
             // 
+            // tabPageObjects
+            // 
+            this.tabPageObjects.Controls.Add(this.dataGridViewRecipeToMorph);
+            this.tabPageObjects.Controls.Add(this.buttonDefineFromMorph);
+            this.tabPageObjects.Controls.Add(this.buttonAddToMorph);
+            this.tabPageObjects.Controls.Add(this.dataGridViewObjToMorph);
+            this.tabPageObjects.Controls.Add(this.textBoxSearchMorph);
+            this.tabPageObjects.Controls.Add(this.checkBoxIsMorph);
+            this.tabPageObjects.Controls.Add(this.textBoxSearchObjects);
+            this.tabPageObjects.Controls.Add(this.dataGridViewObjects);
+            this.tabPageObjects.Controls.Add(this.buttonCacelObjects);
+            this.tabPageObjects.Controls.Add(this.buttonApplyObjects);
+            this.tabPageObjects.Controls.Add(this.buttonDeleteObjects);
+            this.tabPageObjects.Controls.Add(this.buttonLoadObjects);
+            this.tabPageObjects.Controls.Add(this.textBoxNameObjects);
+            this.tabPageObjects.Controls.Add(this.buttonCreateObject);
+            this.tabPageObjects.Controls.Add(this.labelObjects);
+            this.tabPageObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tabPageObjects.Location = new System.Drawing.Point(4, 34);
+            this.tabPageObjects.Name = "tabPageObjects";
+            this.tabPageObjects.Size = new System.Drawing.Size(737, 449);
+            this.tabPageObjects.TabIndex = 3;
+            this.tabPageObjects.Text = "Предметы";
+            this.tabPageObjects.UseVisualStyleBackColor = true;
+            // 
             // tabPageActivity
             // 
             this.tabPageActivity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -507,16 +565,6 @@
             this.tabPageActivity.Text = "Активности";
             this.tabPageActivity.UseVisualStyleBackColor = true;
             // 
-            // tabPageObjects
-            // 
-            this.tabPageObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tabPageObjects.Location = new System.Drawing.Point(4, 34);
-            this.tabPageObjects.Name = "tabPageObjects";
-            this.tabPageObjects.Size = new System.Drawing.Size(737, 449);
-            this.tabPageObjects.TabIndex = 3;
-            this.tabPageObjects.Text = "Предметы";
-            this.tabPageObjects.UseVisualStyleBackColor = true;
-            // 
             // panelMainForm
             // 
             this.panelMainForm.Controls.Add(this.splitContainerMainForm);
@@ -526,15 +574,186 @@
             this.panelMainForm.Size = new System.Drawing.Size(1011, 487);
             this.panelMainForm.TabIndex = 0;
             // 
-            // textBoxSearchBackground
+            // tabPageActivityTypes
             // 
-            this.textBoxSearchBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSearchBackground.Location = new System.Drawing.Point(525, 24);
-            this.textBoxSearchBackground.Name = "textBoxSearchBackground";
-            this.textBoxSearchBackground.PlaceholderText = "Введите запрос для поиска.";
-            this.textBoxSearchBackground.Size = new System.Drawing.Size(204, 26);
-            this.textBoxSearchBackground.TabIndex = 29;
-            this.textBoxSearchBackground.TextChanged += new System.EventHandler(this.textBoxSearchBackground_TextChanged);
+            this.tabPageActivityTypes.Location = new System.Drawing.Point(4, 34);
+            this.tabPageActivityTypes.Name = "tabPageActivityTypes";
+            this.tabPageActivityTypes.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageActivityTypes.Size = new System.Drawing.Size(737, 449);
+            this.tabPageActivityTypes.TabIndex = 5;
+            this.tabPageActivityTypes.Text = "Типы активностей";
+            this.tabPageActivityTypes.UseVisualStyleBackColor = true;
+            // 
+            // tabPageTests
+            // 
+            this.tabPageTests.Location = new System.Drawing.Point(4, 34);
+            this.tabPageTests.Name = "tabPageTests";
+            this.tabPageTests.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTests.Size = new System.Drawing.Size(737, 449);
+            this.tabPageTests.TabIndex = 6;
+            this.tabPageTests.Text = "Проверки сценария";
+            this.tabPageTests.UseVisualStyleBackColor = true;
+            // 
+            // textBoxSearchObjects
+            // 
+            this.textBoxSearchObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSearchObjects.Location = new System.Drawing.Point(525, 24);
+            this.textBoxSearchObjects.Name = "textBoxSearchObjects";
+            this.textBoxSearchObjects.PlaceholderText = "Введите запрос для поиска.";
+            this.textBoxSearchObjects.Size = new System.Drawing.Size(204, 26);
+            this.textBoxSearchObjects.TabIndex = 39;
+            // 
+            // dataGridViewObjects
+            // 
+            this.dataGridViewObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridViewObjects.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewObjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewObjects.Location = new System.Drawing.Point(3, 234);
+            this.dataGridViewObjects.Name = "dataGridViewObjects";
+            this.dataGridViewObjects.RowTemplate.Height = 25;
+            this.dataGridViewObjects.Size = new System.Drawing.Size(731, 212);
+            this.dataGridViewObjects.TabIndex = 38;
+            // 
+            // buttonCacelObjects
+            // 
+            this.buttonCacelObjects.Enabled = false;
+            this.buttonCacelObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonCacelObjects.Location = new System.Drawing.Point(381, 59);
+            this.buttonCacelObjects.Name = "buttonCacelObjects";
+            this.buttonCacelObjects.Size = new System.Drawing.Size(126, 26);
+            this.buttonCacelObjects.TabIndex = 37;
+            this.buttonCacelObjects.Text = "Отменить";
+            this.buttonCacelObjects.UseVisualStyleBackColor = true;
+            // 
+            // buttonApplyObjects
+            // 
+            this.buttonApplyObjects.Enabled = false;
+            this.buttonApplyObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonApplyObjects.Location = new System.Drawing.Point(381, 24);
+            this.buttonApplyObjects.Name = "buttonApplyObjects";
+            this.buttonApplyObjects.Size = new System.Drawing.Size(126, 26);
+            this.buttonApplyObjects.TabIndex = 36;
+            this.buttonApplyObjects.Text = "Сохранить";
+            this.buttonApplyObjects.UseVisualStyleBackColor = true;
+            // 
+            // buttonDeleteObjects
+            // 
+            this.buttonDeleteObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonDeleteObjects.Location = new System.Drawing.Point(525, 91);
+            this.buttonDeleteObjects.Name = "buttonDeleteObjects";
+            this.buttonDeleteObjects.Size = new System.Drawing.Size(126, 26);
+            this.buttonDeleteObjects.TabIndex = 35;
+            this.buttonDeleteObjects.Text = "Удалить";
+            this.buttonDeleteObjects.UseVisualStyleBackColor = true;
+            // 
+            // buttonLoadObjects
+            // 
+            this.buttonLoadObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonLoadObjects.Location = new System.Drawing.Point(381, 91);
+            this.buttonLoadObjects.Name = "buttonLoadObjects";
+            this.buttonLoadObjects.Size = new System.Drawing.Size(126, 26);
+            this.buttonLoadObjects.TabIndex = 33;
+            this.buttonLoadObjects.Text = "Редактировать";
+            this.buttonLoadObjects.UseVisualStyleBackColor = true;
+            // 
+            // textBoxNameObjects
+            // 
+            this.textBoxNameObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxNameObjects.Location = new System.Drawing.Point(3, 25);
+            this.textBoxNameObjects.Name = "textBoxNameObjects";
+            this.textBoxNameObjects.PlaceholderText = "Название";
+            this.textBoxNameObjects.Size = new System.Drawing.Size(355, 26);
+            this.textBoxNameObjects.TabIndex = 31;
+            // 
+            // buttonCreateObject
+            // 
+            this.buttonCreateObject.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonCreateObject.Location = new System.Drawing.Point(525, 56);
+            this.buttonCreateObject.Name = "buttonCreateObject";
+            this.buttonCreateObject.Size = new System.Drawing.Size(126, 26);
+            this.buttonCreateObject.TabIndex = 32;
+            this.buttonCreateObject.Text = "Создать";
+            this.buttonCreateObject.UseVisualStyleBackColor = true;
+            this.buttonCreateObject.Click += new System.EventHandler(this.buttonCreateObject_Click);
+            // 
+            // labelObjects
+            // 
+            this.labelObjects.AutoSize = true;
+            this.labelObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelObjects.Location = new System.Drawing.Point(0, 3);
+            this.labelObjects.Name = "labelObjects";
+            this.labelObjects.Size = new System.Drawing.Size(409, 19);
+            this.labelObjects.TabIndex = 30;
+            this.labelObjects.Text = "Выберете объект для редактирования или создайте новый.";
+            // 
+            // checkBoxIsMorph
+            // 
+            this.checkBoxIsMorph.AutoSize = true;
+            this.checkBoxIsMorph.Location = new System.Drawing.Point(3, 56);
+            this.checkBoxIsMorph.Name = "checkBoxIsMorph";
+            this.checkBoxIsMorph.Size = new System.Drawing.Size(67, 23);
+            this.checkBoxIsMorph.TabIndex = 40;
+            this.checkBoxIsMorph.Text = "Морф";
+            this.checkBoxIsMorph.UseVisualStyleBackColor = true;
+            this.checkBoxIsMorph.CheckedChanged += new System.EventHandler(this.checkBoxIsMorph_CheckedChanged);
+            // 
+            // textBoxSearchMorph
+            // 
+            this.textBoxSearchMorph.Enabled = false;
+            this.textBoxSearchMorph.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSearchMorph.Location = new System.Drawing.Point(3, 85);
+            this.textBoxSearchMorph.Name = "textBoxSearchMorph";
+            this.textBoxSearchMorph.PlaceholderText = "Введите запрос для поиска.";
+            this.textBoxSearchMorph.Size = new System.Drawing.Size(355, 26);
+            this.textBoxSearchMorph.TabIndex = 41;
+            // 
+            // dataGridViewObjToMorph
+            // 
+            this.dataGridViewObjToMorph.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridViewObjToMorph.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewObjToMorph.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewObjToMorph.Enabled = false;
+            this.dataGridViewObjToMorph.Location = new System.Drawing.Point(0, 123);
+            this.dataGridViewObjToMorph.Name = "dataGridViewObjToMorph";
+            this.dataGridViewObjToMorph.RowTemplate.Height = 25;
+            this.dataGridViewObjToMorph.Size = new System.Drawing.Size(358, 104);
+            this.dataGridViewObjToMorph.TabIndex = 42;
+            // 
+            // buttonAddToMorph
+            // 
+            this.buttonAddToMorph.Enabled = false;
+            this.buttonAddToMorph.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonAddToMorph.ForeColor = System.Drawing.Color.DarkGreen;
+            this.buttonAddToMorph.Location = new System.Drawing.Point(367, 138);
+            this.buttonAddToMorph.Name = "buttonAddToMorph";
+            this.buttonAddToMorph.Size = new System.Drawing.Size(41, 33);
+            this.buttonAddToMorph.TabIndex = 43;
+            this.buttonAddToMorph.Text = "+";
+            this.buttonAddToMorph.UseVisualStyleBackColor = true;
+            // 
+            // buttonDefineFromMorph
+            // 
+            this.buttonDefineFromMorph.Enabled = false;
+            this.buttonDefineFromMorph.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonDefineFromMorph.ForeColor = System.Drawing.Color.Red;
+            this.buttonDefineFromMorph.Location = new System.Drawing.Point(368, 182);
+            this.buttonDefineFromMorph.Name = "buttonDefineFromMorph";
+            this.buttonDefineFromMorph.Size = new System.Drawing.Size(41, 33);
+            this.buttonDefineFromMorph.TabIndex = 44;
+            this.buttonDefineFromMorph.Text = "-";
+            this.buttonDefineFromMorph.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewRecipeToMorph
+            // 
+            this.dataGridViewRecipeToMorph.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridViewRecipeToMorph.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewRecipeToMorph.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRecipeToMorph.Enabled = false;
+            this.dataGridViewRecipeToMorph.Location = new System.Drawing.Point(414, 123);
+            this.dataGridViewRecipeToMorph.Name = "dataGridViewRecipeToMorph";
+            this.dataGridViewRecipeToMorph.RowTemplate.Height = 25;
+            this.dataGridViewRecipeToMorph.Size = new System.Drawing.Size(315, 104);
+            this.dataGridViewRecipeToMorph.TabIndex = 45;
             // 
             // MainForm
             // 
@@ -561,7 +780,12 @@
             this.tabPageBackground.ResumeLayout(false);
             this.tabPageBackground.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBackground)).EndInit();
+            this.tabPageObjects.ResumeLayout(false);
+            this.tabPageObjects.PerformLayout();
             this.panelMainForm.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjects)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjToMorph)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecipeToMorph)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -608,5 +832,22 @@
         private Button buttonCreateBackground;
         private Label labelBackground;
         private TextBox textBoxSearchBackground;
+        private DataGridView dataGridViewRecipeToMorph;
+        private Button buttonDefineFromMorph;
+        private Button buttonAddToMorph;
+        private DataGridView dataGridViewObjToMorph;
+        private TextBox textBoxSearchMorph;
+        private CheckBox checkBoxIsMorph;
+        private TextBox textBoxSearchObjects;
+        private DataGridView dataGridViewObjects;
+        private Button buttonCacelObjects;
+        private Button buttonApplyObjects;
+        private Button buttonDeleteObjects;
+        private Button buttonLoadObjects;
+        private TextBox textBoxNameObjects;
+        private Button buttonCreateObject;
+        private Label labelObjects;
+        private TabPage tabPageActivityTypes;
+        private TabPage tabPageTests;
     }
 }
