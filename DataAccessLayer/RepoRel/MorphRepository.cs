@@ -48,6 +48,14 @@ namespace DataAccessLayer.RepoRel
             }
         }
 
+        public List<Morph> GetObjects(int Id)
+        {
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                return db.Query<Morph>("SELECT * FROM " + _tableName + " where IdMorph = " +Id.ToString()).ToList();
+            }
+        }
+
         public void Update(Morph obj)
         {
             using (IDbConnection db = new SqlConnection(connectionString))

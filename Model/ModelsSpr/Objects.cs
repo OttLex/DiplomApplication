@@ -11,5 +11,7 @@ namespace Model.ModelSpr
         public string Name { get; set; }
         [Required]
         public bool Morph { get; set; }
+
+
     }
 }

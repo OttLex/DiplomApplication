@@ -38,8 +38,8 @@ namespace WinFormsAppDiplom
         private Objects _currentEditableObjects;
         private Objects _currentWorkObjects;
 
-        private Morph _currentEditableMorph;
-        private Morph _currentWorkMorph;
+        private List<Morph> _currentEditableMorph;
+        private List<Morph> _currentWorkMorph;
 
 
 
@@ -123,6 +123,33 @@ namespace WinFormsAppDiplom
             dataGridViewObjects.Columns[1].HeaderText = "Название";
             dataGridViewObjects.Columns[2].HeaderText = "Составной";
         }
+        private void FillDataGridViewRecipeToMorph(int id = -1)
+        {
+            if(id == -1)
+            {
+                dataGridViewRecipeToMorph.DataSource = _morphRepository.GetObjects();
+            }
+            else
+            {
+                MorphRepository repo = new MorphRepository(_connectionString);
+                dataGridViewRecipeToMorph.DataSource = repo.GetObjects(id);
+            }
+
+            dataGridViewRecipeToMorph.Columns[0].Visible = false;
+            dataGridViewRecipeToMorph.AutoSize = true;
+            dataGridViewRecipeToMorph.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewRecipeToMorph.Columns[1].HeaderText = "Название";
+            dataGridViewRecipeToMorph.Columns[2].HeaderText = "Состав";
+
+        }
+        private void FillDataGridViewObjToMorph()
+        {
+            dataGridViewObjToMorph.DataSource = _objectRepository.GetObjects();
+            dataGridViewObjToMorph.Columns[0].HeaderText = "Id";
+            dataGridViewObjToMorph.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewObjToMorph.Columns[1].HeaderText = "Название";
+            dataGridViewObjToMorph.Columns[2].Visible = false;
+        }
 
 
         private void buttonCreateScript_Click(object sender, EventArgs e)
@@ -179,55 +206,30 @@ namespace WinFormsAppDiplom
                 FillDataGridViewBackground();
 
                 CleanBackgroundTextBoxes();
-                ConfigureTreeView();
             }
             else
             {
                 MessageBox.Show("Заполните поля ввода.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private void buttonCreateObject_Click(object sender, EventArgs e)
         {
-            if (textBoxNameBackground.Text != "")
+            if (textBoxNameObjects.Text != "")
             {
-                var obj = new Objects();
-
-                obj.Name = textBoxNameBackground.Text;
-                obj.Morph = checkBoxIsMorph.Checked;
-
-                _objectRepository.Create(obj);
-                FillDataGridViewObjects();
-
-                if(checkBoxIsMorph.Checked == true)
+                if (checkBoxIsMorph.Checked == false)
                 {
-                    int id;
-                    var res= _objectRepository.GetObjects().LastOrDefault();
-                    if (res != null)
-                    {
-                        id=res.Id;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ошибка поиска id созданного объекта.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        CleanObjectsTextBoxes();
-                        return;
-                    }
-
-                    if (dataGridViewRecipeToMorph.DataSource!=null)
-                    {
-                        foreach(var objInComposition in (List<Objects>)dataGridViewRecipeToMorph.DataSource)
-                        {
-                            Morph morph = new Morph();
-                            morph.IdMorph = id;
-                            morph.IdObjectInTheComposition = objInComposition.Id;
-                        }
-                    }
-
+                    ConfigureObject();
+                    FillDataGridViewObjects();
+                }
+                else
+                {
+                    ConfigureObject();
+                    ConfigureMorph();
+                    FillDataGridViewObjects();
+                    CleanMorphTextBoxes();
                 }
 
                 CleanObjectsTextBoxes();
-                ConfigureTreeView();
             }
             else
             {
@@ -235,10 +237,51 @@ namespace WinFormsAppDiplom
             }
         }
 
-        private void CreateMorphByObj()
+        private void ConfigureObject()
         {
+            var obj = new Objects();
 
+            obj.Name = textBoxNameObjects.Text;
+            obj.Morph = checkBoxIsMorph.Checked;
+
+            _objectRepository.Create(obj);
         }
+        private void ConfigureMorph()
+        {
+            int id;
+            var res = _objectRepository.GetObjects().LastOrDefault();
+            if (res != null)
+            {
+                id = res.Id;
+            }
+            else
+            {
+                MessageBox.Show("Ошибка поиска id созданного объекта.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CleanObjectsTextBoxes();
+                return;
+            }
+
+            if (dataGridViewRecipeToMorph.DataSource != null)
+            {
+                List<Morph> actualRecipe = (List<Morph>)dataGridViewRecipeToMorph.DataSource;
+                actualRecipe= actualRecipe.Where(x => x.IdMorph==id).ToList();
+
+                foreach (var objInComposition in actualRecipe)
+                {
+                    Morph morph = new Morph();
+                    morph.IdMorph = id;
+                    morph.IdObjectInTheComposition = objInComposition.Id;
+                    _morphRepository.Create(morph);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Рецепты не обнаружены.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CleanObjectsTextBoxes();
+                return;
+            }
+        }
+
 
         private void CleanScriptTextBoxes()
         {
@@ -255,12 +298,19 @@ namespace WinFormsAppDiplom
             textBoxNameBackground.Text = "";
             textBoxDescriptionBackground.Text = "";
         }
-
         private void CleanObjectsTextBoxes()
         {
             textBoxNameObjects.Text = "";
             checkBoxIsMorph.Checked = false;
         }
+        private void CleanMorphTextBoxes()
+        {
+            textBoxNameObjects.Text = "";
+            checkBoxIsMorph.Checked = false;
+            dataGridViewObjToMorph.DataSource = null;
+            dataGridViewRecipeToMorph.DataSource= null;
+        }
+
 
         private void ChangeEnalableScriptButtons(bool isEnalable)
         {
@@ -276,6 +326,19 @@ namespace WinFormsAppDiplom
         {
             buttonApplyBackground.Enabled = isEnalable;
             buttonCancelBackground.Enabled = isEnalable;
+        }
+        private void ChangeEnalableObjectsButtons(bool isEnalable)
+        {
+            buttonApplyObjects.Enabled = isEnalable;
+            buttonCancelObjects.Enabled = isEnalable;
+        }
+        private void ChangeEnalableMorphButtons(bool isEnalable)
+        {
+            textBoxSearchMorph.Enabled = isEnalable;
+            dataGridViewObjToMorph.Enabled = isEnalable;
+            buttonAddToMorph.Enabled = isEnalable;
+            buttonDefineFromMorph.Enabled = isEnalable;
+            dataGridViewRecipeToMorph.Enabled= isEnalable;
         }
 
 
@@ -347,6 +410,38 @@ namespace WinFormsAppDiplom
             {
                 MessageBox.Show("Выделите нужный фон.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        private void buttonLoadObjects_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewObjects.CurrentCell != null)
+            {
+                var row = dataGridViewObjects.CurrentCell.OwningRow;
+                if (row != null)
+                {
+                    _currentEditableObjects = new();
+                    _currentEditableObjects.Id = (int)row.Cells[0].Value;
+                    textBoxNameObjects.Text = row.Cells[1].Value.ToString();
+                    checkBoxIsMorph.Checked = (bool)row.Cells[2].Value;
+
+                    FillDataGridViewObjToMorph();
+
+                    if (checkBoxIsMorph.Checked)
+                    {
+                        FillDataGridViewRecipeToMorph(_currentEditableObjects.Id);
+                        if(dataGridViewRecipeToMorph.DataSource != null)
+                        {
+                            _currentEditableMorph=(List<Morph>)dataGridViewRecipeToMorph.DataSource;
+                        }
+                    }
+                    ChangeEnalableObjectsButtons(true);
+                    ChangeEnalableMorphButtons(checkBoxIsMorph.Checked);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выделите нужный объект.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
 
 
@@ -428,25 +523,74 @@ namespace WinFormsAppDiplom
                 }
             }
         }
+        private void buttonApplyObjects_Click(object sender, EventArgs e)
+        {
+            if(checkBoxIsMorph.Checked==true && dataGridViewRecipeToMorph.DataSource == null)
+            {
+                MessageBox.Show("Рецепт не заполнен.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (_currentEditableObjects != null)
+            {
+                if (textBoxNameBackground.Text != "")
+                {
+                    _currentEditableObjects.Name = textBoxNameObjects.Text;
+                    _currentEditableObjects.Morph= checkBoxIsMorph.Checked;
+
+                    _backgroundRepository.Update(_currentEditableBackground);
+
+                    if (checkBoxIsMorph.Checked)
+                    {
+                        foreach(var obj in _currentEditableMorph)
+                        {
+                            _morphRepository.Update(obj);
+                        }
+                    }
+
+                    FillDataGridViewBackground();
+                    _currentEditableBackground = null;
+                    _currentEditableMorph = null;
+
+                    CleanObjectsTextBoxes();
+                    CleanMorphTextBoxes();  
+                    ChangeEnalableObjectsButtons(false);
+                    ChangeEnalableMorphButtons(false);
+                }
+                else
+                {
+                    MessageBox.Show("Выделите нужный фон.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
 
-        private void buttonCanselScript_Click(object sender, EventArgs e)
+        private void buttonCancelScript_Click(object sender, EventArgs e)
         {
             _currentEditableScript = null;
             CleanScriptTextBoxes();
             ChangeEnalableScriptButtons(false);
         }
-        private void buttonCanselBlock_Click(object sender, EventArgs e)
+        private void buttonCancelBlock_Click(object sender, EventArgs e)
         {
             _currentEditableBlock = null;
             CleanBlockTextBoxes();
             ChangeEnalableBlockButtons(false);
         }
-        private void buttonCanselBackground_Click(object sender, EventArgs e)
+        private void buttonCancelBackground_Click(object sender, EventArgs e)
         {
             _currentEditableBackground = null;
             CleanBackgroundTextBoxes();
             ChangeEnalableBackgroundButtons(false);
+        }
+        private void buttonCancelObjects_Click(object sender, EventArgs e)
+        {
+            _currentEditableObjects = null;
+            _currentEditableMorph = null;
+
+            CleanObjectsTextBoxes();
+            CleanMorphTextBoxes();
+            ChangeEnalableObjectsButtons(false);
+            ChangeEnalableMorphButtons(false);
         }
 
 
@@ -489,6 +633,19 @@ namespace WinFormsAppDiplom
             }
             FillDataGridViewBackground();
         }
+        private void buttonDeleteObjects_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewObjects.CurrentCell != null)
+            {
+                var row = dataGridViewObjects.CurrentCell.OwningRow;
+                _objectRepository.Delete(Convert.ToInt32(row.Cells[0].Value));
+            }
+            else
+            {
+                MessageBox.Show("Выделите нужный предмет.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            FillDataGridViewObjects();
+        }
 
 
         private void buttonChoseScript_Click(object sender, EventArgs e)
@@ -529,35 +686,33 @@ namespace WinFormsAppDiplom
             }
 
         }
-        private void buttonChoseBackground_Click(object sender, EventArgs e)
-        {
+        //private void buttonChoseBackground_Click(object sender, EventArgs e)
+        //{
 
-            if (dataGridViewBackground.CurrentCell != null)
-            {
-                var row = dataGridViewBackground.CurrentCell.OwningRow;
-                _currentWorkBackground = new();
-                _currentWorkBackground.Id = (int)row.Cells[0].Value;
-                _currentWorkBackground.Name = row.Cells[1].Value.ToString();
-                _currentWorkBackground.Description = row.Cells[2].Value.ToString();
+        //    if (dataGridViewBackground.CurrentCell != null)
+        //    {
+        //        var row = dataGridViewBackground.CurrentCell.OwningRow;
+        //        _currentWorkBackground = new();
+        //        _currentWorkBackground.Id = (int)row.Cells[0].Value;
+        //        _currentWorkBackground.Name = row.Cells[1].Value.ToString();
+        //        _currentWorkBackground.Description = row.Cells[2].Value.ToString();
 
-                ConfigureTreeView();
-            }
-            else
-            {
-                MessageBox.Show("Выделите нужный фон.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+        //        ConfigureTreeView();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Выделите нужный фон.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //    }
 
-        }
+        //}
+
 
         private void textBoxSearchBackground_TextChanged(object sender, EventArgs e)
         {
 
             if (dataGridViewBackground.DataSource != null && textBoxSearchBackground.Text != "")
             {
-                List<Background> tempList = (List<Background>)dataGridViewBackground.DataSource;
-
-
-                List<Background> result = (from row in tempList
+                List<Background> result = (from row in (List<Background>)dataGridViewBackground.DataSource
                                            where row.Name.Contains(textBoxSearchBackground.Text)
                                            select row).ToList();
 
@@ -572,6 +727,64 @@ namespace WinFormsAppDiplom
             dataGridViewBackground.DataSource = _backgroundRepository.GetObjects();
 
         }
+        private void textBoxSearchObjects_TextChanged(object sender, EventArgs e)
+        {
+
+            if (dataGridViewObjects.DataSource != null && textBoxSearchObjects.Text != "")
+            {
+                var result = (from row in (List<Objects>)dataGridViewObjects.DataSource
+                                           where row.Name.Contains(textBoxSearchObjects.Text)
+                                           select row).ToList();
+
+                var newList = new List<Objects>();
+                newList.AddRange(result);
+
+                dataGridViewBackground.DataSource = newList;
+
+                return;
+            }
+
+            dataGridViewObjects.DataSource = _objectRepository.GetObjects();
+
+        }
+        private void textBoxSearchMorph_TextChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewObjToMorph.DataSource != null && textBoxSearchMorph.Text != "")
+            {
+                var result = (from row in (List<Objects>)dataGridViewObjToMorph.DataSource
+                              where row.Name.Contains(textBoxSearchMorph.Text)
+                              select row).ToList();
+
+                var newList = new List<Objects>();
+                newList.AddRange(result);
+
+                dataGridViewObjToMorph.DataSource = newList;
+
+                return;
+            }
+
+            dataGridViewObjToMorph.DataSource = _objectRepository.GetObjects();
+        }
+
+
+        private void buttonAddToMorph_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewObjToMorph.CurrentCell != null)
+            {
+                var row = dataGridViewObjToMorph.CurrentCell.OwningRow;
+
+                _currentEditableMorph.Add(new Morph() { Id =_currentEditableObjects.Id, IdObjectInTheComposition = Convert.ToInt32(row.Cells[0].Value)});
+                dataGridViewRecipeToMorph.DataSource=_currentEditableMorph;
+            }
+            else
+            {
+                MessageBox.Show("Выделите нужный предмет.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void buttonDefineFromMorph_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void checkBoxIsMorph_CheckedChanged(object sender, EventArgs e)
         {
@@ -580,38 +793,57 @@ namespace WinFormsAppDiplom
             buttonAddToMorph.Enabled = checkBoxIsMorph.Checked;
             buttonDefineFromMorph.Enabled = checkBoxIsMorph.Checked;
             dataGridViewRecipeToMorph.Enabled = checkBoxIsMorph.Checked;
+
+            if (checkBoxIsMorph.Checked)
+            {
+                FillDataGridViewObjToMorph();
+                ChangeEnalableMorphButtons(true);
+            }
+            else
+            {
+                dataGridViewObjToMorph.DataSource = null;
+                ChangeEnalableMorphButtons(false);
+            }
         }
 
         private void ConfigureTreeView()
         {
-            if (_currentWorkScript.Name != null)
+            try
             {
-                treeViewMainForm.Nodes.Clear();
-
-                TreeNode scriptNode = new TreeNode(_currentWorkScript.Name);
-
-                var repo = new BlockRepository(_connectionString);
-                List<Block> listOfBlocksByScript = repo.GetObjects(_currentWorkScript.Id);
-                if (listOfBlocksByScript.Count != 0)
+                if (_currentWorkScript.Name != null)
                 {
-                    foreach (var block in listOfBlocksByScript)
+                    treeViewMainForm.Nodes.Clear();
+
+                    TreeNode scriptNode = new TreeNode(_currentWorkScript.Name);
+
+                    var repo = new BlockRepository(_connectionString);
+                    List<Block> listOfBlocksByScript = repo.GetObjects(_currentWorkScript.Id);
+                    if (listOfBlocksByScript.Count != 0)
                     {
-                        if (_currentWorkBlock != null && block.Name == _currentWorkBlock.Name)
+                        foreach (var block in listOfBlocksByScript)
                         {
-                            TreeNode currentBlock = new TreeNode(block.Name);
-                            currentBlock.BackColor = Color.LightGreen;
-                            scriptNode.Nodes.Add(currentBlock);
+                            if (_currentWorkBlock != null && block.Name == _currentWorkBlock.Name)
+                            {
+                                TreeNode currentBlock = new TreeNode(block.Name);
+                                currentBlock.BackColor = Color.LightGreen;
+                                scriptNode.Nodes.Add(currentBlock);
+                            }
+                            else
+                            {
+                                scriptNode.Nodes.Add(block.Name);
+                            }
                         }
-                        else
-                        {
-                            scriptNode.Nodes.Add(block.Name);
-                        }
+
                     }
 
+                    treeViewMainForm.Nodes.Add(scriptNode);
                 }
-
-                treeViewMainForm.Nodes.Add(scriptNode);
             }
+            catch
+            {
+                MessageBox.Show("Ошибка построения древа.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
 
         private void tabControlScenario_SelectedIndexChanged(object sender, EventArgs e)
@@ -635,7 +867,5 @@ namespace WinFormsAppDiplom
             }
 
         }
-
-
     }
 }
