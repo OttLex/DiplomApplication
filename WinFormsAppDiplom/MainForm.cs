@@ -817,7 +817,22 @@ namespace WinFormsAppDiplom
         }
         private void buttonDefineFromMorph_Click(object sender, EventArgs e)
         {
+            if (dataGridViewRecipeToMorph.CurrentCell != null)
+            {
+                var row = dataGridViewRecipeToMorph.CurrentCell.OwningRow;
+                Morph morphForRemoving = new();
 
+                morphForRemoving.IdMorph = Convert.ToInt32(row.Cells[1].Value);
+                morphForRemoving.IdObjectInTheComposition = Convert.ToInt32(row.Cells[2].Value);
+
+                morphForRemoving= _currentEditableMorph.Where(m=>
+                                                m.IdMorph==morphForRemoving.IdMorph &&
+                                                m.IdObjectInTheComposition==morphForRemoving.IdObjectInTheComposition).First();
+                _currentEditableMorph.Remove(morphForRemoving);
+
+                dataGridViewRecipeToMorph.DataSource = null;
+                dataGridViewRecipeToMorph.DataSource = _currentEditableMorph;
+            }
         }
 
         private void checkBoxIsMorph_CheckedChanged(object sender, EventArgs e)
