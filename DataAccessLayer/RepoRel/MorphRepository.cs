@@ -31,6 +31,13 @@ namespace DataAccessLayer.RepoRel
                 db.Query($@"delete {_tableName}  where Id= {id}");
             }
         }
+        public void DeleteByIdMorph(int id)
+        {
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                db.Query($@"delete {_tableName}  where IdIdMorph= {id}");
+            }
+        }
 
         public Morph GetObject(int id)
         {

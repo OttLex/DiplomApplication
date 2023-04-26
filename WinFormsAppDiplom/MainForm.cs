@@ -125,7 +125,7 @@ namespace WinFormsAppDiplom
         }
         private void FillDataGridViewRecipeToMorph(int id = -1)
         {
-            if(id == -1)
+            if (id == -1)
             {
                 dataGridViewRecipeToMorph.DataSource = _morphRepository.GetObjects();
             }
@@ -264,13 +264,14 @@ namespace WinFormsAppDiplom
             if (dataGridViewRecipeToMorph.DataSource != null)
             {
                 List<Morph> actualRecipe = (List<Morph>)dataGridViewRecipeToMorph.DataSource;
-                actualRecipe= actualRecipe.Where(x => x.IdMorph==id).ToList();
+                // actualRecipe = actualRecipe.Where(x => x.IdMorph == id).ToList(); строчка для редактирования
+
 
                 foreach (var objInComposition in actualRecipe)
                 {
                     Morph morph = new Morph();
                     morph.IdMorph = id;
-                    morph.IdObjectInTheComposition = objInComposition.Id;
+                    morph.IdObjectInTheComposition = objInComposition.IdObjectInTheComposition;
                     _morphRepository.Create(morph);
                 }
             }
@@ -308,7 +309,7 @@ namespace WinFormsAppDiplom
             textBoxNameObjects.Text = "";
             checkBoxIsMorph.Checked = false;
             dataGridViewObjToMorph.DataSource = null;
-            dataGridViewRecipeToMorph.DataSource= null;
+            dataGridViewRecipeToMorph.DataSource = null;
         }
 
 
@@ -335,10 +336,11 @@ namespace WinFormsAppDiplom
         private void ChangeEnalableMorphButtons(bool isEnalable)
         {
             textBoxSearchMorph.Enabled = isEnalable;
+
             dataGridViewObjToMorph.Enabled = isEnalable;
             buttonAddToMorph.Enabled = isEnalable;
             buttonDefineFromMorph.Enabled = isEnalable;
-            dataGridViewRecipeToMorph.Enabled= isEnalable;
+            dataGridViewRecipeToMorph.Enabled = isEnalable;
         }
 
 
@@ -423,18 +425,18 @@ namespace WinFormsAppDiplom
                     textBoxNameObjects.Text = row.Cells[1].Value.ToString();
                     checkBoxIsMorph.Checked = (bool)row.Cells[2].Value;
 
-                    FillDataGridViewObjToMorph();
+                    ChangeEnalableObjectsButtons(true);
 
                     if (checkBoxIsMorph.Checked)
                     {
+                        FillDataGridViewObjToMorph();
                         FillDataGridViewRecipeToMorph(_currentEditableObjects.Id);
-                        if(dataGridViewRecipeToMorph.DataSource != null)
+                        ChangeEnalableMorphButtons(checkBoxIsMorph.Checked);
+                        if (dataGridViewRecipeToMorph.DataSource != null)
                         {
-                            _currentEditableMorph=(List<Morph>)dataGridViewRecipeToMorph.DataSource;
+                            _currentEditableMorph = (List<Morph>)dataGridViewRecipeToMorph.DataSource;
                         }
                     }
-                    ChangeEnalableObjectsButtons(true);
-                    ChangeEnalableMorphButtons(checkBoxIsMorph.Checked);
                 }
             }
             else
@@ -525,40 +527,40 @@ namespace WinFormsAppDiplom
         }
         private void buttonApplyObjects_Click(object sender, EventArgs e)
         {
-            if(checkBoxIsMorph.Checked==true && dataGridViewRecipeToMorph.DataSource == null)
+            if (checkBoxIsMorph.Checked == true && dataGridViewRecipeToMorph.DataSource == null)
             {
                 MessageBox.Show("Рецепт не заполнен.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (_currentEditableObjects != null)
             {
-                if (textBoxNameBackground.Text != "")
+                if (textBoxNameObjects.Text != "")
                 {
                     _currentEditableObjects.Name = textBoxNameObjects.Text;
-                    _currentEditableObjects.Morph= checkBoxIsMorph.Checked;
+                    _currentEditableObjects.Morph = checkBoxIsMorph.Checked;
 
-                    _backgroundRepository.Update(_currentEditableBackground);
+                    _objectRepository.Update(_currentEditableObjects);
 
                     if (checkBoxIsMorph.Checked)
                     {
-                        foreach(var obj in _currentEditableMorph)
+                        foreach (var obj in _currentEditableMorph)
                         {
                             _morphRepository.Update(obj);
                         }
                     }
 
-                    FillDataGridViewBackground();
-                    _currentEditableBackground = null;
+                    FillDataGridViewObjects();
+                    _currentEditableObjects = null;
                     _currentEditableMorph = null;
 
                     CleanObjectsTextBoxes();
-                    CleanMorphTextBoxes();  
+                    CleanMorphTextBoxes();
                     ChangeEnalableObjectsButtons(false);
                     ChangeEnalableMorphButtons(false);
                 }
                 else
                 {
-                    MessageBox.Show("Выделите нужный фон.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Параметры заполненны не верно.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -638,7 +640,14 @@ namespace WinFormsAppDiplom
             if (dataGridViewObjects.CurrentCell != null)
             {
                 var row = dataGridViewObjects.CurrentCell.OwningRow;
-                _objectRepository.Delete(Convert.ToInt32(row.Cells[0].Value));
+                int id = Convert.ToInt32(row.Cells[0].Value);
+                Objects obj= _objectRepository.GetObject(id);
+                if (obj.Morph == true)
+                {
+                    MorphRepository repo = new MorphRepository(_connectionString);
+                    repo.DeleteByIdMorph(id);
+                }
+                _objectRepository.Delete(id);
             }
             else
             {
@@ -733,13 +742,13 @@ namespace WinFormsAppDiplom
             if (dataGridViewObjects.DataSource != null && textBoxSearchObjects.Text != "")
             {
                 var result = (from row in (List<Objects>)dataGridViewObjects.DataSource
-                                           where row.Name.Contains(textBoxSearchObjects.Text)
-                                           select row).ToList();
+                              where row.Name.Contains(textBoxSearchObjects.Text)
+                              select row).ToList();
 
                 var newList = new List<Objects>();
                 newList.AddRange(result);
 
-                dataGridViewBackground.DataSource = newList;
+                dataGridViewObjects.DataSource = newList;
 
                 return;
             }
@@ -772,9 +781,34 @@ namespace WinFormsAppDiplom
             if (dataGridViewObjToMorph.CurrentCell != null)
             {
                 var row = dataGridViewObjToMorph.CurrentCell.OwningRow;
+                var morph = new Morph();
+                int idForCurrentObj;
 
-                _currentEditableMorph.Add(new Morph() { Id =_currentEditableObjects.Id, IdObjectInTheComposition = Convert.ToInt32(row.Cells[0].Value)});
-                dataGridViewRecipeToMorph.DataSource=_currentEditableMorph;
+                if (_currentEditableObjects == null)
+                {
+                    try
+                    {
+                        idForCurrentObj = Convert.ToInt32(_objectRepository.GetObjects().LastOrDefault().Id) + 1;
+
+                    }
+                    catch
+                    {
+                        idForCurrentObj = 1;
+
+                    }
+                }
+                else
+                {
+                    idForCurrentObj = _currentEditableObjects.Id;
+                }
+
+
+                morph.IdMorph = idForCurrentObj;//ошибка в логике. Нельзя сделать морфом не созданный объект.
+                morph.IdObjectInTheComposition = Convert.ToInt32(row.Cells[0].Value);
+
+                _currentEditableMorph.Add(morph);
+                dataGridViewRecipeToMorph.DataSource = null;
+                dataGridViewRecipeToMorph.DataSource = _currentEditableMorph;
             }
             else
             {
@@ -788,8 +822,8 @@ namespace WinFormsAppDiplom
 
         private void checkBoxIsMorph_CheckedChanged(object sender, EventArgs e)
         {
+            _currentEditableMorph = new();
             textBoxSearchMorph.Enabled = checkBoxIsMorph.Checked;
-            dataGridViewObjects.Enabled = checkBoxIsMorph.Checked;
             buttonAddToMorph.Enabled = checkBoxIsMorph.Checked;
             buttonDefineFromMorph.Enabled = checkBoxIsMorph.Checked;
             dataGridViewRecipeToMorph.Enabled = checkBoxIsMorph.Checked;
@@ -803,6 +837,20 @@ namespace WinFormsAppDiplom
             {
                 dataGridViewObjToMorph.DataSource = null;
                 ChangeEnalableMorphButtons(false);
+            }
+        }
+        private void dataGridViewObjects_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridViewObjects.CurrentCell != null)
+            {
+                var row = dataGridViewObjects.CurrentCell.OwningRow;
+                int id = Convert.ToInt32(row.Cells[0].Value);
+
+                MorphRepository repo = new MorphRepository(_connectionString);
+                List<Morph> result = repo.GetObjects(id);
+
+                dataGridViewRecipeToMorph.DataSource = null;
+                dataGridViewRecipeToMorph.DataSource = result;
             }
         }
 
@@ -843,7 +891,7 @@ namespace WinFormsAppDiplom
             {
                 MessageBox.Show("Ошибка построения древа.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
         }
 
         private void tabControlScenario_SelectedIndexChanged(object sender, EventArgs e)
