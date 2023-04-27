@@ -17,6 +17,8 @@ using Model.ModelRelations;
 using DataAccessLayer.RepoRel;
 using DataAccessLayer.RepoSpr;
 using Model.ModelSpr;
+using Service;
+using DataAccessLayer.DTO;
 
 namespace WinFormsAppDiplom
 {
@@ -33,13 +35,9 @@ namespace WinFormsAppDiplom
         private Block _currentWorkBlock;
 
         private Background _currentEditableBackground;
-        private Background _currentWorkBackground;
 
         private Objects _currentEditableObjects;
-        private Objects _currentWorkObjects;
-
         private List<Morph> _currentEditableMorph;
-        private List<Morph> _currentWorkMorph;
 
 
 
@@ -61,6 +59,7 @@ namespace WinFormsAppDiplom
 
 
             ConfigureRepositorys();
+            FillDataGridViewScript();
         }
 
         private void ConfigureRepositorys()
@@ -81,11 +80,13 @@ namespace WinFormsAppDiplom
         private void FillDataGridViewScript()
         {
             dataGridViewScript.DataSource = _scriptRepository.GetObjects();
-            dataGridViewScript.Columns[0].Visible = false;
+            dataGridViewScript.Columns["Id"].Visible = false;
             dataGridViewScript.AutoSize = true;
             dataGridViewScript.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewScript.Columns[1].HeaderText = "Название";
-            dataGridViewScript.Columns[2].HeaderText = "Описание";
+            dataGridViewScript.Columns["Name"].HeaderText = "Название";
+            dataGridViewScript.Columns["Name"].DisplayIndex=1;
+            dataGridViewScript.Columns["Description"].HeaderText = "Описание";
+            dataGridViewScript.Columns["Description"].DisplayIndex=2;
         }
         private void FillDataGridViewBlock()
         {
@@ -101,54 +102,88 @@ namespace WinFormsAppDiplom
             dataGridViewBlock.Columns[0].Visible = false;
             dataGridViewBlock.AutoSize = true;
             dataGridViewBlock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewBlock.Columns[1].Visible = false;
-            dataGridViewBlock.Columns[2].HeaderText = "Название";
-            dataGridViewBlock.Columns[3].HeaderText = "Описание";
+            dataGridViewBlock.Columns["Id"].Visible = false;
+            dataGridViewBlock.Columns["Name"].HeaderText = "Название";
+            dataGridViewBlock.Columns["Name"].DisplayIndex = 1;
+            dataGridViewBlock.Columns["Description"].HeaderText = "Описание";
+            dataGridViewBlock.Columns["Description"].DisplayIndex = 2;
         }
         private void FillDataGridViewBackground()
         {
             dataGridViewBackground.DataSource = _backgroundRepository.GetObjects();
-            dataGridViewBackground.Columns[0].Visible = false;
+            dataGridViewBackground.Columns["Id"].Visible = false;
             dataGridViewBackground.AutoSize = true;
             dataGridViewBackground.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewBackground.Columns[1].HeaderText = "Название";
-            dataGridViewBackground.Columns[2].HeaderText = "Описание";
+            dataGridViewBackground.Columns["Name"].HeaderText = "Название";
+            dataGridViewBackground.Columns["Name"].DisplayIndex = 1;
+            dataGridViewBackground.Columns["Description"].HeaderText = "Описание";
+            dataGridViewBackground.Columns["Description"].DisplayIndex = 2 ;
         }
         private void FillDataGridViewObjects()
         {
             dataGridViewObjects.DataSource = _objectRepository.GetObjects();
-            dataGridViewObjects.Columns[0].Visible = false;
+            dataGridViewObjects.Columns["Id"].Visible = false;
             dataGridViewObjects.AutoSize = true;
             dataGridViewObjects.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewObjects.Columns[1].HeaderText = "Название";
-            dataGridViewObjects.Columns[2].HeaderText = "Составной";
+            dataGridViewObjects.Columns["Name"].HeaderText = "Название";
+            dataGridViewObjects.Columns["Name"].DisplayIndex = 1;
+            dataGridViewObjects.Columns["Morph"].HeaderText = "Составной";
+            dataGridViewObjects.Columns["Morph"].DisplayIndex = 2;
         }
         private void FillDataGridViewRecipeToMorph(int id = -1)
         {
             if (id == -1)
             {
-                dataGridViewRecipeToMorph.DataSource = _morphRepository.GetObjects();
+                List<Morph> morphs = _morphRepository.GetObjects();
+                List<Objects> objects=_objectRepository.GetObjects();
+
+                List<MorphDTO> dtos = morphs.Join(objects, m => m.IdMorph, obj => obj.Id, (m, obj) => new MorphDTO
+                {
+                    Id = obj.Id,
+                    IdMorph = m.IdMorph,
+                    NameMorph = obj.Name,
+                    IdObjectInTheComposition= m.IdObjectInTheComposition,
+                    NameObjectInTheComposition = obj.Name,
+                }).ToList();
+
+                dataGridViewRecipeToMorph.DataSource = dtos;
             }
             else
             {
                 MorphRepository repo = new MorphRepository(_connectionString);
-                dataGridViewRecipeToMorph.DataSource = repo.GetObjects(id);
+                List<Morph> morphs = repo.GetObjects(id);
+                List<Objects> objects = _objectRepository.GetObjects();
+
+                List<MorphDTO> dtos = morphs.Join(objects, m => m.IdMorph, obj => obj.Id, (m, obj) => new MorphDTO
+                {
+                    Id = obj.Id,
+                    IdMorph = m.IdMorph,
+                    NameMorph = obj.Name,
+                    IdObjectInTheComposition = m.IdObjectInTheComposition,
+                    NameObjectInTheComposition = objects.Where(o=> o.Id==m.IdObjectInTheComposition).First().Name
+                }).ToList();
+
+                dataGridViewRecipeToMorph.DataSource = dtos;
             }
 
-            dataGridViewRecipeToMorph.Columns[0].Visible = false;
+            dataGridViewRecipeToMorph.Columns["Id"].Visible = false;
+            dataGridViewRecipeToMorph.Columns["IdMorph"].Visible = false;
+            dataGridViewRecipeToMorph.Columns["IdObjectInTheComposition"].Visible = false;
             dataGridViewRecipeToMorph.AutoSize = true;
             dataGridViewRecipeToMorph.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewRecipeToMorph.Columns[1].HeaderText = "Название";
-            dataGridViewRecipeToMorph.Columns[2].HeaderText = "Состав";
+            dataGridViewRecipeToMorph.Columns["NameMorph"].HeaderText = "Название";
+            dataGridViewRecipeToMorph.Columns["NameMorph"].DisplayIndex = 1;
+            dataGridViewRecipeToMorph.Columns["NameObjectInTheComposition"].HeaderText = "Состав";
+            dataGridViewRecipeToMorph.Columns["NameObjectInTheComposition"].DisplayIndex = 2;
 
         }
         private void FillDataGridViewObjToMorph()
         {
             dataGridViewObjToMorph.DataSource = _objectRepository.GetObjects();
-            dataGridViewObjToMorph.Columns[0].HeaderText = "Id";
+            dataGridViewObjToMorph.Columns["Id"].HeaderText = "Id";
             dataGridViewObjToMorph.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewObjToMorph.Columns[1].HeaderText = "Название";
-            dataGridViewObjToMorph.Columns[2].Visible = false;
+            dataGridViewObjToMorph.Columns["Name"].HeaderText = "Название";
+            dataGridViewObjToMorph.Columns["Morph"].Visible = false;
         }
 
 
@@ -165,7 +200,6 @@ namespace WinFormsAppDiplom
                 FillDataGridViewScript();
 
                 CleanScriptTextBoxes();
-                ConfigureTreeView();
             }
             else
             {
@@ -174,23 +208,30 @@ namespace WinFormsAppDiplom
         }
         private void buttonCreateBlock_Click(object sender, EventArgs e)
         {
-            if (textBoxNameBlock.Text != "")
+            if (_currentWorkScript != null)
             {
-                var block = new Block();
+                if (textBoxNameBlock.Text != "")
+                {
+                    var block = new Block();
 
-                block.IdScript = _currentWorkScript.Id;
-                block.Name = textBoxNameBlock.Text;
-                block.Description = textBoxDescriptionBlock.Text;
+                    block.IdScript = _currentWorkScript.Id;
+                    block.Name = textBoxNameBlock.Text;
+                    block.Description = textBoxDescriptionBlock.Text;
 
-                _blockRepository.Create(block);
-                FillDataGridViewBlock();
+                    _blockRepository.Create(block);
+                    FillDataGridViewBlock();
 
-                CleanBlockTextBoxes();
-                ConfigureTreeView();
+                    CleanBlockTextBoxes();
+                    ConfigureTreeView();
+                }
+                else
+                {
+                    MessageBox.Show("Заполните поля ввода.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
-                MessageBox.Show("Заполните поля ввода.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Выберете сценрий в который создать блок.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void buttonCreateBackground_Click(object sender, EventArgs e)
@@ -352,11 +393,11 @@ namespace WinFormsAppDiplom
                 if (row != null)
                 {
                     _currentEditableScript = new();
-                    _currentEditableScript.Id = (int)row.Cells[0].Value;
-                    textBoxNameScript.Text = row.Cells[1].Value.ToString();
+                    _currentEditableScript.Id = (int)row.Cells["Id"].Value;
+                    textBoxNameScript.Text = row.Cells["Name"].Value.ToString();
                     try
                     {
-                        textBoxDescriptionScript.Text = row.Cells[2].Value.ToString();
+                        textBoxDescriptionScript.Text = row.Cells["Description"].Value.ToString();
                     }
                     catch { }
                     ChangeEnalableScriptButtons(true);
@@ -375,11 +416,11 @@ namespace WinFormsAppDiplom
                 if (row != null)
                 {
                     _currentEditableBlock = new();
-                    _currentEditableBlock.Id = (int)row.Cells[0].Value;
-                    textBoxNameBlock.Text = row.Cells[1].Value.ToString();
+                    _currentEditableBlock.Id = (int)row.Cells["Id"].Value;
+                    textBoxNameBlock.Text = row.Cells["Name"].Value.ToString();
                     try
                     {
-                        textBoxDescriptionScript.Text = row.Cells[2].Value.ToString();
+                        textBoxDescriptionScript.Text = row.Cells["Description"].Value.ToString();
                     }
                     catch { }
                     ChangeEnalableBlockButtons(true);
@@ -421,9 +462,9 @@ namespace WinFormsAppDiplom
                 if (row != null)
                 {
                     _currentEditableObjects = new();
-                    _currentEditableObjects.Id = (int)row.Cells[0].Value;
-                    textBoxNameObjects.Text = row.Cells[1].Value.ToString();
-                    checkBoxIsMorph.Checked = (bool)row.Cells[2].Value;
+                    _currentEditableObjects.Id = (int)row.Cells["Id"].Value;
+                    textBoxNameObjects.Text = row.Cells["Name"].Value.ToString();
+                    checkBoxIsMorph.Checked = (bool)row.Cells["Morph"].Value;
 
                     ChangeEnalableObjectsButtons(true);
 
@@ -601,7 +642,7 @@ namespace WinFormsAppDiplom
             if (dataGridViewScript.CurrentCell != null)
             {
                 var row = dataGridViewScript.CurrentCell.OwningRow;
-                _scriptRepository.Delete(Convert.ToInt32(row.Cells[0].Value));
+                _scriptRepository.Delete(Convert.ToInt32(row.Cells["Id"].Value));
             }
             else
             {
@@ -664,9 +705,13 @@ namespace WinFormsAppDiplom
             {
                 var row = dataGridViewScript.CurrentCell.OwningRow;
                 _currentWorkScript = new();
-                _currentWorkScript.Id = (int)row.Cells[0].Value;
-                _currentWorkScript.Name = row.Cells[1].Value.ToString();
-                _currentWorkScript.Description = row.Cells[2].Value.ToString();
+                _currentWorkScript.Id = (int)row.Cells["Id"].Value;
+                _currentWorkScript.Name = row.Cells["Name"].Value.ToString();
+                try
+                {
+                    _currentWorkScript.Description = row.Cells["Description"].Value.ToString();
+                }
+                catch { }
 
                 ConfigureTreeView();
             }
@@ -716,20 +761,48 @@ namespace WinFormsAppDiplom
         //}
 
 
+        private void textBoxSearchScript_TextChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewScript.DataSource != null && textBoxSearchScript.Text != "")
+            {
+
+                SearchByDataGridService<Script> searhObjects =
+                        new SearchByDataGridService<Script>(
+                                    (List<Script>)dataGridViewScript.DataSource,
+                                                                        textBoxSearchScript.Text);
+                dataGridViewScript.DataSource = searhObjects.Search();
+                return;
+
+            }
+
+            dataGridViewScript.DataSource = _scriptRepository.GetObjects();
+        }
+        private void textBoxSearchBlock_TextChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewBlock.DataSource != null && textBoxSearchBlock.Text != "")
+            {
+
+                SearchByDataGridService<Block> searhBlock =
+                                        new SearchByDataGridService<Block>(
+                                                    (List<Block>)dataGridViewBlock.DataSource,
+                                                                                        textBoxSearchBlock.Text);
+                dataGridViewBlock.DataSource = searhBlock.Search();
+                return;
+            }
+
+            dataGridViewBlock.DataSource = _blockRepository.GetObjects();
+
+        }
         private void textBoxSearchBackground_TextChanged(object sender, EventArgs e)
         {
 
             if (dataGridViewBackground.DataSource != null && textBoxSearchBackground.Text != "")
             {
-                List<Background> result = (from row in (List<Background>)dataGridViewBackground.DataSource
-                                           where row.Name.Contains(textBoxSearchBackground.Text)
-                                           select row).ToList();
-
-                List<Background> newList = new List<Background>();
-                newList.AddRange(result);
-
-                dataGridViewBackground.DataSource = newList;
-
+                SearchByDataGridService<Background> searhBackgound= 
+                                                        new SearchByDataGridService<Background>(
+                                                                    (List<Background>)dataGridViewBackground.DataSource,
+                                                                                                        textBoxSearchBackground.Text);
+                dataGridViewBackground.DataSource = searhBackgound.Search();
                 return;
             }
 
@@ -741,15 +814,12 @@ namespace WinFormsAppDiplom
 
             if (dataGridViewObjects.DataSource != null && textBoxSearchObjects.Text != "")
             {
-                var result = (from row in (List<Objects>)dataGridViewObjects.DataSource
-                              where row.Name.Contains(textBoxSearchObjects.Text)
-                              select row).ToList();
 
-                var newList = new List<Objects>();
-                newList.AddRange(result);
-
-                dataGridViewObjects.DataSource = newList;
-
+                SearchByDataGridService<Objects> searhObjects =
+                                        new SearchByDataGridService<Objects>(
+                                                    (List<Objects>)dataGridViewObjects.DataSource,
+                                                                                        textBoxSearchObjects.Text);
+                dataGridViewObjects.DataSource = searhObjects.Search();
                 return;
             }
 
@@ -760,20 +830,19 @@ namespace WinFormsAppDiplom
         {
             if (dataGridViewObjToMorph.DataSource != null && textBoxSearchMorph.Text != "")
             {
-                var result = (from row in (List<Objects>)dataGridViewObjToMorph.DataSource
-                              where row.Name.Contains(textBoxSearchMorph.Text)
-                              select row).ToList();
 
-                var newList = new List<Objects>();
-                newList.AddRange(result);
-
-                dataGridViewObjToMorph.DataSource = newList;
-
+                SearchByDataGridService<Objects> searhObjects =
+                        new SearchByDataGridService<Objects>(
+                                    (List<Objects>)dataGridViewObjToMorph.DataSource,
+                                                                        textBoxSearchMorph.Text);
+                dataGridViewObjToMorph.DataSource = searhObjects.Search();
                 return;
+
             }
 
             dataGridViewObjToMorph.DataSource = _objectRepository.GetObjects();
         }
+
 
 
         private void buttonAddToMorph_Click(object sender, EventArgs e)
@@ -788,7 +857,7 @@ namespace WinFormsAppDiplom
                 {
                     try
                     {
-                        idForCurrentObj = Convert.ToInt32(_objectRepository.GetObjects().LastOrDefault().Id) + 1;
+                        idForCurrentObj = Convert.ToInt32(_objectRepository.GetObjects().Last().Id) + 1;
 
                     }
                     catch
@@ -803,8 +872,8 @@ namespace WinFormsAppDiplom
                 }
 
 
-                morph.IdMorph = idForCurrentObj;//ошибка в логике. Нельзя сделать морфом не созданный объект.
-                morph.IdObjectInTheComposition = Convert.ToInt32(row.Cells[0].Value);
+                morph.IdMorph = idForCurrentObj;
+                morph.IdObjectInTheComposition = Convert.ToInt32(row.Cells["Id"].Value);
 
                 _currentEditableMorph.Add(morph);
                 dataGridViewRecipeToMorph.DataSource = null;
@@ -859,13 +928,9 @@ namespace WinFormsAppDiplom
             if (dataGridViewObjects.CurrentCell != null)
             {
                 var row = dataGridViewObjects.CurrentCell.OwningRow;
-                int id = Convert.ToInt32(row.Cells[0].Value);
+                int id = Convert.ToInt32(row.Cells["Id"].Value);
 
-                MorphRepository repo = new MorphRepository(_connectionString);
-                List<Morph> result = repo.GetObjects(id);
-
-                dataGridViewRecipeToMorph.DataSource = null;
-                dataGridViewRecipeToMorph.DataSource = result;
+                FillDataGridViewRecipeToMorph(id);
             }
         }
 
@@ -907,6 +972,7 @@ namespace WinFormsAppDiplom
                 MessageBox.Show("Ошибка построения древа.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+            treeViewMainForm.ExpandAll();
         }
 
         private void tabControlScenario_SelectedIndexChanged(object sender, EventArgs e)

@@ -9,9 +9,5 @@ namespace Model.ModelSpr
 {
     public class CastTypes:AbstractSpr
     {
-        [Key]
-        public int Id { get; set; }
-        [Required]
-        public string CastName { get; set; }
     }
 }

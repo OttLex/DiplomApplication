@@ -21,7 +21,7 @@ namespace DataAccessLayer.RepoSpr
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"insert into {_tableName} values('{obj.CastName}')");
+                db.Query($@"insert into {_tableName} values('{obj.Name}')");
             }
         }
 
@@ -53,7 +53,7 @@ namespace DataAccessLayer.RepoSpr
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"UPDATE {_tableName} SET CastName= '{obj.CastName}' WHERE id={obj.Id}");
+                db.Query($@"UPDATE {_tableName} SET CastName= '{obj.Name}' WHERE id={obj.Id}");
             }
         }
     }

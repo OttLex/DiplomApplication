@@ -52,6 +52,7 @@ namespace WinFormsAppDiplom
         {
             if (e.KeyCode == Keys.Enter)
             {
+                e.SuppressKeyPress = true;
                 Auth();
             }
         }

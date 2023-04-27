@@ -42,8 +42,8 @@ namespace Model.EF
             .IsUnique();
 
             modelBuilder.Entity<User>().HasData(
-                        new User { Id = 1, UserName = "dev", Password = "123", AccessLevelId=1 },
-                        new User { Id = 2, UserName = "reader", Password = "123", AccessLevelId = 2 });
+                        new User { Id = 1, Name = "dev", Password = "123", AccessLevelId=1 },
+                        new User { Id = 2, Name = "reader", Password = "123", AccessLevelId = 2 });
 
             modelBuilder.Entity<Access>().HasData(
                         new Access { Id = 1, Name = "Developer" },

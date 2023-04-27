@@ -21,7 +21,7 @@ namespace DataAccessLayer.RepoSpr
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"insert into {_tableName} values({obj.IdScript} , '{obj.Name}', '{obj.Description}')");
+                db.Query($@"insert into {_tableName} values({obj.IdScript} , '{obj.Description}', '{obj.Name}')");
                 //db.Query($@"insert into {_tableName} values('{obj.Name}', '{obj.Description}')");
             }
         }

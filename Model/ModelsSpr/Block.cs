@@ -9,12 +9,8 @@ namespace Model.ModelSpr
 {
     public class Block:AbstractSpr
     {
-        [Key]
-        public int Id { get; set; }
         [Required]
         public int IdScript { get; set; }
-        [Required]
-        public string Name { get; set; }
         public string Description { get; set; } = "";
     }
 }

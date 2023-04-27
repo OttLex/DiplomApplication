@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace Model.ModelsSpr
 {
-    public class Script : AbstractRel
+    public class Script : AbstractSpr
     {
-        [Key]
-        public int Id { get; set; }
-        [Required]
-        public string Name { get; set; }
         public string Description{ get; set; }
     }
 }

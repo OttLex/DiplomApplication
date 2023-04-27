@@ -24,7 +24,7 @@ namespace DataAccessLayer
             using (IDbConnection db = new SqlConnection(connectionString))
             {
                 var parameters = new { UserName = userName, Password = password };
-                var sql = "SELECT * from Users where UserName = @UserName and Password = @Password";
+                var sql = "SELECT * from Users where Name = @UserName and Password = @Password";
                 var result = db.Query<User>(sql, parameters).FirstOrDefault();
 
                 return result;

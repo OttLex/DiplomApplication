@@ -89,6 +89,7 @@
             this.PasswordTextBox.PlaceholderText = "Пароль";
             this.PasswordTextBox.Size = new System.Drawing.Size(250, 22);
             this.PasswordTextBox.TabIndex = 2;
+            this.PasswordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AuthForm_KeyUp);
             this.PasswordTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.AuthForm_KeyUp);
             // 
             // AuthForm

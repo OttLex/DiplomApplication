@@ -21,7 +21,7 @@ namespace DataAccessLayer.RepoSpr
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-               db.Query($@"insert into {_tableName} values('{obj.Name}', {Convert.ToInt32(obj.Morph)})");
+               db.Query($@"insert into {_tableName} values({Convert.ToInt32(obj.Morph)},'{obj.Name}')");
             }
         }
 
