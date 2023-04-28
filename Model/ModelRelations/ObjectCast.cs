@@ -7,15 +7,28 @@ using System.Threading.Tasks;
 
 namespace Model.ModelRelations
 {
-    public class ObjectCast:AbstractRel
+    public class ObjectCast : AbstractRel
     {
         [Key]
         public int Id { get; set; }
         [Required]
+        public int IdScript { get; set; }
+        [Required]
+        public int Step { get; set; }
+        [Required]
+        public int IdBlock { get; set; }
+        [Required]
+        public int IdBackgound { get; set; }
+        [Required]
+        public int IdActivity { get; set; }
+        [Required]
+        public bool IsResolve { get; set; }
+        [Required]
         public int IdCastType { get; set; }
         [Required]
-        public int IdObject { get; set; }
+        public int IdObjectSpent { get; set; }
         [Required]
-        public int IdStep { get; set; }
+        public int IdObjectRecive { get; set; }
+        public string Description { get; set; }
     }
 }

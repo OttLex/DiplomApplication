@@ -27,17 +27,19 @@ namespace WinFormsAppDiplom
         private string _connectionString;
         private User _currentUser;
 
+        private Script? _currentWorkScript;
+        private Block? _currentWorkBlock;
 
-        private Script _currentEditableScript;
-        private Script _currentWorkScript;
+        private Script? _currentEditableScript;
 
-        private Block _currentEditableBlock;
-        private Block _currentWorkBlock;
+        private Block? _currentEditableBlock;
 
-        private Background _currentEditableBackground;
+        private Background? _currentEditableBackground;
 
-        private Objects _currentEditableObjects;
-        private List<Morph> _currentEditableMorph;
+        private CastTypes? _currentEditableCastTypes;
+
+        private Objects? _currentEditableObjects;
+        private List<Morph>? _currentEditableMorph;
 
 
 
@@ -46,6 +48,7 @@ namespace WinFormsAppDiplom
         private IRepository<Script> _scriptRepository;
         private IRepository<Block> _blockRepository;
         private IRepository<Background> _backgroundRepository;
+        private IRepository<CastTypes> _castTypesRepository;
         private IRepository<Objects> _objectRepository;
         private IRepository<Morph> _morphRepository;
 
@@ -68,6 +71,7 @@ namespace WinFormsAppDiplom
             _scriptRepository = new ScriptRepository(_connectionString);
             _blockRepository = new BlockRepository(_connectionString);
             _backgroundRepository = new BackgroundRepository(_connectionString);
+            _castTypesRepository = new CastTypesRepository(_connectionString);
             _objectRepository = new ObjectsRepository(_connectionString);
             _morphRepository = new MorphRepository(_connectionString);
         }
@@ -119,6 +123,16 @@ namespace WinFormsAppDiplom
             dataGridViewBackground.Columns["Description"].HeaderText = "Описание";
             dataGridViewBackground.Columns["Description"].DisplayIndex = 2 ;
         }
+
+        private void FillDataGridViewCastTypes()
+        {
+            dataGridViewCastTypes.DataSource = _castTypesRepository.GetObjects();
+            dataGridViewCastTypes.Columns["Id"].Visible = false;
+            dataGridViewCastTypes.AutoSize = true;
+            dataGridViewCastTypes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCastTypes.Columns["Name"].HeaderText = "Название";
+            dataGridViewCastTypes.Columns["Name"].DisplayIndex = 1;
+        }
         private void FillDataGridViewObjects()
         {
             dataGridViewObjects.DataSource = _objectRepository.GetObjects();
@@ -132,10 +146,11 @@ namespace WinFormsAppDiplom
         }
         private void FillDataGridViewRecipeToMorph(int id = -1)
         {
+             List<Objects> objects=_objectRepository.GetObjects();
+
             if (id == -1)
             {
                 List<Morph> morphs = _morphRepository.GetObjects();
-                List<Objects> objects=_objectRepository.GetObjects();
 
                 List<MorphDTO> dtos = morphs.Join(objects, m => m.IdMorph, obj => obj.Id, (m, obj) => new MorphDTO
                 {
@@ -152,7 +167,6 @@ namespace WinFormsAppDiplom
             {
                 MorphRepository repo = new MorphRepository(_connectionString);
                 List<Morph> morphs = repo.GetObjects(id);
-                List<Objects> objects = _objectRepository.GetObjects();
 
                 List<MorphDTO> dtos = morphs.Join(objects, m => m.IdMorph, obj => obj.Id, (m, obj) => new MorphDTO
                 {
@@ -253,6 +267,24 @@ namespace WinFormsAppDiplom
                 MessageBox.Show("Заполните поля ввода.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        private void buttonCreateCastTypes_Click(object sender, EventArgs e)
+        {
+            if (textBoxNameCastTypes.Text != "")
+            {
+                var castTypes = new CastTypes();
+
+                castTypes.Name = textBoxNameCastTypes.Text;
+
+                _castTypesRepository.Create(castTypes);
+                FillDataGridViewCastTypes();
+
+                CleanCastTypesTextBoxes();
+            }
+            else
+            {
+                MessageBox.Show("Заполните поля ввода.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
         private void buttonCreateObject_Click(object sender, EventArgs e)
         {
             if (textBoxNameObjects.Text != "")
@@ -340,6 +372,10 @@ namespace WinFormsAppDiplom
             textBoxNameBackground.Text = "";
             textBoxDescriptionBackground.Text = "";
         }
+        private void CleanCastTypesTextBoxes()
+        {
+            textBoxNameCastTypes.Text = "";
+        }
         private void CleanObjectsTextBoxes()
         {
             textBoxNameObjects.Text = "";
@@ -352,7 +388,6 @@ namespace WinFormsAppDiplom
             dataGridViewObjToMorph.DataSource = null;
             dataGridViewRecipeToMorph.DataSource = null;
         }
-
 
         private void ChangeEnalableScriptButtons(bool isEnalable)
         {
@@ -368,6 +403,11 @@ namespace WinFormsAppDiplom
         {
             buttonApplyBackground.Enabled = isEnalable;
             buttonCancelBackground.Enabled = isEnalable;
+        }
+        private void ChangeEnalableCastTypesButtons(bool isEnalable)
+        {
+            buttonApplyCastTypes.Enabled = isEnalable;
+            buttonCancelCastTypes.Enabled = isEnalable;
         }
         private void ChangeEnalableObjectsButtons(bool isEnalable)
         {
@@ -439,11 +479,11 @@ namespace WinFormsAppDiplom
                 if (row != null)
                 {
                     _currentEditableBackground = new();
-                    _currentEditableBackground.Id = (int)row.Cells[0].Value;
-                    textBoxNameBackground.Text = row.Cells[1].Value.ToString();
+                    _currentEditableBackground.Id = (int)row.Cells["Id"].Value;
+                    textBoxNameBackground.Text = row.Cells["Name"].Value.ToString();
                     try
                     {
-                        textBoxDescriptionBackground.Text = row.Cells[2].Value.ToString();
+                        textBoxDescriptionBackground.Text = row.Cells["Description"].Value.ToString();
                     }
                     catch { }
                     ChangeEnalableBackgroundButtons(true);
@@ -452,6 +492,25 @@ namespace WinFormsAppDiplom
             else
             {
                 MessageBox.Show("Выделите нужный фон.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void buttonLoadCastTypes_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewCastTypes.CurrentCell != null)
+            {
+                var row = dataGridViewCastTypes.CurrentCell.OwningRow;
+                if (row != null)
+                {
+                    _currentEditableCastTypes = new();
+                    _currentEditableCastTypes.Id = (int)row.Cells["Id"].Value;
+                    textBoxNameCastTypes.Text = row.Cells["Name"].Value.ToString();
+
+                    ChangeEnalableCastTypesButtons(true);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выделите нужный тип каста.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void buttonLoadObjects_Click(object sender, EventArgs e)
@@ -566,6 +625,30 @@ namespace WinFormsAppDiplom
                 }
             }
         }
+        private void buttonApplyCastTypes_Click(object sender, EventArgs e)
+        {
+            if (_currentEditableCastTypes != null)
+            {
+                if (textBoxNameCastTypes.Text != "")
+                {
+                    _currentEditableCastTypes.Name = textBoxNameCastTypes.Text;
+
+                    _castTypesRepository.Update(_currentEditableCastTypes);
+
+                    FillDataGridViewCastTypes();
+                    _currentEditableCastTypes = null;
+
+                    CleanCastTypesTextBoxes();
+                    ChangeEnalableCastTypesButtons(false);
+                }
+                else
+                {
+                    MessageBox.Show("Выделите нужный фон.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
         private void buttonApplyObjects_Click(object sender, EventArgs e)
         {
             if (checkBoxIsMorph.Checked == true && dataGridViewRecipeToMorph.DataSource == null)
@@ -573,7 +656,7 @@ namespace WinFormsAppDiplom
                 MessageBox.Show("Рецепт не заполнен.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (_currentEditableObjects != null)
+            if (_currentEditableObjects != null && _currentEditableMorph!=null)
             {
                 if (textBoxNameObjects.Text != "")
                 {
@@ -625,6 +708,12 @@ namespace WinFormsAppDiplom
             CleanBackgroundTextBoxes();
             ChangeEnalableBackgroundButtons(false);
         }
+        private void buttonCancelCastTypes_Click(object sender, EventArgs e)
+        {
+            _currentEditableCastTypes = null;
+            CleanCastTypesTextBoxes();
+            ChangeEnalableCastTypesButtons(false);
+        }
         private void buttonCancelObjects_Click(object sender, EventArgs e)
         {
             _currentEditableObjects = null;
@@ -668,13 +757,26 @@ namespace WinFormsAppDiplom
             if (dataGridViewBackground.CurrentCell != null)
             {
                 var row = dataGridViewBackground.CurrentCell.OwningRow;
-                _backgroundRepository.Delete(Convert.ToInt32(row.Cells[0].Value));
+                _backgroundRepository.Delete(Convert.ToInt32(row.Cells["Id"].Value));
             }
             else
             {
                 MessageBox.Show("Выделите нужный фон.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             FillDataGridViewBackground();
+        }
+        private void buttonDeleteCastTypes_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewCastTypes.CurrentCell != null)
+            {
+                var row = dataGridViewCastTypes.CurrentCell.OwningRow;
+                _castTypesRepository.Delete(Convert.ToInt32(row.Cells["Id"].Value));
+            }
+            else
+            {
+                MessageBox.Show("Выделите нужный тип каста.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            FillDataGridViewCastTypes();
         }
         private void buttonDeleteObjects_Click(object sender, EventArgs e)
         {
@@ -728,9 +830,9 @@ namespace WinFormsAppDiplom
             {
                 var row = dataGridViewBlock.CurrentCell.OwningRow;
                 _currentWorkBlock = new();
-                _currentWorkBlock.Id = (int)row.Cells[0].Value;
-                _currentWorkBlock.Name = row.Cells[2].Value.ToString();
-                _currentWorkBlock.Description = row.Cells[3].Value.ToString();
+                _currentWorkBlock.Id = (int)row.Cells["Id"].Value;
+                _currentWorkBlock.Name = row.Cells["Name"].Value.ToString();
+                _currentWorkBlock.Description = row.Cells["Description"].Value.ToString();
 
                 ConfigureTreeView();
             }
@@ -809,6 +911,21 @@ namespace WinFormsAppDiplom
             dataGridViewBackground.DataSource = _backgroundRepository.GetObjects();
 
         }
+        private void textBoxSearchCastTypes_TextChanged(object sender, EventArgs e)
+        {
+
+            if (dataGridViewCastTypes.DataSource != null && textBoxSearchCastTypes.Text != "")
+            {
+                SearchByDataGridService<CastTypes> searchCastTypes =
+                                                        new SearchByDataGridService<CastTypes>(
+                                                                    (List<CastTypes>)dataGridViewCastTypes.DataSource,
+                                                                                                        textBoxSearchCastTypes.Text);
+                dataGridViewCastTypes.DataSource = searchCastTypes.Search();
+                return;
+            }
+
+            dataGridViewCastTypes.DataSource = _castTypesRepository.GetObjects();
+        }
         private void textBoxSearchObjects_TextChanged(object sender, EventArgs e)
         {
 
@@ -847,7 +964,7 @@ namespace WinFormsAppDiplom
 
         private void buttonAddToMorph_Click(object sender, EventArgs e)
         {
-            if (dataGridViewObjToMorph.CurrentCell != null)
+            if (dataGridViewObjToMorph.CurrentCell != null && _currentEditableMorph!=null)
             {
                 var row = dataGridViewObjToMorph.CurrentCell.OwningRow;
                 var morph = new Morph();
@@ -886,7 +1003,7 @@ namespace WinFormsAppDiplom
         }
         private void buttonDefineFromMorph_Click(object sender, EventArgs e)
         {
-            if (dataGridViewRecipeToMorph.CurrentCell != null)
+            if (dataGridViewRecipeToMorph.CurrentCell != null && _currentEditableMorph !=null)
             {
                 var row = dataGridViewRecipeToMorph.CurrentCell.OwningRow;
                 Morph morphForRemoving = new();
@@ -938,7 +1055,7 @@ namespace WinFormsAppDiplom
         {
             try
             {
-                if (_currentWorkScript.Name != null)
+                if (_currentWorkScript != null)
                 {
                     treeViewMainForm.Nodes.Clear();
 
@@ -991,6 +1108,9 @@ namespace WinFormsAppDiplom
                     FillDataGridViewBackground();
                     break;
                 case 3:
+                    FillDataGridViewCastTypes();
+                    break;
+                case 4:
                     FillDataGridViewObjects();
                     break;
             }

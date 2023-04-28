@@ -53,7 +53,7 @@ namespace DataAccessLayer.RepoSpr
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"UPDATE {_tableName} SET CastName= '{obj.Name}' WHERE id={obj.Id}");
+                db.Query($@"UPDATE {_tableName} SET Name= '{obj.Name}' WHERE id={obj.Id}");
             }
         }
     }

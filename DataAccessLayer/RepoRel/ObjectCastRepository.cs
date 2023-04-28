@@ -20,7 +20,7 @@ namespace DataAccessLayer.RepoRel
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"insert into {_tableName} values({obj.IdCastType}, {obj.IdObject}, {obj.IdStep})");
+               // db.Query($@"insert into {_tableName} values({obj.IdCastType}, {obj.IdObject}, {obj.IdStep})");
             }
         }
 
@@ -52,7 +52,7 @@ namespace DataAccessLayer.RepoRel
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"UPDATE {_tableName} SET IdCastType = {obj.IdCastType}, IdObject={obj.IdObject}, IdStep={obj.IdStep} WHERE id={obj.Id}");
+                //db.Query($@"UPDATE {_tableName} SET IdCastType = {obj.IdCastType}, IdObject={obj.IdObject}, IdStep={obj.IdStep} WHERE id={obj.Id}");
             }
         }
     }
