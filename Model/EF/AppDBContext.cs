@@ -21,7 +21,6 @@ namespace Model.EF
 
         public DbSet<Morph> Morph => Set<Morph>();
         public DbSet<ObjectCast> ObjectCast => Set<ObjectCast>();
-        public DbSet<ScriptData> ScriptData => Set<ScriptData>();
         public DbSet<Script> Script => Set<Script>();
         public DbSet<Activity> Activity => Set<Activity>();
         public DbSet<ActivityType> ActivityType => Set<ActivityType>();
@@ -37,9 +36,6 @@ namespace Model.EF
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<ScriptData>()
-            .HasIndex(u => u.NumberOfStep)
-            .IsUnique();
 
             modelBuilder.Entity<User>().HasData(
                         new User { Id = 1, Name = "dev", Password = "123", AccessLevelId=1 },

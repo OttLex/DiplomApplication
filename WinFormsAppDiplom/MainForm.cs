@@ -1,16 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-using Model.EF;
-using Microsoft.Data.SqlClient;
-using Npgsql;
 using Model.ModelsSpr;
 using DataAccessLayer;
 using Model.ModelRelations;
@@ -18,7 +6,7 @@ using DataAccessLayer.RepoRel;
 using DataAccessLayer.RepoSpr;
 using Model.ModelSpr;
 using Service;
-using DataAccessLayer.DTO;
+using Model.DTO;
 
 namespace WinFormsAppDiplom
 {
@@ -41,16 +29,18 @@ namespace WinFormsAppDiplom
         private Objects? _currentEditableObjects;
         private List<Morph>? _currentEditableMorph;
 
+        private Activity? _currentEditableActivity;
+        private ActivityType? _currentActivityType;
+        List<ActivityType>? _activityTypesList;
 
-
-
-        private IRepository<ScriptData> _scriptDataRepository;
         private IRepository<Script> _scriptRepository;
         private IRepository<Block> _blockRepository;
         private IRepository<Background> _backgroundRepository;
         private IRepository<CastTypes> _castTypesRepository;
         private IRepository<Objects> _objectRepository;
         private IRepository<Morph> _morphRepository;
+        private IRepository<Activity> _activityRepository;
+        private IRepository<ActivityType> _activityTypeRepository;
 
 
         public MainForm(string connString, User user)
@@ -67,13 +57,14 @@ namespace WinFormsAppDiplom
 
         private void ConfigureRepositorys()
         {
-            _scriptDataRepository = new ScriptDataRepository(_connectionString);
             _scriptRepository = new ScriptRepository(_connectionString);
             _blockRepository = new BlockRepository(_connectionString);
             _backgroundRepository = new BackgroundRepository(_connectionString);
             _castTypesRepository = new CastTypesRepository(_connectionString);
             _objectRepository = new ObjectsRepository(_connectionString);
             _morphRepository = new MorphRepository(_connectionString);
+            _activityRepository= new ActivityRepository(_connectionString);
+            _activityTypeRepository= new ActivityTypeRepository(_connectionString);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -199,7 +190,44 @@ namespace WinFormsAppDiplom
             dataGridViewObjToMorph.Columns["Name"].HeaderText = "Название";
             dataGridViewObjToMorph.Columns["Morph"].Visible = false;
         }
+        private void FillDataGridViewActivity()
+        {
+            List<Activity> activities= _activityRepository.GetObjects();
+            if (_activityTypesList == null)
+            {
+                _activityTypesList= _activityTypeRepository.GetObjects();
+            }
 
+            List<ActivityDTO> dtos = activities.Join(_activityTypesList, act => act.ActivityTypeId, actT=>actT.Id, (act,actT)=> new ActivityDTO
+            {
+                Id = act.Id,
+                Name = act.Name,
+                ActivityTypeId = act.ActivityTypeId,
+                ActivityName = actT.Name,
+                Description = act.Description,
+            }).ToList();
+
+            dataGridViewActivity.DataSource = dtos;
+
+            dataGridViewActivity.Columns["ActivityTypeId"].Visible= false;
+            dataGridViewActivity.Columns["Id"].Visible = false;
+            dataGridViewActivity.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewActivity.Columns["Name"].HeaderText = "Название";
+            dataGridViewActivity.Columns["Name"].DisplayIndex = 1;
+            dataGridViewActivity.Columns["ActivityName"].HeaderText = "Тип автивности";
+            dataGridViewActivity.Columns["Description"].HeaderText = "Описание";
+        }
+        private void FillComboBoxActivity()
+        {
+            if (_activityTypesList == null)
+            {
+                _activityTypesList = _activityTypeRepository.GetObjects();
+            }
+            comboBoxActivity.DataSource=_activityTypesList;
+
+            comboBoxActivity.DisplayMember = "Name";
+            comboBoxActivity.ValueMember = "Id";
+        }
 
         private void buttonCreateScript_Click(object sender, EventArgs e)
         {
@@ -309,6 +337,26 @@ namespace WinFormsAppDiplom
                 MessageBox.Show("Заполните поля ввода.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        private void buttonCreateActiivity_Click(object sender, EventArgs e)
+        {
+            if (textBoxNameActivity.Text != "" && comboBoxActivity.SelectedIndex!=-1)
+            {
+                var activity = new Activity();
+
+                activity.Name = textBoxNameActivity.Text;
+                activity.Description = textBoxDescriptionActivity.Text;
+                activity.ActivityTypeId = comboBoxActivity.SelectedIndex+1;
+
+                _activityRepository.Create(activity);
+                FillDataGridViewActivity();
+
+                CleanActivityTextBoxes();
+            }
+            else
+            {
+                MessageBox.Show("Заполните поля ввода.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
         private void ConfigureObject()
         {
@@ -388,6 +436,12 @@ namespace WinFormsAppDiplom
             dataGridViewObjToMorph.DataSource = null;
             dataGridViewRecipeToMorph.DataSource = null;
         }
+        private void CleanActivityTextBoxes()
+        {
+            textBoxNameActivity.Text = "";
+            textBoxDescriptionActivity.Text = "";
+            comboBoxActivity.SelectedIndex = -1;
+        }
 
         private void ChangeEnalableScriptButtons(bool isEnalable)
         {
@@ -423,7 +477,11 @@ namespace WinFormsAppDiplom
             buttonDefineFromMorph.Enabled = isEnalable;
             dataGridViewRecipeToMorph.Enabled = isEnalable;
         }
-
+        private void ChangeEnalableActivityButtons(bool isEnalable)
+        {
+            buttonApplyActivity.Enabled = isEnalable;
+            buttonCancelActivity.Enabled = isEnalable;
+        }
 
         private void buttonLoadScript_Click(object sender, EventArgs e)
         {
@@ -545,6 +603,37 @@ namespace WinFormsAppDiplom
             }
 
         }
+        private void buttonLoadActivity_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewActivity.CurrentCell != null)
+            {
+                var row = dataGridViewActivity.CurrentCell.OwningRow;
+                if (row != null)
+                {
+                    _currentEditableActivity = new();
+                    _currentEditableActivity.Id = (int)row.Cells["Id"].Value;
+                    textBoxNameActivity.Text = row.Cells["Name"].Value.ToString();
+
+                    if (_activityTypesList == null)
+                    {
+                        _activityTypesList = _activityTypeRepository.GetObjects();
+                    }
+
+                    var currentType = _activityTypesList.Where(at => at.Id == Convert.ToInt32(row.Cells["ActivityTypeId"].Value)).First();
+                    comboBoxActivity.SelectedIndex= currentType.Id-1;
+                    try
+                    {
+                        textBoxDescriptionActivity.Text = row.Cells["Description"].Value.ToString();
+                    }
+                    catch { }
+                    ChangeEnalableActivityButtons(true);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выделите нужную активность.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
 
         private void buttonApplyScript_Click(object sender, EventArgs e)
@@ -569,7 +658,7 @@ namespace WinFormsAppDiplom
                 }
                 else
                 {
-                    MessageBox.Show("Выделите нужный сценарий.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Укажите корректные параметры.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -595,7 +684,7 @@ namespace WinFormsAppDiplom
                 }
                 else
                 {
-                    MessageBox.Show("Выделите нужный блок.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Укажите корректные параметры.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -621,7 +710,7 @@ namespace WinFormsAppDiplom
                 }
                 else
                 {
-                    MessageBox.Show("Выделите нужный фон.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Укажите корректные параметры.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -643,12 +732,10 @@ namespace WinFormsAppDiplom
                 }
                 else
                 {
-                    MessageBox.Show("Выделите нужный фон.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Укажите корректные параметры.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-
-
         private void buttonApplyObjects_Click(object sender, EventArgs e)
         {
             if (checkBoxIsMorph.Checked == true && dataGridViewRecipeToMorph.DataSource == null)
@@ -684,7 +771,34 @@ namespace WinFormsAppDiplom
                 }
                 else
                 {
-                    MessageBox.Show("Параметры заполненны не верно.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Укажите корректные параметры.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void buttonApplyActivity_Click(object sender, EventArgs e)
+        {
+            if (_currentEditableActivity != null)
+            {
+                if (textBoxNameActivity.Text != "")
+                {
+                    _currentEditableActivity.Name = textBoxNameActivity.Text;
+                    _currentEditableActivity.ActivityTypeId = comboBoxActivity.SelectedIndex+1;
+                    try
+                    {
+                        _currentEditableActivity.Description = textBoxDescriptionActivity.Text;
+                    }
+                    catch { }
+                    _activityRepository.Update(_currentEditableActivity);
+
+                    FillDataGridViewActivity();
+                    _currentEditableActivity = null;
+
+                    CleanActivityTextBoxes();
+                    ChangeEnalableActivityButtons(false);
+                }
+                else
+                {
+                    MessageBox.Show("Укажите корректные параметры.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -724,7 +838,12 @@ namespace WinFormsAppDiplom
             ChangeEnalableObjectsButtons(false);
             ChangeEnalableMorphButtons(false);
         }
-
+        private void buttonCancelActivity_Click(object sender, EventArgs e)
+        {
+            _currentEditableActivity = null;
+            CleanActivityTextBoxes();
+            ChangeEnalableActivityButtons(false);
+        }
 
         private void buttonDeleteScript_Click(object sender, EventArgs e)
         {
@@ -798,7 +917,19 @@ namespace WinFormsAppDiplom
             }
             FillDataGridViewObjects();
         }
-
+        private void buttonDeleteActivity_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewActivity.CurrentCell != null)
+            {
+                var row = dataGridViewActivity.CurrentCell.OwningRow;
+                _activityRepository.Delete(Convert.ToInt32(row.Cells["Id"].Value));
+            }
+            else
+            {
+                MessageBox.Show("Выделите нужную активность.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            FillDataGridViewBackground();
+        }
 
         private void buttonChoseScript_Click(object sender, EventArgs e)
         {
@@ -959,7 +1090,22 @@ namespace WinFormsAppDiplom
 
             dataGridViewObjToMorph.DataSource = _objectRepository.GetObjects();
         }
+        private void textBoxSearchActivity_TextChanged(object sender, EventArgs e)
+        {
 
+            if (dataGridViewActivity.DataSource != null && textBoxSearchActivity.Text != "")
+            {
+                SearchByDataGridService<ActivityDTO> searhActivity =
+                                                        new SearchByDataGridService<ActivityDTO>(
+                                                                    (List<ActivityDTO>)dataGridViewActivity.DataSource,
+                                                                                                        textBoxSearchActivity.Text);
+                dataGridViewActivity.DataSource = searhActivity.Search();
+                return;
+            }
+
+            FillDataGridViewActivity();
+
+        }
 
 
         private void buttonAddToMorph_Click(object sender, EventArgs e)
@@ -1112,6 +1258,10 @@ namespace WinFormsAppDiplom
                     break;
                 case 4:
                     FillDataGridViewObjects();
+                    break;
+                case 5:
+                    FillComboBoxActivity();
+                    FillDataGridViewActivity();
                     break;
             }
 

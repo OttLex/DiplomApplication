@@ -9,6 +9,6 @@ namespace Model.ModelsSpr
 {
     public class Script : AbstractSpr
     {
-        public string Description{ get; set; }
+        public string Description { get; set; } = "";
     }
 }

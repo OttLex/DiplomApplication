@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.DTO
+namespace Model.DTO
 {
     public class MorphDTO
     {
