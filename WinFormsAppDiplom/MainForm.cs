@@ -63,8 +63,8 @@ namespace WinFormsAppDiplom
             _castTypesRepository = new CastTypesRepository(_connectionString);
             _objectRepository = new ObjectsRepository(_connectionString);
             _morphRepository = new MorphRepository(_connectionString);
-            _activityRepository= new ActivityRepository(_connectionString);
-            _activityTypeRepository= new ActivityTypeRepository(_connectionString);
+            _activityRepository = new ActivityRepository(_connectionString);
+            _activityTypeRepository = new ActivityTypeRepository(_connectionString);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -79,9 +79,9 @@ namespace WinFormsAppDiplom
             dataGridViewScript.AutoSize = true;
             dataGridViewScript.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewScript.Columns["Name"].HeaderText = "Название";
-            dataGridViewScript.Columns["Name"].DisplayIndex=1;
+            dataGridViewScript.Columns["Name"].DisplayIndex = 1;
             dataGridViewScript.Columns["Description"].HeaderText = "Описание";
-            dataGridViewScript.Columns["Description"].DisplayIndex=2;
+            dataGridViewScript.Columns["Description"].DisplayIndex = 2;
         }
         private void FillDataGridViewBlock()
         {
@@ -112,7 +112,7 @@ namespace WinFormsAppDiplom
             dataGridViewBackground.Columns["Name"].HeaderText = "Название";
             dataGridViewBackground.Columns["Name"].DisplayIndex = 1;
             dataGridViewBackground.Columns["Description"].HeaderText = "Описание";
-            dataGridViewBackground.Columns["Description"].DisplayIndex = 2 ;
+            dataGridViewBackground.Columns["Description"].DisplayIndex = 2;
         }
 
         private void FillDataGridViewCastTypes()
@@ -137,7 +137,7 @@ namespace WinFormsAppDiplom
         }
         private void FillDataGridViewRecipeToMorph(int id = -1)
         {
-             List<Objects> objects=_objectRepository.GetObjects();
+            List<Objects> objects = _objectRepository.GetObjects();
 
             if (id == -1)
             {
@@ -148,7 +148,7 @@ namespace WinFormsAppDiplom
                     Id = obj.Id,
                     IdMorph = m.IdMorph,
                     NameMorph = obj.Name,
-                    IdObjectInTheComposition= m.IdObjectInTheComposition,
+                    IdObjectInTheComposition = m.IdObjectInTheComposition,
                     NameObjectInTheComposition = obj.Name,
                 }).ToList();
 
@@ -165,7 +165,7 @@ namespace WinFormsAppDiplom
                     IdMorph = m.IdMorph,
                     NameMorph = obj.Name,
                     IdObjectInTheComposition = m.IdObjectInTheComposition,
-                    NameObjectInTheComposition = objects.Where(o=> o.Id==m.IdObjectInTheComposition).First().Name
+                    NameObjectInTheComposition = objects.Where(o => o.Id == m.IdObjectInTheComposition).First().Name
                 }).ToList();
 
                 dataGridViewRecipeToMorph.DataSource = dtos;
@@ -192,13 +192,13 @@ namespace WinFormsAppDiplom
         }
         private void FillDataGridViewActivity()
         {
-            List<Activity> activities= _activityRepository.GetObjects();
+            List<Activity> activities = _activityRepository.GetObjects();
             if (_activityTypesList == null)
             {
-                _activityTypesList= _activityTypeRepository.GetObjects();
+                _activityTypesList = _activityTypeRepository.GetObjects();
             }
 
-            List<ActivityDTO> dtos = activities.Join(_activityTypesList, act => act.ActivityTypeId, actT=>actT.Id, (act,actT)=> new ActivityDTO
+            List<ActivityDTO> dtos = activities.Join(_activityTypesList, act => act.ActivityTypeId, actT => actT.Id, (act, actT) => new ActivityDTO
             {
                 Id = act.Id,
                 Name = act.Name,
@@ -209,7 +209,7 @@ namespace WinFormsAppDiplom
 
             dataGridViewActivity.DataSource = dtos;
 
-            dataGridViewActivity.Columns["ActivityTypeId"].Visible= false;
+            dataGridViewActivity.Columns["ActivityTypeId"].Visible = false;
             dataGridViewActivity.Columns["Id"].Visible = false;
             dataGridViewActivity.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewActivity.Columns["Name"].HeaderText = "Название";
@@ -223,7 +223,7 @@ namespace WinFormsAppDiplom
             {
                 _activityTypesList = _activityTypeRepository.GetObjects();
             }
-            comboBoxActivity.DataSource=_activityTypesList;
+            comboBoxActivity.DataSource = _activityTypesList;
 
             comboBoxActivity.DisplayMember = "Name";
             comboBoxActivity.ValueMember = "Id";
@@ -339,13 +339,13 @@ namespace WinFormsAppDiplom
         }
         private void buttonCreateActiivity_Click(object sender, EventArgs e)
         {
-            if (textBoxNameActivity.Text != "" && comboBoxActivity.SelectedIndex!=-1)
+            if (textBoxNameActivity.Text != "" && comboBoxActivity.SelectedIndex != -1)
             {
                 var activity = new Activity();
 
                 activity.Name = textBoxNameActivity.Text;
                 activity.Description = textBoxDescriptionActivity.Text;
-                activity.ActivityTypeId = comboBoxActivity.SelectedIndex+1;
+                activity.ActivityTypeId = comboBoxActivity.SelectedIndex + 1;
 
                 _activityRepository.Create(activity);
                 FillDataGridViewActivity();
@@ -620,7 +620,7 @@ namespace WinFormsAppDiplom
                     }
 
                     var currentType = _activityTypesList.Where(at => at.Id == Convert.ToInt32(row.Cells["ActivityTypeId"].Value)).First();
-                    comboBoxActivity.SelectedIndex= currentType.Id-1;
+                    comboBoxActivity.SelectedIndex = currentType.Id - 1;
                     try
                     {
                         textBoxDescriptionActivity.Text = row.Cells["Description"].Value.ToString();
@@ -743,7 +743,7 @@ namespace WinFormsAppDiplom
                 MessageBox.Show("Рецепт не заполнен.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (_currentEditableObjects != null && _currentEditableMorph!=null)
+            if (_currentEditableObjects != null && _currentEditableMorph != null)
             {
                 if (textBoxNameObjects.Text != "")
                 {
@@ -782,7 +782,7 @@ namespace WinFormsAppDiplom
                 if (textBoxNameActivity.Text != "")
                 {
                     _currentEditableActivity.Name = textBoxNameActivity.Text;
-                    _currentEditableActivity.ActivityTypeId = comboBoxActivity.SelectedIndex+1;
+                    _currentEditableActivity.ActivityTypeId = comboBoxActivity.SelectedIndex + 1;
                     try
                     {
                         _currentEditableActivity.Description = textBoxDescriptionActivity.Text;
@@ -903,7 +903,7 @@ namespace WinFormsAppDiplom
             {
                 var row = dataGridViewObjects.CurrentCell.OwningRow;
                 int id = Convert.ToInt32(row.Cells[0].Value);
-                Objects obj= _objectRepository.GetObject(id);
+                Objects obj = _objectRepository.GetObject(id);
                 if (obj.Morph == true)
                 {
                     MorphRepository repo = new MorphRepository(_connectionString);
@@ -1031,7 +1031,7 @@ namespace WinFormsAppDiplom
 
             if (dataGridViewBackground.DataSource != null && textBoxSearchBackground.Text != "")
             {
-                SearchByDataGridService<Background> searhBackgound= 
+                SearchByDataGridService<Background> searhBackgound =
                                                         new SearchByDataGridService<Background>(
                                                                     (List<Background>)dataGridViewBackground.DataSource,
                                                                                                         textBoxSearchBackground.Text);
@@ -1110,7 +1110,7 @@ namespace WinFormsAppDiplom
 
         private void buttonAddToMorph_Click(object sender, EventArgs e)
         {
-            if (dataGridViewObjToMorph.CurrentCell != null && _currentEditableMorph!=null)
+            if (dataGridViewObjToMorph.CurrentCell != null && _currentEditableMorph != null)
             {
                 var row = dataGridViewObjToMorph.CurrentCell.OwningRow;
                 var morph = new Morph();
@@ -1149,7 +1149,7 @@ namespace WinFormsAppDiplom
         }
         private void buttonDefineFromMorph_Click(object sender, EventArgs e)
         {
-            if (dataGridViewRecipeToMorph.CurrentCell != null && _currentEditableMorph !=null)
+            if (dataGridViewRecipeToMorph.CurrentCell != null && _currentEditableMorph != null)
             {
                 var row = dataGridViewRecipeToMorph.CurrentCell.OwningRow;
                 Morph morphForRemoving = new();
@@ -1157,9 +1157,9 @@ namespace WinFormsAppDiplom
                 morphForRemoving.IdMorph = Convert.ToInt32(row.Cells[1].Value);
                 morphForRemoving.IdObjectInTheComposition = Convert.ToInt32(row.Cells[2].Value);
 
-                morphForRemoving= _currentEditableMorph.Where(m=>
-                                                m.IdMorph==morphForRemoving.IdMorph &&
-                                                m.IdObjectInTheComposition==morphForRemoving.IdObjectInTheComposition).First();
+                morphForRemoving = _currentEditableMorph.Where(m =>
+                                                m.IdMorph == morphForRemoving.IdMorph &&
+                                                m.IdObjectInTheComposition == morphForRemoving.IdObjectInTheComposition).First();
                 _currentEditableMorph.Remove(morphForRemoving);
 
                 dataGridViewRecipeToMorph.DataSource = null;
@@ -1262,6 +1262,9 @@ namespace WinFormsAppDiplom
                 case 5:
                     FillComboBoxActivity();
                     FillDataGridViewActivity();
+                    break;
+                case 6:                    
+                    FillDataGridViewCast();
                     break;
             }
 

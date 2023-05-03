@@ -20,7 +20,11 @@ namespace DataAccessLayer.RepoRel
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-               // db.Query($@"insert into {_tableName} values({obj.IdCastType}, {obj.IdObject}, {obj.IdStep})");
+                // db.Query($@"insert into {_tableName} values({obj.IdCastType}, {obj.IdObject}, {obj.IdStep})");
+                db.Query($@"insert into {_tableName} values({obj.IdBlock}, {obj.IdBackground}, 
+                                                            {obj.IdActivity}, {obj.IdStep}, 
+                                                            {obj.IdCastType}, {obj.IdObjectSpent},
+                                                            {obj.IdObjectRecive}, {obj.Description})");
             }
         }
 
@@ -53,6 +57,11 @@ namespace DataAccessLayer.RepoRel
             using (IDbConnection db = new SqlConnection(connectionString))
             {
                 //db.Query($@"UPDATE {_tableName} SET IdCastType = {obj.IdCastType}, IdObject={obj.IdObject}, IdStep={obj.IdStep} WHERE id={obj.Id}");
+                db.Query($@"UPDATE {_tableName} SET IdBlock = {obj.IdBlock}, IdBackground={obj.IdBackground},
+                                                    IdActivity={obj.IdActivity}, IdStep={obj.IdStep},
+                                                    IdCastType={obj.IdCastType}, IdObjectSpent={obj.IdObjectSpent},
+                                                    IdObjectRecive={obj.IdObjectRecive}, Description={obj.Description},
+                                                    WHERE id={obj.Id}");
             }
         }
     }
