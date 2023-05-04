@@ -147,7 +147,11 @@
             buttonCreateCast = new Button();
             labelCast = new Label();
             tabPageTests = new TabPage();
+            tabControlScriptCheck = new TabControl();
+            tabPageInventoryCheck = new TabPage();
             panelMainForm = new Panel();
+            listBoxTestSpendReciveInvemtory = new ListBox();
+            buttonTestInventorySpendRecive = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainerMainForm).BeginInit();
             splitContainerMainForm.Panel1.SuspendLayout();
             splitContainerMainForm.Panel2.SuspendLayout();
@@ -183,6 +187,9 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewCastObjectSpend).BeginInit();
             panelCast.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCast).BeginInit();
+            tabPageTests.SuspendLayout();
+            tabControlScriptCheck.SuspendLayout();
+            tabPageInventoryCheck.SuspendLayout();
             panelMainForm.SuspendLayout();
             SuspendLayout();
             // 
@@ -1534,6 +1541,7 @@
             // 
             // tabPageTests
             // 
+            tabPageTests.Controls.Add(tabControlScriptCheck);
             tabPageTests.Location = new Point(4, 34);
             tabPageTests.Name = "tabPageTests";
             tabPageTests.Padding = new Padding(3);
@@ -1541,6 +1549,28 @@
             tabPageTests.TabIndex = 6;
             tabPageTests.Text = "Проверки сценария";
             tabPageTests.UseVisualStyleBackColor = true;
+            // 
+            // tabControlScriptCheck
+            // 
+            tabControlScriptCheck.Controls.Add(tabPageInventoryCheck);
+            tabControlScriptCheck.Dock = DockStyle.Fill;
+            tabControlScriptCheck.Location = new Point(3, 3);
+            tabControlScriptCheck.Name = "tabControlScriptCheck";
+            tabControlScriptCheck.SelectedIndex = 0;
+            tabControlScriptCheck.Size = new Size(1057, 688);
+            tabControlScriptCheck.TabIndex = 0;
+            // 
+            // tabPageInventoryCheck
+            // 
+            tabPageInventoryCheck.Controls.Add(buttonTestInventorySpendRecive);
+            tabPageInventoryCheck.Controls.Add(listBoxTestSpendReciveInvemtory);
+            tabPageInventoryCheck.Location = new Point(4, 24);
+            tabPageInventoryCheck.Name = "tabPageInventoryCheck";
+            tabPageInventoryCheck.Padding = new Padding(3);
+            tabPageInventoryCheck.Size = new Size(1049, 660);
+            tabPageInventoryCheck.TabIndex = 0;
+            tabPageInventoryCheck.Text = "Проверка инвентаря";
+            tabPageInventoryCheck.UseVisualStyleBackColor = true;
             // 
             // panelMainForm
             // 
@@ -1550,6 +1580,26 @@
             panelMainForm.Name = "panelMainForm";
             panelMainForm.Size = new Size(1451, 732);
             panelMainForm.TabIndex = 0;
+            // 
+            // listBoxTestSpendReciveInvemtory
+            // 
+            listBoxTestSpendReciveInvemtory.Dock = DockStyle.Left;
+            listBoxTestSpendReciveInvemtory.FormattingEnabled = true;
+            listBoxTestSpendReciveInvemtory.ItemHeight = 15;
+            listBoxTestSpendReciveInvemtory.Location = new Point(3, 3);
+            listBoxTestSpendReciveInvemtory.Name = "listBoxTestSpendReciveInvemtory";
+            listBoxTestSpendReciveInvemtory.Size = new Size(880, 654);
+            listBoxTestSpendReciveInvemtory.TabIndex = 0;
+            // 
+            // buttonTestInventorySpendRecive
+            // 
+            buttonTestInventorySpendRecive.Location = new Point(919, 6);
+            buttonTestInventorySpendRecive.Name = "buttonTestInventorySpendRecive";
+            buttonTestInventorySpendRecive.Size = new Size(92, 68);
+            buttonTestInventorySpendRecive.TabIndex = 1;
+            buttonTestInventorySpendRecive.Text = "Проверить";
+            buttonTestInventorySpendRecive.UseVisualStyleBackColor = true;
+            buttonTestInventorySpendRecive.Click += buttonTestInventorySpendRecive_Click;
             // 
             // MainForm
             // 
@@ -1604,6 +1654,9 @@
             panelCast.ResumeLayout(false);
             panelCast.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCast).EndInit();
+            tabPageTests.ResumeLayout(false);
+            tabControlScriptCheck.ResumeLayout(false);
+            tabPageInventoryCheck.ResumeLayout(false);
             panelMainForm.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -1730,5 +1783,9 @@
         private Button buttonResetCreatebleCast;
         private Label labelCastDescription;
         private CheckBox checkBoxCastDescription;
+        private TabControl tabControlScriptCheck;
+        private TabPage tabPageInventoryCheck;
+        private Button buttonTestInventorySpendRecive;
+        private ListBox listBoxTestSpendReciveInvemtory;
     }
 }

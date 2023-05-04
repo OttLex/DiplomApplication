@@ -17,11 +17,10 @@ namespace Model.ModelRelations
         public int IdStep { get; set; }
         [Required]
         public int IdBackground { get; set; }
-        public int IdActivity { get; set; }
-        [Required]
-        public int IdCastType { get; set; }
-        public int IdObjectSpent { get; set; }
-        public int IdObjectRecive { get; set; }
+        public int? IdActivity { get; set; }
+        public int? IdCastType { get; set; }
+        public int? IdObjectSpent { get; set; }
+        public int? IdObjectRecive { get; set; }
         public string Description { get; set; } = "";
     }
 }

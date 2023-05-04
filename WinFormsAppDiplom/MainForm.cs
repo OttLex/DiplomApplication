@@ -261,19 +261,40 @@ namespace WinFormsAppDiplom
 
                 dto.IdStep = cast.IdStep;
                 dto.IdBackground = cast.IdBackground;
-                dto.NameBackground = backgrounds.Where(bg => bg.Id == cast.IdBackground).First().Name;
+                try
+                {
+                    dto.NameBackground = backgrounds.Where(bg => bg.Id == cast.IdBackground).FirstOrDefault().Name;
+                }
+                catch {  }
 
                 dto.IdActivity = cast.IdActivity;
-                dto.NameActivity = activities.Where(acts => acts.Id == cast.IdActivity).First().Name;
+                try
+                {
+                    dto.NameActivity = activities.Where(acts => acts.Id == cast.IdActivity).FirstOrDefault().Name;
+                }
+                catch {  }
 
                 dto.IdCastType = cast.IdCastType;
-                dto.NameCastType = castTypes.Where(ct => ct.Id == cast.IdCastType).First().Name;
+                try
+                {
+                    dto.NameCastType = castTypes.Where(ct => ct.Id == cast.IdCastType).FirstOrDefault().Name;
+                }
+                catch {   }
 
                 dto.IdObjectSpent = cast.IdObjectSpent;
                 dto.IdObjectRecive = cast.IdObjectRecive;
 
-                dto.NameObjectSpent = objects.Where(o => o.Id == cast.IdObjectSpent).First().Name;
-                dto.NameObjectRecive = objects.Where(o => o.Id == cast.IdObjectRecive).First().Name;
+                try
+                {
+                    dto.NameObjectSpent = objects.Where(o => o.Id == cast.IdObjectSpent).FirstOrDefault().Name;
+                }
+                catch {   }
+
+                try
+                {
+                    dto.NameObjectRecive = objects.Where(o => o.Id == cast.IdObjectRecive).FirstOrDefault().Name;
+                }
+                catch {  }
 
                 dto.Description = cast.Description;
 
@@ -525,18 +546,19 @@ namespace WinFormsAppDiplom
         }
         private void buttonCreateCast_Click(object sender, EventArgs e)
         {
-            if (_objectCastCreatable != null && _currentWorkBlock != null 
-                && _objectCastCreatable.IdBackground!=null 
-                && _objectCastCreatable.IdCastType!=null)
+            if (_objectCastCreatable != null && _currentWorkBlock != null
+                && _objectCastCreatable.IdBackground != null)
             {
 
-                List <ObjectCast> objectCasts= _objectCastRepository.GetObjects();
+                List<ObjectCast> objectCasts = _objectCastRepository.GetObjects();
 
                 if (objectCasts.Count > 0)
                 {
-                     _objectCastCreatable.IdStep = _objectCastRepository.GetObjects().Where(obj => obj.IdBlock == _objectCastCreatable.IdBlock)
-                                                                                     .Select(oc => oc.IdStep)
-                                                                                     .Max();
+                    _objectCastCreatable.IdStep = _objectCastRepository.GetObjects()
+                        .Where(obj => obj.IdBlock == _objectCastCreatable.IdBlock)
+                        .Select(o => o.IdStep)
+                        .Max()+1;
+                       
                 }
                 else
                 {
@@ -549,6 +571,7 @@ namespace WinFormsAppDiplom
                 _objectCastCreatable.IdBlock = _currentWorkBlock.Id;
 
                 FillDataGridViewCast();
+                ConfigureTreeView();
             }
             else
             {
@@ -858,10 +881,33 @@ namespace WinFormsAppDiplom
                     }
                     catch { }
 
+                    try
+                    {
                     _objectCastCreatable.IdCastType = (int)row.Cells["IdCastType"].Value;
-                    _objectCastCreatable.IdObjectRecive = (int)row.Cells["IdObjectRecive"].Value;
-                    _objectCastCreatable.IdObjectSpent = (int)row.Cells["IdObjectSpent"].Value;
-                    _objectCastCreatable.Description = row.Cells["Description"].Value.ToString();
+                    }
+                    catch { }
+
+                    try
+                    {
+                        _objectCastCreatable.IdObjectRecive = (int)row.Cells["IdObjectRecive"].Value;
+                    }
+                    catch { }
+
+                    try
+                    {
+                        _objectCastCreatable.IdObjectSpent = (int)row.Cells["IdObjectSpent"].Value;
+                    }
+                    catch { }
+
+                    try
+                    {
+                        _objectCastCreatable.Description = row.Cells["Description"].Value.ToString();
+                    }
+                    catch
+                    {
+
+                    }
+
 
 
                     labelCastBackgroundValue.Text = row.Cells["NameBlock"].Value.ToString();
@@ -1674,6 +1720,23 @@ namespace WinFormsAppDiplom
         }
 
 
+
+        private void buttonTestInventorySpendRecive_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewCast.DataSource != null)
+            {
+                var checkService = new CheckSpentAndReciveObjectsService((List<ObjectCastDTO>)dataGridViewCast.DataSource);
+
+                var result = checkService.Test();
+
+                listBoxTestSpendReciveInvemtory.DataSource = result;
+            }
+            else
+            {
+                MessageBox.Show("Заполните шаги.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private void ConfigureTreeView()
         {
             try
@@ -1686,6 +1749,8 @@ namespace WinFormsAppDiplom
 
                     var repo = new BlockRepository(_connectionString);
                     List<Block> listOfBlocksByScript = repo.GetObjects(_currentWorkScript.Id);
+                    List<ObjectCast> objectCasts = _objectCastRepository.GetObjects();
+
                     if (listOfBlocksByScript.Count != 0)
                     {
                         foreach (var block in listOfBlocksByScript)
@@ -1694,6 +1759,13 @@ namespace WinFormsAppDiplom
                             {
                                 TreeNode currentBlock = new TreeNode(block.Name);
                                 currentBlock.BackColor = Color.LightGreen;
+                                try
+                                {
+                                    int count = objectCasts.Where(oc => oc.IdBlock == block.Id).Select(objs => objs.IdStep).First();
+                                    currentBlock.Nodes.Add(new TreeNode("Количество шагов: " + count.ToString()));
+                                }
+                                catch { }
+
                                 scriptNode.Nodes.Add(currentBlock);
                             }
                             else
@@ -1747,5 +1819,7 @@ namespace WinFormsAppDiplom
             }
 
         }
+
+
     }
 }

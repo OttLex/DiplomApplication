@@ -17,16 +17,16 @@ namespace Model.DTO
         public int IdBackground { get; set; }
         public string NameBackground { get; set; } = "";
 
-        public int IdActivity { get; set; }
+        public int? IdActivity { get; set; }
         public string NameActivity { get; set; } = "";
 
-        public int IdCastType { get; set; }
+        public int? IdCastType { get; set; }
         public string NameCastType { get; set; } = "";
 
-        public int IdObjectSpent { get; set; }
+        public int? IdObjectSpent { get; set; }
         public string NameObjectSpent { get; set; } = "";
 
-        public int IdObjectRecive { get; set; }
+        public int? IdObjectRecive { get; set; }
         public string NameObjectRecive { get; set; } = "";
 
         public string Description { get; set; } = "";
