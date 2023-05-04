@@ -21,7 +21,7 @@ namespace DataAccessLayer.RepoSpr
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"insert into {_tableName} values({obj.IdScript} , '{obj.Description}', '{obj.Name}')");
+                db.Query($@"insert into {_tableName} values({obj.IdScript} , N'{obj.Description}', N'{obj.Name}')");
                 //db.Query($@"insert into {_tableName} values('{obj.Name}', '{obj.Description}')");
             }
         }
@@ -62,7 +62,7 @@ namespace DataAccessLayer.RepoSpr
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"UPDATE {_tableName} SET IdScript= {obj.IdScript}, Name= '{obj.Name}', Description= '{obj.Description}' WHERE id={obj.Id}");
+                db.Query($@"UPDATE {_tableName} SET IdScript= {obj.IdScript}, Name= N'{obj.Name}', Description= N'{obj.Description}' WHERE id={obj.Id}");
                 //db.Query($@"UPDATE {_tableName} SET  Name= '{obj.Name}', Description= '{obj.Description}' WHERE id={obj.Id}");
             }
         }

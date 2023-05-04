@@ -22,7 +22,7 @@ namespace DataAccessLayer.RepoSpr
             {
                 // db.Query($@"insert into {_tableName} values('{obj.Name}', {obj.ObjectId}, {obj.NumberOfZoom}, {obj.ActivityTypeId}, '{obj.Description}')");
                 //db.Query($@"insert into {_tableName} values({obj.IdBackground}, {obj.ObjectId}, {obj.ActivityTypeId}, '{obj.Description}', '{obj.Name}')");
-                db.Query($@"insert into {_tableName} values({obj.ActivityTypeId}, '{obj.Description}', '{obj.Name}')");
+                db.Query($@"insert into {_tableName} values({obj.ActivityTypeId}, N'{obj.Description}', N'{obj.Name}')");
             }
         }
 
@@ -56,7 +56,7 @@ namespace DataAccessLayer.RepoSpr
             {
                 //db.Query($@"UPDATE {_tableName} SET Name= '{obj.Name}', ObjectId={obj.ObjectId}, NumberOfZoom={obj.NumberOfZoom}, ActivityTypeId={obj.ActivityTypeId}, Description= '{obj.Description}' WHERE id={obj.Id}");
                 //db.Query($@"UPDATE {_tableName} SET IdBackground = {obj.IdBackground}, Name= '{obj.Name}', ObjectId={obj.ObjectId}, ActivityTypeId={obj.ActivityTypeId}, Description= '{obj.Description}' WHERE id={obj.Id}");
-                db.Query($@"UPDATE {_tableName} SET  Name= '{obj.Name}',  ActivityTypeId={obj.ActivityTypeId}, Description= '{obj.Description}' WHERE id={obj.Id}");
+                db.Query($@"UPDATE {_tableName} SET  Name= N'{obj.Name}',  ActivityTypeId={obj.ActivityTypeId}, Description= N'{obj.Description}' WHERE id={obj.Id}");
             }
         }
         

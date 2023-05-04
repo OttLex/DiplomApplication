@@ -7,6 +7,7 @@ using DataAccessLayer.RepoSpr;
 using Model.ModelSpr;
 using Service;
 using Model.DTO;
+using System.Collections.Generic;
 
 namespace WinFormsAppDiplom
 {
@@ -33,14 +34,6 @@ namespace WinFormsAppDiplom
         private List<ActivityType>? _activityTypesList;
 
         private ObjectCast? _objectCastCreatable;
-
-        //private List<ObjectCast>? _castsDSCast = _objectCastRepository.GetObjects();
-        //private List<Block>? _blocksDSCast = _blockRepository.GetObjects();
-        //private List<Background>? _backgroundsDSCast = _backgroundRepository.GetObjects();
-
-        //private List<Activity>? _activitiesDSCast = _activityRepository.GetObjects();
-        //private List<CastTypes>? _castTypesDSCast = _castTypesRepository.GetObjects();
-        //private List<Objects>? _objectsDSCast = _objectRepository.GetObjects();
 
 
 
@@ -77,7 +70,7 @@ namespace WinFormsAppDiplom
             _morphRepository = new MorphRepository(_connectionString);
             _activityRepository = new ActivityRepository(_connectionString);
             _activityTypeRepository = new ActivityTypeRepository(_connectionString);
-            _objectCastRepository= new ObjectCastRepository(_connectionString);
+            _objectCastRepository = new ObjectCastRepository(_connectionString);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -238,40 +231,48 @@ namespace WinFormsAppDiplom
         }
         private void FillDataGridViewCast()
         {
-            _objectCastCreatable = new ObjectCast();
+            if (_currentWorkBlock != null)
+            {
+                _objectCastCreatable = new ObjectCast();
+                _objectCastCreatable.IdBlock = _currentWorkBlock.Id;
+            }
+            else
+            {
+                MessageBox.Show("Выделите нужный блок.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
             List<ObjectCastDTO> currentCasts = new();
             List<ObjectCast> casts = _objectCastRepository.GetObjects();
             List<Block> blocks = _blockRepository.GetObjects();
-            List<Background> backgrounds = _backgroundRepository.GetObjects();
 
-            List<Activity> activities = _activityRepository.GetObjects();
-            List<CastTypes> castTypes= _castTypesRepository.GetObjects();
-            List<Objects> objects = _objectRepository.GetObjects();
+            List<Background> backgrounds = (List<Background>)dataGridViewCastBackground.DataSource;
+            List<ActivityDTO> activities = (List<ActivityDTO>)dataGridViewCastActivity.DataSource;
+            List<CastTypes> castTypes = (List<CastTypes>)dataGridViewCastType.DataSource;
+            List<Objects> objects = (List<Objects>)dataGridViewCastObjectRecive.DataSource;
 
 
             foreach (ObjectCast cast in casts)
             {
-                ObjectCastDTO dto= new ObjectCastDTO();
+                ObjectCastDTO dto = new ObjectCastDTO();
 
-                dto.Id= cast.Id;
-                dto.IdBlock= cast.IdBlock;
+                dto.Id = cast.Id;
+                dto.IdBlock = cast.IdBlock;
                 dto.NameBlock = blocks.Where(bl => bl.Id == cast.IdBlock).First().Name;
 
-                dto.IdStep= cast.IdStep;
+                dto.IdStep = cast.IdStep;
                 dto.IdBackground = cast.IdBackground;
                 dto.NameBackground = backgrounds.Where(bg => bg.Id == cast.IdBackground).First().Name;
 
                 dto.IdActivity = cast.IdActivity;
-                dto.NameActivity= activities.Where(acts=> acts.Id== cast.IdActivity).First().Name;
+                dto.NameActivity = activities.Where(acts => acts.Id == cast.IdActivity).First().Name;
 
                 dto.IdCastType = cast.IdCastType;
-                dto.NameCastType= castTypes.Where(ct=> ct.Id ==cast.IdCastType).First().Name;
+                dto.NameCastType = castTypes.Where(ct => ct.Id == cast.IdCastType).First().Name;
 
                 dto.IdObjectSpent = cast.IdObjectSpent;
                 dto.IdObjectRecive = cast.IdObjectRecive;
 
-                dto.NameObjectSpent=objects.Where(o=>o.Id== cast.IdObjectSpent).First().Name;
+                dto.NameObjectSpent = objects.Where(o => o.Id == cast.IdObjectSpent).First().Name;
                 dto.NameObjectRecive = objects.Where(o => o.Id == cast.IdObjectRecive).First().Name;
 
                 dto.Description = cast.Description;
@@ -279,7 +280,7 @@ namespace WinFormsAppDiplom
                 currentCasts.Add(dto);
             }
 
-            dataGridViewCast.DataSource= currentCasts;
+            dataGridViewCast.DataSource = currentCasts;
 
             dataGridViewCast.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCast.Columns["Id"].Visible = false;
@@ -384,7 +385,6 @@ namespace WinFormsAppDiplom
         }
         private void FilldataGridViewObjectsInOperation()
         {
-            dataGridViewObjectsToAdd.DataSource = new List<Objects>();
             dataGridViewCastObjectSpend.AutoSize = true;
             dataGridViewCastObjectSpend.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dataGridViewCastObjectSpend.Columns["Id"].Visible = false;
@@ -525,13 +525,34 @@ namespace WinFormsAppDiplom
         }
         private void buttonCreateCast_Click(object sender, EventArgs e)
         {
-            if (textBoxNameActivity.Text != "" && comboBoxActivity.SelectedIndex != -1)
+            if (_objectCastCreatable != null && _currentWorkBlock != null 
+                && _objectCastCreatable.IdBackground!=null 
+                && _objectCastCreatable.IdCastType!=null)
             {
-                //
+
+                List <ObjectCast> objectCasts= _objectCastRepository.GetObjects();
+
+                if (objectCasts.Count > 0)
+                {
+                     _objectCastCreatable.IdStep = _objectCastRepository.GetObjects().Where(obj => obj.IdBlock == _objectCastCreatable.IdBlock)
+                                                                                     .Select(oc => oc.IdStep)
+                                                                                     .Max();
+                }
+                else
+                {
+                    _objectCastCreatable.IdStep = 1;
+                }
+
+                _objectCastRepository.Create(_objectCastCreatable);
+
+                _objectCastCreatable = new();
+                _objectCastCreatable.IdBlock = _currentWorkBlock.Id;
+
+                FillDataGridViewCast();
             }
             else
             {
-                MessageBox.Show("Заполните поля ввода.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Выберите блок для создания шага.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -659,6 +680,12 @@ namespace WinFormsAppDiplom
             buttonApplyActivity.Enabled = isEnalable;
             buttonCancelActivity.Enabled = isEnalable;
         }
+        private void ChangeEnalableObjectCastButtons(bool isEnalable)
+        {
+            buttonApplyCast.Enabled = isEnalable;
+            buttonCancelCast.Enabled = isEnalable;
+        }
+
 
         private void buttonLoadScript_Click(object sender, EventArgs e)
         {
@@ -811,6 +838,54 @@ namespace WinFormsAppDiplom
                 MessageBox.Show("Выделите нужную активность.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        private void buttonLoadCast_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewCast.CurrentCell != null)
+            {
+                var row = dataGridViewCast.CurrentCell.OwningRow;
+                if (row != null)
+                {
+                    _objectCastCreatable = new();
+                    _objectCastCreatable.Id = (int)row.Cells["Id"].Value;
+
+                    _objectCastCreatable.IdBlock = (int)row.Cells["IdBlock"].Value;
+                    _objectCastCreatable.IdStep = (int)row.Cells["IdStep"].Value;
+                    _objectCastCreatable.IdBackground = (int)row.Cells["IdBackground"].Value;
+
+                    try
+                    {
+                        _objectCastCreatable.IdActivity = (int)row.Cells["IdActivity"].Value;
+                    }
+                    catch { }
+
+                    _objectCastCreatable.IdCastType = (int)row.Cells["IdCastType"].Value;
+                    _objectCastCreatable.IdObjectRecive = (int)row.Cells["IdObjectRecive"].Value;
+                    _objectCastCreatable.IdObjectSpent = (int)row.Cells["IdObjectSpent"].Value;
+                    _objectCastCreatable.Description = row.Cells["Description"].Value.ToString();
+
+
+                    labelCastBackgroundValue.Text = row.Cells["NameBlock"].Value.ToString();
+                    labelCastCastTypeValue.Text = row.Cells["NameCastType"].Value.ToString();
+                    labelObjectToSpendValue.Text = row.Cells["NameObjectSpent"].Value.ToString();
+                    labelObjectToReciveValue.Text = row.Cells["NameObjectRecive"].Value.ToString();
+                    labelCastActivityValue.Text = row.Cells["NameActivity"].Value.ToString();
+
+                    if (_objectCastCreatable.Description.Length > 0)
+                    {
+                        checkBoxCastDescription.Checked = true;
+                    }
+                    else
+                    {
+                        checkBoxCastDescription.Checked = false;
+                    }
+                    ChangeEnalableObjectCastButtons(true);
+                }
+                else
+                {
+                    MessageBox.Show("Выделите нужный шаг.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
 
 
         private void buttonApplyScript_Click(object sender, EventArgs e)
@@ -844,7 +919,7 @@ namespace WinFormsAppDiplom
         }
         private void buttonApplyBlock_Click(object sender, EventArgs e)
         {
-            if (_currentEditableBlock != null && _currentWorkScript!= null)
+            if (_currentEditableBlock != null && _currentWorkScript != null)
             {
                 if (textBoxNameBlock.Text != "")
                 {
@@ -854,7 +929,7 @@ namespace WinFormsAppDiplom
                     {
                         _currentEditableBlock.Description = textBoxDescriptionBlock.Text;
                     }
-                    catch 
+                    catch
                     {
                         _currentEditableBlock.Description = "";
                     }
@@ -986,6 +1061,23 @@ namespace WinFormsAppDiplom
                 }
             }
         }
+        private void buttonApplyCast_Click(object sender, EventArgs e)
+        {
+            if (_objectCastCreatable != null && _currentWorkBlock != null)
+            {
+                _objectCastRepository.Update(_objectCastCreatable);
+
+                _objectCastCreatable = new();
+                _objectCastCreatable.IdBlock = _currentWorkBlock.Id;
+
+                FillDataGridViewCast();
+                ChangeEnalableObjectCastButtons(false);
+            }
+            else
+            {
+                MessageBox.Show("Выберите блок для создания шага.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
 
         private void buttonCancelScript_Click(object sender, EventArgs e)
@@ -1027,6 +1119,11 @@ namespace WinFormsAppDiplom
             _currentEditableActivity = null;
             CleanActivityTextBoxes();
             ChangeEnalableActivityButtons(false);
+        }
+        private void buttonCancelCast_Click(object sender, EventArgs e)
+        {
+            ResetObjectCast();
+            ChangeEnalableObjectCastButtons(false);
         }
 
         private void buttonDeleteScript_Click(object sender, EventArgs e)
@@ -1114,6 +1211,19 @@ namespace WinFormsAppDiplom
                 MessageBox.Show("Выделите нужную активность.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             FillDataGridViewBackground();
+        }
+        private void buttonDeleteCast_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewCast.CurrentCell != null)
+            {
+                var row = dataGridViewCast.CurrentCell.OwningRow;
+                _objectCastRepository.Delete(Convert.ToInt32(row.Cells["Id"].Value));
+            }
+            else
+            {
+                MessageBox.Show("Выделите нужный шаг.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            FillDataGridViewCast();
         }
 
         private void buttonChoseScript_Click(object sender, EventArgs e)
@@ -1433,57 +1543,136 @@ namespace WinFormsAppDiplom
             }
         }
 
+        private void ResetObjectCast()
+        {
+            if (_currentWorkBlock != null)
+            {
+                _objectCastCreatable = new();
+                _objectCastCreatable.IdBlock = _currentWorkBlock.Id;
 
-        //private void dataGridViewCastObjectSpend_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (dataGridViewCastObjectSpend.CurrentCell != null)
-        //    {
-        //        var row = dataGridViewCastObjectSpend.CurrentCell.OwningRow;
-        //        if (row != null)
-        //        {
-        //            //Objects spendObject = new();
-        //            //spendObject.Id= Convert.ToInt32(row.Cells["Id"].Value);
-        //            //spendObject.Name= Convert.ToString(row.Cells["Name"].Value);
-        //            //spendObject.Morph = Convert.ToBoolean(row.Cells["Morph"].Value);
-        //            dataGridViewObjectsToAdd.Rows.Add(row);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Выделите нужный объект.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
-        //private void dataGridViewCastObjectRecive_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (dataGridViewCastObjectRecive.CurrentCell != null)
-        //    {
-        //        var row = dataGridViewCastObjectRecive.CurrentCell.OwningRow;
-        //        if (row != null)
-        //        {
-        //            dataGridViewObjectsToAdd.Rows.Add(row);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Выделите нужный объект.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
+                labelCastBackgroundValue.Text = "-";
+                labelCastCastTypeValue.Text = "-";
+                labelObjectToSpendValue.Text = "-";
+                labelObjectToReciveValue.Text = "-";
+                labelCastActivityValue.Text = "-";
+                checkBoxCastDescription.Checked = false;
+            }
+            else
+            {
+                MessageBox.Show("Выделите нужный блок.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void buttonResetCreatebleCast_Click(object sender, EventArgs e)
+        {
+            ResetObjectCast();
+        }
+        private void dataGridViewCastBackground_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
 
-        //}
-        //private void dataGridViewObjectsToAdd_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (dataGridViewObjectsToAdd.CurrentCell != null)
-        //    {
-        //        var row = dataGridViewObjectsToAdd.CurrentCell.OwningRow;
-        //        if (row != null)
-        //        {
-        //            dataGridViewObjectsToAdd.Rows.Remove(row);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Выделите нужный объект.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
+            if (dataGridViewCastBackground.CurrentCell != null)
+            {
+                var row = dataGridViewCastBackground.CurrentCell.OwningRow;
+                if (row != null && _objectCastCreatable != null)
+                {
+                    _objectCastCreatable.IdBackground = (int)row.Cells["Id"].Value;
+
+                    labelCastBackgroundValue.Text = row.Cells["Name"].Value.ToString();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выделите нужную ячейку.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void dataGridViewCastObjectSpend_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridViewCastObjectSpend.CurrentCell != null)
+            {
+                var row = dataGridViewCastObjectSpend.CurrentCell.OwningRow;
+                if (row != null && _objectCastCreatable != null)
+                {
+                    _objectCastCreatable.IdObjectSpent = (int)row.Cells["Id"].Value;
+
+                    labelObjectToSpendValue.Text = row.Cells["Name"].Value.ToString();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выделите нужную ячейку.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void dataGridViewCastObjectRecive_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridViewCastObjectRecive.CurrentCell != null)
+            {
+                var row = dataGridViewCastObjectRecive.CurrentCell.OwningRow;
+                if (row != null && _objectCastCreatable != null)
+                {
+                    _objectCastCreatable.IdObjectRecive = (int)row.Cells["Id"].Value;
+
+                    labelObjectToReciveValue.Text = row.Cells["Name"].Value.ToString();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выделите нужную ячейку.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void dataGridViewCastActivity_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridViewCastActivity.CurrentCell != null)
+            {
+                var row = dataGridViewCastActivity.CurrentCell.OwningRow;
+                if (row != null && _objectCastCreatable != null)
+                {
+                    _objectCastCreatable.IdActivity = (int)row.Cells["Id"].Value;
+
+                    labelCastActivityValue.Text = row.Cells["Name"].Value.ToString();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выделите нужную ячейку.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void dataGridViewCastType_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridViewCastType.CurrentCell != null)
+            {
+                var row = dataGridViewCastType.CurrentCell.OwningRow;
+                if (row != null && _objectCastCreatable != null)
+                {
+                    _objectCastCreatable.IdCastType = (int)row.Cells["Id"].Value;
+
+                    labelCastCastTypeValue.Text = row.Cells["Name"].Value.ToString();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выделите нужную ячейку.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void textBoxDescriptionCast_TextChanged(object sender, EventArgs e)
+        {
+
+            if (_objectCastCreatable != null)
+            {
+                _objectCastCreatable.Description = textBoxDescriptionCast.Text;
+                if (_objectCastCreatable.Description.Length > 0)
+                {
+                    checkBoxCastDescription.Checked = true;
+                }
+                else
+                {
+                    checkBoxCastDescription.Checked = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите блок для создания шага.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
 
         private void ConfigureTreeView()
         {
@@ -1551,9 +1740,9 @@ namespace WinFormsAppDiplom
                     FillComboBoxActivity();
                     FillDataGridViewActivity();
                     break;
-                case 6:                    
-                    FillDataGridViewCast();
+                case 6:
                     FillCastParamsViews();
+                    FillDataGridViewCast();
                     break;
             }
 

@@ -28,1546 +28,1584 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.splitContainerMainForm = new System.Windows.Forms.SplitContainer();
-            this.treeViewMainForm = new System.Windows.Forms.TreeView();
-            this.tabControlScenario = new System.Windows.Forms.TabControl();
-            this.tabPageScript = new System.Windows.Forms.TabPage();
-            this.textBoxSearchScript = new System.Windows.Forms.TextBox();
-            this.textBoxDescriptionScript = new System.Windows.Forms.TextBox();
-            this.textBoxNameScript = new System.Windows.Forms.TextBox();
-            this.buttonChoseScript = new System.Windows.Forms.Button();
-            this.buttonCancelScript = new System.Windows.Forms.Button();
-            this.buttonApplyScript = new System.Windows.Forms.Button();
-            this.buttonDeleteScript = new System.Windows.Forms.Button();
-            this.buttonLoadScript = new System.Windows.Forms.Button();
-            this.buttonCreateScript = new System.Windows.Forms.Button();
-            this.labelScript = new System.Windows.Forms.Label();
-            this.panelScript = new System.Windows.Forms.Panel();
-            this.dataGridViewScript = new System.Windows.Forms.DataGridView();
-            this.tabPageBlock = new System.Windows.Forms.TabPage();
-            this.textBoxSearchBlock = new System.Windows.Forms.TextBox();
-            this.textBoxDescriptionBlock = new System.Windows.Forms.TextBox();
-            this.textBoxNameBlock = new System.Windows.Forms.TextBox();
-            this.panelBlock = new System.Windows.Forms.Panel();
-            this.dataGridViewBlock = new System.Windows.Forms.DataGridView();
-            this.buttonChoseBlock = new System.Windows.Forms.Button();
-            this.buttonCancelBlock = new System.Windows.Forms.Button();
-            this.buttonApplyBlock = new System.Windows.Forms.Button();
-            this.buttonDeleteBlock = new System.Windows.Forms.Button();
-            this.buttonLoadBlock = new System.Windows.Forms.Button();
-            this.buttonCreateBlock = new System.Windows.Forms.Button();
-            this.labelBlock = new System.Windows.Forms.Label();
-            this.tabPageBackground = new System.Windows.Forms.TabPage();
-            this.panelBackground = new System.Windows.Forms.Panel();
-            this.dataGridViewBackground = new System.Windows.Forms.DataGridView();
-            this.textBoxSearchBackground = new System.Windows.Forms.TextBox();
-            this.textBoxDescriptionBackground = new System.Windows.Forms.TextBox();
-            this.textBoxNameBackground = new System.Windows.Forms.TextBox();
-            this.buttonCancelBackground = new System.Windows.Forms.Button();
-            this.buttonApplyBackground = new System.Windows.Forms.Button();
-            this.buttonDeleteBackground = new System.Windows.Forms.Button();
-            this.buttonLoadBackground = new System.Windows.Forms.Button();
-            this.buttonCreateBackground = new System.Windows.Forms.Button();
-            this.labelBackground = new System.Windows.Forms.Label();
-            this.tabPageCastTypes = new System.Windows.Forms.TabPage();
-            this.textBoxSearchCastTypes = new System.Windows.Forms.TextBox();
-            this.textBoxNameCastTypes = new System.Windows.Forms.TextBox();
-            this.buttonCancelCastTypes = new System.Windows.Forms.Button();
-            this.buttonApplyCastTypes = new System.Windows.Forms.Button();
-            this.buttonDeleteCastTypes = new System.Windows.Forms.Button();
-            this.buttonLoadCastTypes = new System.Windows.Forms.Button();
-            this.buttonCreateCastTypes = new System.Windows.Forms.Button();
-            this.labelCastType = new System.Windows.Forms.Label();
-            this.panelCastTypes = new System.Windows.Forms.Panel();
-            this.dataGridViewCastTypes = new System.Windows.Forms.DataGridView();
-            this.tabPageObjects = new System.Windows.Forms.TabPage();
-            this.panelMorph = new System.Windows.Forms.Panel();
-            this.panelObjects = new System.Windows.Forms.Panel();
-            this.dataGridViewObjects = new System.Windows.Forms.DataGridView();
-            this.buttonDefineFromMorph = new System.Windows.Forms.Button();
-            this.dataGridViewObjToMorph = new System.Windows.Forms.DataGridView();
-            this.dataGridViewRecipeToMorph = new System.Windows.Forms.DataGridView();
-            this.buttonAddToMorph = new System.Windows.Forms.Button();
-            this.textBoxSearchMorph = new System.Windows.Forms.TextBox();
-            this.textBoxSearchObjects = new System.Windows.Forms.TextBox();
-            this.textBoxNameObjects = new System.Windows.Forms.TextBox();
-            this.checkBoxIsMorph = new System.Windows.Forms.CheckBox();
-            this.buttonCancelObjects = new System.Windows.Forms.Button();
-            this.buttonApplyObjects = new System.Windows.Forms.Button();
-            this.buttonDeleteObjects = new System.Windows.Forms.Button();
-            this.buttonLoadObjects = new System.Windows.Forms.Button();
-            this.buttonCreateObject = new System.Windows.Forms.Button();
-            this.labelObjects = new System.Windows.Forms.Label();
-            this.tabPageActivity = new System.Windows.Forms.TabPage();
-            this.comboBoxActivity = new System.Windows.Forms.ComboBox();
-            this.panelActivity = new System.Windows.Forms.Panel();
-            this.dataGridViewActivity = new System.Windows.Forms.DataGridView();
-            this.textBoxSearchActivity = new System.Windows.Forms.TextBox();
-            this.textBoxDescriptionActivity = new System.Windows.Forms.TextBox();
-            this.textBoxNameActivity = new System.Windows.Forms.TextBox();
-            this.buttonCancelActivity = new System.Windows.Forms.Button();
-            this.buttonApplyActivity = new System.Windows.Forms.Button();
-            this.buttonDeleteActivity = new System.Windows.Forms.Button();
-            this.buttonLoadActivity = new System.Windows.Forms.Button();
-            this.buttonCreateActivity = new System.Windows.Forms.Button();
-            this.labelActivity = new System.Windows.Forms.Label();
-            this.tabPageCast = new System.Windows.Forms.TabPage();
-            this.panelCastParams = new System.Windows.Forms.Panel();
-            this.textBoxSearchCastActivity = new System.Windows.Forms.TextBox();
-            this.textBoxSearchCastType = new System.Windows.Forms.TextBox();
-            this.dataGridViewCastActivity = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCastType = new System.Windows.Forms.DataGridView();
-            this.textBoxSearchCastObjectRecive = new System.Windows.Forms.TextBox();
-            this.textBoxSearchCastBackground = new System.Windows.Forms.TextBox();
-            this.dataGridViewCastObjectRecive = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCastBackground = new System.Windows.Forms.DataGridView();
-            this.textBoxSearchCastObjectSpend = new System.Windows.Forms.TextBox();
-            this.dataGridViewCastObjectSpend = new System.Windows.Forms.DataGridView();
-            this.textBoxDescriptionCast = new System.Windows.Forms.TextBox();
-            this.panelCast = new System.Windows.Forms.Panel();
-            this.dataGridViewCast = new System.Windows.Forms.DataGridView();
-            this.textBoxSearchCast = new System.Windows.Forms.TextBox();
-            this.buttonCancelCast = new System.Windows.Forms.Button();
-            this.buttonApplyCast = new System.Windows.Forms.Button();
-            this.buttonDeleteCast = new System.Windows.Forms.Button();
-            this.buttonLoadCast = new System.Windows.Forms.Button();
-            this.buttonCreateCast = new System.Windows.Forms.Button();
-            this.labelCast = new System.Windows.Forms.Label();
-            this.tabPageTests = new System.Windows.Forms.TabPage();
-            this.panelMainForm = new System.Windows.Forms.Panel();
-            this.labelObjectToSpend = new System.Windows.Forms.Label();
-            this.labelObjectToSpendValue = new System.Windows.Forms.Label();
-            this.labelObjectToReciveValue = new System.Windows.Forms.Label();
-            this.labelObjectToRecive = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.labelCastCastType = new System.Windows.Forms.Label();
-            this.labelCastBackgroundValue = new System.Windows.Forms.Label();
-            this.labelCastBackground = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labelCastActivity = new System.Windows.Forms.Label();
-            this.buttonResetCreatebleCast = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMainForm)).BeginInit();
-            this.splitContainerMainForm.Panel1.SuspendLayout();
-            this.splitContainerMainForm.Panel2.SuspendLayout();
-            this.splitContainerMainForm.SuspendLayout();
-            this.tabControlScenario.SuspendLayout();
-            this.tabPageScript.SuspendLayout();
-            this.panelScript.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewScript)).BeginInit();
-            this.tabPageBlock.SuspendLayout();
-            this.panelBlock.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBlock)).BeginInit();
-            this.tabPageBackground.SuspendLayout();
-            this.panelBackground.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBackground)).BeginInit();
-            this.tabPageCastTypes.SuspendLayout();
-            this.panelCastTypes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastTypes)).BeginInit();
-            this.tabPageObjects.SuspendLayout();
-            this.panelMorph.SuspendLayout();
-            this.panelObjects.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjects)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjToMorph)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecipeToMorph)).BeginInit();
-            this.tabPageActivity.SuspendLayout();
-            this.panelActivity.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActivity)).BeginInit();
-            this.tabPageCast.SuspendLayout();
-            this.panelCastParams.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastActivity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastObjectRecive)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastBackground)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastObjectSpend)).BeginInit();
-            this.panelCast.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCast)).BeginInit();
-            this.panelMainForm.SuspendLayout();
-            this.SuspendLayout();
+            splitContainerMainForm = new SplitContainer();
+            treeViewMainForm = new TreeView();
+            tabControlScenario = new TabControl();
+            tabPageScript = new TabPage();
+            textBoxSearchScript = new TextBox();
+            textBoxDescriptionScript = new TextBox();
+            textBoxNameScript = new TextBox();
+            buttonChoseScript = new Button();
+            buttonCancelScript = new Button();
+            buttonApplyScript = new Button();
+            buttonDeleteScript = new Button();
+            buttonLoadScript = new Button();
+            buttonCreateScript = new Button();
+            labelScript = new Label();
+            panelScript = new Panel();
+            dataGridViewScript = new DataGridView();
+            tabPageBlock = new TabPage();
+            textBoxSearchBlock = new TextBox();
+            textBoxDescriptionBlock = new TextBox();
+            textBoxNameBlock = new TextBox();
+            panelBlock = new Panel();
+            dataGridViewBlock = new DataGridView();
+            buttonChoseBlock = new Button();
+            buttonCancelBlock = new Button();
+            buttonApplyBlock = new Button();
+            buttonDeleteBlock = new Button();
+            buttonLoadBlock = new Button();
+            buttonCreateBlock = new Button();
+            labelBlock = new Label();
+            tabPageBackground = new TabPage();
+            panelBackground = new Panel();
+            dataGridViewBackground = new DataGridView();
+            textBoxSearchBackground = new TextBox();
+            textBoxDescriptionBackground = new TextBox();
+            textBoxNameBackground = new TextBox();
+            buttonCancelBackground = new Button();
+            buttonApplyBackground = new Button();
+            buttonDeleteBackground = new Button();
+            buttonLoadBackground = new Button();
+            buttonCreateBackground = new Button();
+            labelBackground = new Label();
+            tabPageCastTypes = new TabPage();
+            textBoxSearchCastTypes = new TextBox();
+            textBoxNameCastTypes = new TextBox();
+            buttonCancelCastTypes = new Button();
+            buttonApplyCastTypes = new Button();
+            buttonDeleteCastTypes = new Button();
+            buttonLoadCastTypes = new Button();
+            buttonCreateCastTypes = new Button();
+            labelCastType = new Label();
+            panelCastTypes = new Panel();
+            dataGridViewCastTypes = new DataGridView();
+            tabPageObjects = new TabPage();
+            panelMorph = new Panel();
+            panelObjects = new Panel();
+            dataGridViewObjects = new DataGridView();
+            buttonDefineFromMorph = new Button();
+            dataGridViewObjToMorph = new DataGridView();
+            dataGridViewRecipeToMorph = new DataGridView();
+            buttonAddToMorph = new Button();
+            textBoxSearchMorph = new TextBox();
+            textBoxSearchObjects = new TextBox();
+            textBoxNameObjects = new TextBox();
+            checkBoxIsMorph = new CheckBox();
+            buttonCancelObjects = new Button();
+            buttonApplyObjects = new Button();
+            buttonDeleteObjects = new Button();
+            buttonLoadObjects = new Button();
+            buttonCreateObject = new Button();
+            labelObjects = new Label();
+            tabPageActivity = new TabPage();
+            comboBoxActivity = new ComboBox();
+            panelActivity = new Panel();
+            dataGridViewActivity = new DataGridView();
+            textBoxSearchActivity = new TextBox();
+            textBoxDescriptionActivity = new TextBox();
+            textBoxNameActivity = new TextBox();
+            buttonCancelActivity = new Button();
+            buttonApplyActivity = new Button();
+            buttonDeleteActivity = new Button();
+            buttonLoadActivity = new Button();
+            buttonCreateActivity = new Button();
+            labelActivity = new Label();
+            tabPageCast = new TabPage();
+            panelCastParams = new Panel();
+            textBoxSearchCastActivity = new TextBox();
+            textBoxSearchCastType = new TextBox();
+            dataGridViewCastActivity = new DataGridView();
+            dataGridViewCastType = new DataGridView();
+            textBoxSearchCastObjectRecive = new TextBox();
+            textBoxSearchCastBackground = new TextBox();
+            dataGridViewCastObjectRecive = new DataGridView();
+            dataGridViewCastBackground = new DataGridView();
+            textBoxSearchCastObjectSpend = new TextBox();
+            dataGridViewCastObjectSpend = new DataGridView();
+            textBoxDescriptionCast = new TextBox();
+            panelCast = new Panel();
+            checkBoxCastDescription = new CheckBox();
+            labelCastDescription = new Label();
+            buttonResetCreatebleCast = new Button();
+            labelCastActivityValue = new Label();
+            labelCastActivity = new Label();
+            labelCastCastTypeValue = new Label();
+            labelCastCastType = new Label();
+            labelCastBackgroundValue = new Label();
+            labelCastBackground = new Label();
+            labelObjectToReciveValue = new Label();
+            labelObjectToRecive = new Label();
+            labelObjectToSpendValue = new Label();
+            labelObjectToSpend = new Label();
+            dataGridViewCast = new DataGridView();
+            textBoxSearchCast = new TextBox();
+            buttonCancelCast = new Button();
+            buttonApplyCast = new Button();
+            buttonDeleteCast = new Button();
+            buttonLoadCast = new Button();
+            buttonCreateCast = new Button();
+            labelCast = new Label();
+            tabPageTests = new TabPage();
+            panelMainForm = new Panel();
+            ((System.ComponentModel.ISupportInitialize)splitContainerMainForm).BeginInit();
+            splitContainerMainForm.Panel1.SuspendLayout();
+            splitContainerMainForm.Panel2.SuspendLayout();
+            splitContainerMainForm.SuspendLayout();
+            tabControlScenario.SuspendLayout();
+            tabPageScript.SuspendLayout();
+            panelScript.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewScript).BeginInit();
+            tabPageBlock.SuspendLayout();
+            panelBlock.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewBlock).BeginInit();
+            tabPageBackground.SuspendLayout();
+            panelBackground.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewBackground).BeginInit();
+            tabPageCastTypes.SuspendLayout();
+            panelCastTypes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCastTypes).BeginInit();
+            tabPageObjects.SuspendLayout();
+            panelMorph.SuspendLayout();
+            panelObjects.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewObjects).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewObjToMorph).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewRecipeToMorph).BeginInit();
+            tabPageActivity.SuspendLayout();
+            panelActivity.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewActivity).BeginInit();
+            tabPageCast.SuspendLayout();
+            panelCastParams.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCastActivity).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCastType).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCastObjectRecive).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCastBackground).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCastObjectSpend).BeginInit();
+            panelCast.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCast).BeginInit();
+            panelMainForm.SuspendLayout();
+            SuspendLayout();
             // 
             // splitContainerMainForm
             // 
-            this.splitContainerMainForm.Cursor = System.Windows.Forms.Cursors.VSplit;
-            this.splitContainerMainForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerMainForm.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerMainForm.Name = "splitContainerMainForm";
+            splitContainerMainForm.Cursor = Cursors.VSplit;
+            splitContainerMainForm.Dock = DockStyle.Fill;
+            splitContainerMainForm.Location = new Point(0, 0);
+            splitContainerMainForm.Name = "splitContainerMainForm";
             // 
             // splitContainerMainForm.Panel1
             // 
-            this.splitContainerMainForm.Panel1.Controls.Add(this.treeViewMainForm);
+            splitContainerMainForm.Panel1.Controls.Add(treeViewMainForm);
             // 
             // splitContainerMainForm.Panel2
             // 
-            this.splitContainerMainForm.Panel2.Controls.Add(this.tabControlScenario);
-            this.splitContainerMainForm.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.splitContainerMainForm.Size = new System.Drawing.Size(1451, 732);
-            this.splitContainerMainForm.SplitterDistance = 376;
-            this.splitContainerMainForm.TabIndex = 2;
+            splitContainerMainForm.Panel2.Controls.Add(tabControlScenario);
+            splitContainerMainForm.Panel2.Cursor = Cursors.Arrow;
+            splitContainerMainForm.Size = new Size(1451, 732);
+            splitContainerMainForm.SplitterDistance = 376;
+            splitContainerMainForm.TabIndex = 2;
             // 
             // treeViewMainForm
             // 
-            this.treeViewMainForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewMainForm.Location = new System.Drawing.Point(0, 0);
-            this.treeViewMainForm.Name = "treeViewMainForm";
-            this.treeViewMainForm.Size = new System.Drawing.Size(376, 732);
-            this.treeViewMainForm.TabIndex = 1;
+            treeViewMainForm.Dock = DockStyle.Fill;
+            treeViewMainForm.Location = new Point(0, 0);
+            treeViewMainForm.Name = "treeViewMainForm";
+            treeViewMainForm.Size = new Size(376, 732);
+            treeViewMainForm.TabIndex = 1;
             // 
             // tabControlScenario
             // 
-            this.tabControlScenario.Controls.Add(this.tabPageScript);
-            this.tabControlScenario.Controls.Add(this.tabPageBlock);
-            this.tabControlScenario.Controls.Add(this.tabPageBackground);
-            this.tabControlScenario.Controls.Add(this.tabPageCastTypes);
-            this.tabControlScenario.Controls.Add(this.tabPageObjects);
-            this.tabControlScenario.Controls.Add(this.tabPageActivity);
-            this.tabControlScenario.Controls.Add(this.tabPageCast);
-            this.tabControlScenario.Controls.Add(this.tabPageTests);
-            this.tabControlScenario.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlScenario.ItemSize = new System.Drawing.Size(61, 30);
-            this.tabControlScenario.Location = new System.Drawing.Point(0, 0);
-            this.tabControlScenario.Name = "tabControlScenario";
-            this.tabControlScenario.SelectedIndex = 0;
-            this.tabControlScenario.Size = new System.Drawing.Size(1071, 732);
-            this.tabControlScenario.TabIndex = 0;
-            this.tabControlScenario.SelectedIndexChanged += new System.EventHandler(this.tabControlScenario_SelectedIndexChanged);
+            tabControlScenario.Controls.Add(tabPageScript);
+            tabControlScenario.Controls.Add(tabPageBlock);
+            tabControlScenario.Controls.Add(tabPageBackground);
+            tabControlScenario.Controls.Add(tabPageCastTypes);
+            tabControlScenario.Controls.Add(tabPageObjects);
+            tabControlScenario.Controls.Add(tabPageActivity);
+            tabControlScenario.Controls.Add(tabPageCast);
+            tabControlScenario.Controls.Add(tabPageTests);
+            tabControlScenario.Dock = DockStyle.Fill;
+            tabControlScenario.ItemSize = new Size(61, 30);
+            tabControlScenario.Location = new Point(0, 0);
+            tabControlScenario.Name = "tabControlScenario";
+            tabControlScenario.SelectedIndex = 0;
+            tabControlScenario.Size = new Size(1071, 732);
+            tabControlScenario.TabIndex = 0;
+            tabControlScenario.SelectedIndexChanged += tabControlScenario_SelectedIndexChanged;
             // 
             // tabPageScript
             // 
-            this.tabPageScript.Controls.Add(this.textBoxSearchScript);
-            this.tabPageScript.Controls.Add(this.textBoxDescriptionScript);
-            this.tabPageScript.Controls.Add(this.textBoxNameScript);
-            this.tabPageScript.Controls.Add(this.buttonChoseScript);
-            this.tabPageScript.Controls.Add(this.buttonCancelScript);
-            this.tabPageScript.Controls.Add(this.buttonApplyScript);
-            this.tabPageScript.Controls.Add(this.buttonDeleteScript);
-            this.tabPageScript.Controls.Add(this.buttonLoadScript);
-            this.tabPageScript.Controls.Add(this.buttonCreateScript);
-            this.tabPageScript.Controls.Add(this.labelScript);
-            this.tabPageScript.Controls.Add(this.panelScript);
-            this.tabPageScript.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tabPageScript.Location = new System.Drawing.Point(4, 34);
-            this.tabPageScript.Name = "tabPageScript";
-            this.tabPageScript.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageScript.Size = new System.Drawing.Size(1063, 694);
-            this.tabPageScript.TabIndex = 0;
-            this.tabPageScript.Text = "Сценарий";
-            this.tabPageScript.UseVisualStyleBackColor = true;
+            tabPageScript.Controls.Add(textBoxSearchScript);
+            tabPageScript.Controls.Add(textBoxDescriptionScript);
+            tabPageScript.Controls.Add(textBoxNameScript);
+            tabPageScript.Controls.Add(buttonChoseScript);
+            tabPageScript.Controls.Add(buttonCancelScript);
+            tabPageScript.Controls.Add(buttonApplyScript);
+            tabPageScript.Controls.Add(buttonDeleteScript);
+            tabPageScript.Controls.Add(buttonLoadScript);
+            tabPageScript.Controls.Add(buttonCreateScript);
+            tabPageScript.Controls.Add(labelScript);
+            tabPageScript.Controls.Add(panelScript);
+            tabPageScript.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tabPageScript.Location = new Point(4, 34);
+            tabPageScript.Name = "tabPageScript";
+            tabPageScript.Padding = new Padding(3);
+            tabPageScript.Size = new Size(1063, 694);
+            tabPageScript.TabIndex = 0;
+            tabPageScript.Text = "Сценарий";
+            tabPageScript.UseVisualStyleBackColor = true;
             // 
             // textBoxSearchScript
             // 
-            this.textBoxSearchScript.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSearchScript.Location = new System.Drawing.Point(843, 91);
-            this.textBoxSearchScript.Name = "textBoxSearchScript";
-            this.textBoxSearchScript.PlaceholderText = "Введите запрос для поиска.";
-            this.textBoxSearchScript.Size = new System.Drawing.Size(204, 26);
-            this.textBoxSearchScript.TabIndex = 31;
-            this.textBoxSearchScript.TextChanged += new System.EventHandler(this.textBoxSearchScript_TextChanged);
+            textBoxSearchScript.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearchScript.Location = new Point(843, 91);
+            textBoxSearchScript.Name = "textBoxSearchScript";
+            textBoxSearchScript.PlaceholderText = "Введите запрос для поиска.";
+            textBoxSearchScript.Size = new Size(204, 26);
+            textBoxSearchScript.TabIndex = 31;
+            textBoxSearchScript.TextChanged += textBoxSearchScript_TextChanged;
             // 
             // textBoxDescriptionScript
             // 
-            this.textBoxDescriptionScript.Location = new System.Drawing.Point(6, 57);
-            this.textBoxDescriptionScript.Multiline = true;
-            this.textBoxDescriptionScript.Name = "textBoxDescriptionScript";
-            this.textBoxDescriptionScript.PlaceholderText = "Описание";
-            this.textBoxDescriptionScript.Size = new System.Drawing.Size(355, 60);
-            this.textBoxDescriptionScript.TabIndex = 4;
+            textBoxDescriptionScript.Location = new Point(6, 57);
+            textBoxDescriptionScript.Multiline = true;
+            textBoxDescriptionScript.Name = "textBoxDescriptionScript";
+            textBoxDescriptionScript.PlaceholderText = "Описание";
+            textBoxDescriptionScript.Size = new Size(355, 60);
+            textBoxDescriptionScript.TabIndex = 4;
             // 
             // textBoxNameScript
             // 
-            this.textBoxNameScript.Location = new System.Drawing.Point(6, 25);
-            this.textBoxNameScript.Name = "textBoxNameScript";
-            this.textBoxNameScript.PlaceholderText = "Название";
-            this.textBoxNameScript.Size = new System.Drawing.Size(355, 26);
-            this.textBoxNameScript.TabIndex = 1;
+            textBoxNameScript.Location = new Point(6, 25);
+            textBoxNameScript.Name = "textBoxNameScript";
+            textBoxNameScript.PlaceholderText = "Название";
+            textBoxNameScript.Size = new Size(355, 26);
+            textBoxNameScript.TabIndex = 1;
             // 
             // buttonChoseScript
             // 
-            this.buttonChoseScript.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonChoseScript.Location = new System.Drawing.Point(843, 24);
-            this.buttonChoseScript.Name = "buttonChoseScript";
-            this.buttonChoseScript.Size = new System.Drawing.Size(203, 25);
-            this.buttonChoseScript.TabIndex = 8;
-            this.buttonChoseScript.Text = "Зафиксировать для работы";
-            this.buttonChoseScript.UseVisualStyleBackColor = true;
-            this.buttonChoseScript.Click += new System.EventHandler(this.buttonChoseScript_Click);
+            buttonChoseScript.Font = new Font("Times New Roman", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonChoseScript.Location = new Point(843, 24);
+            buttonChoseScript.Name = "buttonChoseScript";
+            buttonChoseScript.Size = new Size(203, 25);
+            buttonChoseScript.TabIndex = 8;
+            buttonChoseScript.Text = "Зафиксировать для работы";
+            buttonChoseScript.UseVisualStyleBackColor = true;
+            buttonChoseScript.Click += buttonChoseScript_Click;
             // 
             // buttonCancelScript
             // 
-            this.buttonCancelScript.Enabled = false;
-            this.buttonCancelScript.Location = new System.Drawing.Point(383, 92);
-            this.buttonCancelScript.Name = "buttonCancelScript";
-            this.buttonCancelScript.Size = new System.Drawing.Size(126, 26);
-            this.buttonCancelScript.TabIndex = 7;
-            this.buttonCancelScript.Text = "Отменить";
-            this.buttonCancelScript.UseVisualStyleBackColor = true;
-            this.buttonCancelScript.Click += new System.EventHandler(this.buttonCancelScript_Click);
+            buttonCancelScript.Enabled = false;
+            buttonCancelScript.Location = new Point(383, 92);
+            buttonCancelScript.Name = "buttonCancelScript";
+            buttonCancelScript.Size = new Size(126, 26);
+            buttonCancelScript.TabIndex = 7;
+            buttonCancelScript.Text = "Отменить";
+            buttonCancelScript.UseVisualStyleBackColor = true;
+            buttonCancelScript.Click += buttonCancelScript_Click;
             // 
             // buttonApplyScript
             // 
-            this.buttonApplyScript.Enabled = false;
-            this.buttonApplyScript.Location = new System.Drawing.Point(383, 57);
-            this.buttonApplyScript.Name = "buttonApplyScript";
-            this.buttonApplyScript.Size = new System.Drawing.Size(126, 26);
-            this.buttonApplyScript.TabIndex = 6;
-            this.buttonApplyScript.Text = "Сохранить";
-            this.buttonApplyScript.UseVisualStyleBackColor = true;
-            this.buttonApplyScript.Click += new System.EventHandler(this.buttonApplyScript_Click);
+            buttonApplyScript.Enabled = false;
+            buttonApplyScript.Location = new Point(383, 57);
+            buttonApplyScript.Name = "buttonApplyScript";
+            buttonApplyScript.Size = new Size(126, 26);
+            buttonApplyScript.TabIndex = 6;
+            buttonApplyScript.Text = "Сохранить";
+            buttonApplyScript.UseVisualStyleBackColor = true;
+            buttonApplyScript.Click += buttonApplyScript_Click;
             // 
             // buttonDeleteScript
             // 
-            this.buttonDeleteScript.Location = new System.Drawing.Point(693, 25);
-            this.buttonDeleteScript.Name = "buttonDeleteScript";
-            this.buttonDeleteScript.Size = new System.Drawing.Size(126, 26);
-            this.buttonDeleteScript.TabIndex = 5;
-            this.buttonDeleteScript.Text = "Удалить";
-            this.buttonDeleteScript.UseVisualStyleBackColor = true;
-            this.buttonDeleteScript.Click += new System.EventHandler(this.buttonDeleteScript_Click);
+            buttonDeleteScript.Location = new Point(693, 25);
+            buttonDeleteScript.Name = "buttonDeleteScript";
+            buttonDeleteScript.Size = new Size(126, 26);
+            buttonDeleteScript.TabIndex = 5;
+            buttonDeleteScript.Text = "Удалить";
+            buttonDeleteScript.UseVisualStyleBackColor = true;
+            buttonDeleteScript.Click += buttonDeleteScript_Click;
             // 
             // buttonLoadScript
             // 
-            this.buttonLoadScript.Location = new System.Drawing.Point(383, 25);
-            this.buttonLoadScript.Name = "buttonLoadScript";
-            this.buttonLoadScript.Size = new System.Drawing.Size(126, 26);
-            this.buttonLoadScript.TabIndex = 3;
-            this.buttonLoadScript.Text = "Редактировать";
-            this.buttonLoadScript.UseVisualStyleBackColor = true;
-            this.buttonLoadScript.Click += new System.EventHandler(this.buttonLoadScript_Click);
+            buttonLoadScript.Location = new Point(383, 25);
+            buttonLoadScript.Name = "buttonLoadScript";
+            buttonLoadScript.Size = new Size(126, 26);
+            buttonLoadScript.TabIndex = 3;
+            buttonLoadScript.Text = "Редактировать";
+            buttonLoadScript.UseVisualStyleBackColor = true;
+            buttonLoadScript.Click += buttonLoadScript_Click;
             // 
             // buttonCreateScript
             // 
-            this.buttonCreateScript.Location = new System.Drawing.Point(533, 24);
-            this.buttonCreateScript.Name = "buttonCreateScript";
-            this.buttonCreateScript.Size = new System.Drawing.Size(126, 26);
-            this.buttonCreateScript.TabIndex = 2;
-            this.buttonCreateScript.Text = "Создать";
-            this.buttonCreateScript.UseVisualStyleBackColor = true;
-            this.buttonCreateScript.Click += new System.EventHandler(this.buttonCreateScript_Click);
+            buttonCreateScript.Location = new Point(533, 24);
+            buttonCreateScript.Name = "buttonCreateScript";
+            buttonCreateScript.Size = new Size(126, 26);
+            buttonCreateScript.TabIndex = 2;
+            buttonCreateScript.Text = "Создать";
+            buttonCreateScript.UseVisualStyleBackColor = true;
+            buttonCreateScript.Click += buttonCreateScript_Click;
             // 
             // labelScript
             // 
-            this.labelScript.AutoSize = true;
-            this.labelScript.Location = new System.Drawing.Point(6, 3);
-            this.labelScript.Name = "labelScript";
-            this.labelScript.Size = new System.Drawing.Size(429, 19);
-            this.labelScript.TabIndex = 1;
-            this.labelScript.Text = "Выберете сценарий для редактирования или создайте новый.";
+            labelScript.AutoSize = true;
+            labelScript.Location = new Point(6, 3);
+            labelScript.Name = "labelScript";
+            labelScript.Size = new Size(429, 19);
+            labelScript.TabIndex = 1;
+            labelScript.Text = "Выберете сценарий для редактирования или создайте новый.";
             // 
             // panelScript
             // 
-            this.panelScript.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelScript.Controls.Add(this.dataGridViewScript);
-            this.panelScript.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelScript.Location = new System.Drawing.Point(3, 148);
-            this.panelScript.Margin = new System.Windows.Forms.Padding(10);
-            this.panelScript.Name = "panelScript";
-            this.panelScript.Size = new System.Drawing.Size(1057, 543);
-            this.panelScript.TabIndex = 0;
+            panelScript.BackColor = Color.WhiteSmoke;
+            panelScript.Controls.Add(dataGridViewScript);
+            panelScript.Dock = DockStyle.Bottom;
+            panelScript.Location = new Point(3, 148);
+            panelScript.Margin = new Padding(10);
+            panelScript.Name = "panelScript";
+            panelScript.Size = new Size(1057, 543);
+            panelScript.TabIndex = 0;
             // 
             // dataGridViewScript
             // 
-            this.dataGridViewScript.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewScript.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewScript.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewScript.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewScript.Name = "dataGridViewScript";
-            this.dataGridViewScript.RowTemplate.Height = 25;
-            this.dataGridViewScript.Size = new System.Drawing.Size(1057, 543);
-            this.dataGridViewScript.TabIndex = 0;
+            dataGridViewScript.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewScript.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewScript.Dock = DockStyle.Fill;
+            dataGridViewScript.Location = new Point(0, 0);
+            dataGridViewScript.Name = "dataGridViewScript";
+            dataGridViewScript.RowTemplate.Height = 25;
+            dataGridViewScript.Size = new Size(1057, 543);
+            dataGridViewScript.TabIndex = 0;
             // 
             // tabPageBlock
             // 
-            this.tabPageBlock.Controls.Add(this.textBoxSearchBlock);
-            this.tabPageBlock.Controls.Add(this.textBoxDescriptionBlock);
-            this.tabPageBlock.Controls.Add(this.textBoxNameBlock);
-            this.tabPageBlock.Controls.Add(this.panelBlock);
-            this.tabPageBlock.Controls.Add(this.buttonChoseBlock);
-            this.tabPageBlock.Controls.Add(this.buttonCancelBlock);
-            this.tabPageBlock.Controls.Add(this.buttonApplyBlock);
-            this.tabPageBlock.Controls.Add(this.buttonDeleteBlock);
-            this.tabPageBlock.Controls.Add(this.buttonLoadBlock);
-            this.tabPageBlock.Controls.Add(this.buttonCreateBlock);
-            this.tabPageBlock.Controls.Add(this.labelBlock);
-            this.tabPageBlock.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tabPageBlock.Location = new System.Drawing.Point(4, 34);
-            this.tabPageBlock.Name = "tabPageBlock";
-            this.tabPageBlock.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageBlock.Size = new System.Drawing.Size(1063, 694);
-            this.tabPageBlock.TabIndex = 1;
-            this.tabPageBlock.Text = "Блок сценария";
-            this.tabPageBlock.UseVisualStyleBackColor = true;
+            tabPageBlock.Controls.Add(textBoxSearchBlock);
+            tabPageBlock.Controls.Add(textBoxDescriptionBlock);
+            tabPageBlock.Controls.Add(textBoxNameBlock);
+            tabPageBlock.Controls.Add(panelBlock);
+            tabPageBlock.Controls.Add(buttonChoseBlock);
+            tabPageBlock.Controls.Add(buttonCancelBlock);
+            tabPageBlock.Controls.Add(buttonApplyBlock);
+            tabPageBlock.Controls.Add(buttonDeleteBlock);
+            tabPageBlock.Controls.Add(buttonLoadBlock);
+            tabPageBlock.Controls.Add(buttonCreateBlock);
+            tabPageBlock.Controls.Add(labelBlock);
+            tabPageBlock.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tabPageBlock.Location = new Point(4, 34);
+            tabPageBlock.Name = "tabPageBlock";
+            tabPageBlock.Padding = new Padding(3);
+            tabPageBlock.Size = new Size(1063, 694);
+            tabPageBlock.TabIndex = 1;
+            tabPageBlock.Text = "Блок сценария";
+            tabPageBlock.UseVisualStyleBackColor = true;
             // 
             // textBoxSearchBlock
             // 
-            this.textBoxSearchBlock.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSearchBlock.Location = new System.Drawing.Point(852, 91);
-            this.textBoxSearchBlock.Name = "textBoxSearchBlock";
-            this.textBoxSearchBlock.PlaceholderText = "Введите запрос для поиска.";
-            this.textBoxSearchBlock.Size = new System.Drawing.Size(204, 26);
-            this.textBoxSearchBlock.TabIndex = 30;
-            this.textBoxSearchBlock.TextChanged += new System.EventHandler(this.textBoxSearchBlock_TextChanged);
+            textBoxSearchBlock.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearchBlock.Location = new Point(852, 91);
+            textBoxSearchBlock.Name = "textBoxSearchBlock";
+            textBoxSearchBlock.PlaceholderText = "Введите запрос для поиска.";
+            textBoxSearchBlock.Size = new Size(204, 26);
+            textBoxSearchBlock.TabIndex = 30;
+            textBoxSearchBlock.TextChanged += textBoxSearchBlock_TextChanged;
             // 
             // textBoxDescriptionBlock
             // 
-            this.textBoxDescriptionBlock.Location = new System.Drawing.Point(6, 57);
-            this.textBoxDescriptionBlock.Multiline = true;
-            this.textBoxDescriptionBlock.Name = "textBoxDescriptionBlock";
-            this.textBoxDescriptionBlock.PlaceholderText = "Описание";
-            this.textBoxDescriptionBlock.Size = new System.Drawing.Size(355, 60);
-            this.textBoxDescriptionBlock.TabIndex = 13;
+            textBoxDescriptionBlock.Location = new Point(6, 57);
+            textBoxDescriptionBlock.Multiline = true;
+            textBoxDescriptionBlock.Name = "textBoxDescriptionBlock";
+            textBoxDescriptionBlock.PlaceholderText = "Описание";
+            textBoxDescriptionBlock.Size = new Size(355, 60);
+            textBoxDescriptionBlock.TabIndex = 13;
             // 
             // textBoxNameBlock
             // 
-            this.textBoxNameBlock.Location = new System.Drawing.Point(6, 25);
-            this.textBoxNameBlock.Name = "textBoxNameBlock";
-            this.textBoxNameBlock.PlaceholderText = "Название";
-            this.textBoxNameBlock.Size = new System.Drawing.Size(355, 26);
-            this.textBoxNameBlock.TabIndex = 10;
+            textBoxNameBlock.Location = new Point(6, 25);
+            textBoxNameBlock.Name = "textBoxNameBlock";
+            textBoxNameBlock.PlaceholderText = "Название";
+            textBoxNameBlock.Size = new Size(355, 26);
+            textBoxNameBlock.TabIndex = 10;
             // 
             // panelBlock
             // 
-            this.panelBlock.Controls.Add(this.dataGridViewBlock);
-            this.panelBlock.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBlock.Location = new System.Drawing.Point(3, 148);
-            this.panelBlock.Name = "panelBlock";
-            this.panelBlock.Size = new System.Drawing.Size(1057, 543);
-            this.panelBlock.TabIndex = 19;
+            panelBlock.Controls.Add(dataGridViewBlock);
+            panelBlock.Dock = DockStyle.Bottom;
+            panelBlock.Location = new Point(3, 148);
+            panelBlock.Name = "panelBlock";
+            panelBlock.Size = new Size(1057, 543);
+            panelBlock.TabIndex = 19;
             // 
             // dataGridViewBlock
             // 
-            this.dataGridViewBlock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewBlock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBlock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewBlock.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewBlock.Name = "dataGridViewBlock";
-            this.dataGridViewBlock.RowTemplate.Height = 25;
-            this.dataGridViewBlock.Size = new System.Drawing.Size(1057, 543);
-            this.dataGridViewBlock.TabIndex = 18;
+            dataGridViewBlock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewBlock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewBlock.Dock = DockStyle.Fill;
+            dataGridViewBlock.Location = new Point(0, 0);
+            dataGridViewBlock.Name = "dataGridViewBlock";
+            dataGridViewBlock.RowTemplate.Height = 25;
+            dataGridViewBlock.Size = new Size(1057, 543);
+            dataGridViewBlock.TabIndex = 18;
             // 
             // buttonChoseBlock
             // 
-            this.buttonChoseBlock.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonChoseBlock.Location = new System.Drawing.Point(852, 25);
-            this.buttonChoseBlock.Name = "buttonChoseBlock";
-            this.buttonChoseBlock.Size = new System.Drawing.Size(203, 25);
-            this.buttonChoseBlock.TabIndex = 17;
-            this.buttonChoseBlock.Text = "Зафиксировать для работы";
-            this.buttonChoseBlock.UseVisualStyleBackColor = true;
-            this.buttonChoseBlock.Click += new System.EventHandler(this.buttonChoseBlock_Click);
+            buttonChoseBlock.Font = new Font("Times New Roman", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonChoseBlock.Location = new Point(852, 25);
+            buttonChoseBlock.Name = "buttonChoseBlock";
+            buttonChoseBlock.Size = new Size(203, 25);
+            buttonChoseBlock.TabIndex = 17;
+            buttonChoseBlock.Text = "Зафиксировать для работы";
+            buttonChoseBlock.UseVisualStyleBackColor = true;
+            buttonChoseBlock.Click += buttonChoseBlock_Click;
             // 
             // buttonCancelBlock
             // 
-            this.buttonCancelBlock.Enabled = false;
-            this.buttonCancelBlock.Location = new System.Drawing.Point(386, 90);
-            this.buttonCancelBlock.Name = "buttonCancelBlock";
-            this.buttonCancelBlock.Size = new System.Drawing.Size(126, 26);
-            this.buttonCancelBlock.TabIndex = 16;
-            this.buttonCancelBlock.Text = "Отменить";
-            this.buttonCancelBlock.UseVisualStyleBackColor = true;
-            this.buttonCancelBlock.Click += new System.EventHandler(this.buttonCancelBlock_Click);
+            buttonCancelBlock.Enabled = false;
+            buttonCancelBlock.Location = new Point(386, 90);
+            buttonCancelBlock.Name = "buttonCancelBlock";
+            buttonCancelBlock.Size = new Size(126, 26);
+            buttonCancelBlock.TabIndex = 16;
+            buttonCancelBlock.Text = "Отменить";
+            buttonCancelBlock.UseVisualStyleBackColor = true;
+            buttonCancelBlock.Click += buttonCancelBlock_Click;
             // 
             // buttonApplyBlock
             // 
-            this.buttonApplyBlock.Enabled = false;
-            this.buttonApplyBlock.Location = new System.Drawing.Point(386, 55);
-            this.buttonApplyBlock.Name = "buttonApplyBlock";
-            this.buttonApplyBlock.Size = new System.Drawing.Size(126, 26);
-            this.buttonApplyBlock.TabIndex = 15;
-            this.buttonApplyBlock.Text = "Сохранить";
-            this.buttonApplyBlock.UseVisualStyleBackColor = true;
-            this.buttonApplyBlock.Click += new System.EventHandler(this.buttonApplyBlock_Click);
+            buttonApplyBlock.Enabled = false;
+            buttonApplyBlock.Location = new Point(386, 55);
+            buttonApplyBlock.Name = "buttonApplyBlock";
+            buttonApplyBlock.Size = new Size(126, 26);
+            buttonApplyBlock.TabIndex = 15;
+            buttonApplyBlock.Text = "Сохранить";
+            buttonApplyBlock.UseVisualStyleBackColor = true;
+            buttonApplyBlock.Click += buttonApplyBlock_Click;
             // 
             // buttonDeleteBlock
             // 
-            this.buttonDeleteBlock.Location = new System.Drawing.Point(697, 24);
-            this.buttonDeleteBlock.Name = "buttonDeleteBlock";
-            this.buttonDeleteBlock.Size = new System.Drawing.Size(126, 26);
-            this.buttonDeleteBlock.TabIndex = 14;
-            this.buttonDeleteBlock.Text = "Удалить";
-            this.buttonDeleteBlock.UseVisualStyleBackColor = true;
-            this.buttonDeleteBlock.Click += new System.EventHandler(this.buttonDeleteBlock_Click);
+            buttonDeleteBlock.Location = new Point(697, 24);
+            buttonDeleteBlock.Name = "buttonDeleteBlock";
+            buttonDeleteBlock.Size = new Size(126, 26);
+            buttonDeleteBlock.TabIndex = 14;
+            buttonDeleteBlock.Text = "Удалить";
+            buttonDeleteBlock.UseVisualStyleBackColor = true;
+            buttonDeleteBlock.Click += buttonDeleteBlock_Click;
             // 
             // buttonLoadBlock
             // 
-            this.buttonLoadBlock.Location = new System.Drawing.Point(386, 23);
-            this.buttonLoadBlock.Name = "buttonLoadBlock";
-            this.buttonLoadBlock.Size = new System.Drawing.Size(126, 26);
-            this.buttonLoadBlock.TabIndex = 12;
-            this.buttonLoadBlock.Text = "Редактировать";
-            this.buttonLoadBlock.UseVisualStyleBackColor = true;
-            this.buttonLoadBlock.Click += new System.EventHandler(this.buttonLoadBlock_Click);
+            buttonLoadBlock.Location = new Point(386, 23);
+            buttonLoadBlock.Name = "buttonLoadBlock";
+            buttonLoadBlock.Size = new Size(126, 26);
+            buttonLoadBlock.TabIndex = 12;
+            buttonLoadBlock.Text = "Редактировать";
+            buttonLoadBlock.UseVisualStyleBackColor = true;
+            buttonLoadBlock.Click += buttonLoadBlock_Click;
             // 
             // buttonCreateBlock
             // 
-            this.buttonCreateBlock.Location = new System.Drawing.Point(544, 24);
-            this.buttonCreateBlock.Name = "buttonCreateBlock";
-            this.buttonCreateBlock.Size = new System.Drawing.Size(126, 26);
-            this.buttonCreateBlock.TabIndex = 11;
-            this.buttonCreateBlock.Text = "Создать";
-            this.buttonCreateBlock.UseVisualStyleBackColor = true;
-            this.buttonCreateBlock.Click += new System.EventHandler(this.buttonCreateBlock_Click);
+            buttonCreateBlock.Location = new Point(544, 24);
+            buttonCreateBlock.Name = "buttonCreateBlock";
+            buttonCreateBlock.Size = new Size(126, 26);
+            buttonCreateBlock.TabIndex = 11;
+            buttonCreateBlock.Text = "Создать";
+            buttonCreateBlock.UseVisualStyleBackColor = true;
+            buttonCreateBlock.Click += buttonCreateBlock_Click;
             // 
             // labelBlock
             // 
-            this.labelBlock.AutoSize = true;
-            this.labelBlock.Location = new System.Drawing.Point(6, 3);
-            this.labelBlock.Name = "labelBlock";
-            this.labelBlock.Size = new System.Drawing.Size(395, 19);
-            this.labelBlock.TabIndex = 9;
-            this.labelBlock.Text = "Выберете блок для редактирования или создайте новый.";
+            labelBlock.AutoSize = true;
+            labelBlock.Location = new Point(6, 3);
+            labelBlock.Name = "labelBlock";
+            labelBlock.Size = new Size(395, 19);
+            labelBlock.TabIndex = 9;
+            labelBlock.Text = "Выберете блок для редактирования или создайте новый.";
             // 
             // tabPageBackground
             // 
-            this.tabPageBackground.Controls.Add(this.panelBackground);
-            this.tabPageBackground.Controls.Add(this.textBoxSearchBackground);
-            this.tabPageBackground.Controls.Add(this.textBoxDescriptionBackground);
-            this.tabPageBackground.Controls.Add(this.textBoxNameBackground);
-            this.tabPageBackground.Controls.Add(this.buttonCancelBackground);
-            this.tabPageBackground.Controls.Add(this.buttonApplyBackground);
-            this.tabPageBackground.Controls.Add(this.buttonDeleteBackground);
-            this.tabPageBackground.Controls.Add(this.buttonLoadBackground);
-            this.tabPageBackground.Controls.Add(this.buttonCreateBackground);
-            this.tabPageBackground.Controls.Add(this.labelBackground);
-            this.tabPageBackground.Location = new System.Drawing.Point(4, 34);
-            this.tabPageBackground.Name = "tabPageBackground";
-            this.tabPageBackground.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageBackground.Size = new System.Drawing.Size(1063, 694);
-            this.tabPageBackground.TabIndex = 4;
-            this.tabPageBackground.Text = "Фоны";
-            this.tabPageBackground.UseVisualStyleBackColor = true;
+            tabPageBackground.Controls.Add(panelBackground);
+            tabPageBackground.Controls.Add(textBoxSearchBackground);
+            tabPageBackground.Controls.Add(textBoxDescriptionBackground);
+            tabPageBackground.Controls.Add(textBoxNameBackground);
+            tabPageBackground.Controls.Add(buttonCancelBackground);
+            tabPageBackground.Controls.Add(buttonApplyBackground);
+            tabPageBackground.Controls.Add(buttonDeleteBackground);
+            tabPageBackground.Controls.Add(buttonLoadBackground);
+            tabPageBackground.Controls.Add(buttonCreateBackground);
+            tabPageBackground.Controls.Add(labelBackground);
+            tabPageBackground.Location = new Point(4, 34);
+            tabPageBackground.Name = "tabPageBackground";
+            tabPageBackground.Padding = new Padding(3);
+            tabPageBackground.Size = new Size(1063, 694);
+            tabPageBackground.TabIndex = 4;
+            tabPageBackground.Text = "Фоны";
+            tabPageBackground.UseVisualStyleBackColor = true;
             // 
             // panelBackground
             // 
-            this.panelBackground.Controls.Add(this.dataGridViewBackground);
-            this.panelBackground.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBackground.Location = new System.Drawing.Point(3, 148);
-            this.panelBackground.Name = "panelBackground";
-            this.panelBackground.Size = new System.Drawing.Size(1057, 543);
-            this.panelBackground.TabIndex = 30;
+            panelBackground.Controls.Add(dataGridViewBackground);
+            panelBackground.Dock = DockStyle.Bottom;
+            panelBackground.Location = new Point(3, 148);
+            panelBackground.Name = "panelBackground";
+            panelBackground.Size = new Size(1057, 543);
+            panelBackground.TabIndex = 30;
             // 
             // dataGridViewBackground
             // 
-            this.dataGridViewBackground.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewBackground.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBackground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewBackground.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewBackground.Name = "dataGridViewBackground";
-            this.dataGridViewBackground.RowTemplate.Height = 25;
-            this.dataGridViewBackground.Size = new System.Drawing.Size(1057, 543);
-            this.dataGridViewBackground.TabIndex = 28;
+            dataGridViewBackground.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewBackground.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewBackground.Dock = DockStyle.Fill;
+            dataGridViewBackground.Location = new Point(0, 0);
+            dataGridViewBackground.Name = "dataGridViewBackground";
+            dataGridViewBackground.RowTemplate.Height = 25;
+            dataGridViewBackground.Size = new Size(1057, 543);
+            dataGridViewBackground.TabIndex = 28;
             // 
             // textBoxSearchBackground
             // 
-            this.textBoxSearchBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSearchBackground.Location = new System.Drawing.Point(851, 25);
-            this.textBoxSearchBackground.Name = "textBoxSearchBackground";
-            this.textBoxSearchBackground.PlaceholderText = "Введите запрос для поиска.";
-            this.textBoxSearchBackground.Size = new System.Drawing.Size(204, 26);
-            this.textBoxSearchBackground.TabIndex = 29;
-            this.textBoxSearchBackground.TextChanged += new System.EventHandler(this.textBoxSearchBackground_TextChanged);
+            textBoxSearchBackground.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearchBackground.Location = new Point(851, 25);
+            textBoxSearchBackground.Name = "textBoxSearchBackground";
+            textBoxSearchBackground.PlaceholderText = "Введите запрос для поиска.";
+            textBoxSearchBackground.Size = new Size(204, 26);
+            textBoxSearchBackground.TabIndex = 29;
+            textBoxSearchBackground.TextChanged += textBoxSearchBackground_TextChanged;
             // 
             // textBoxDescriptionBackground
             // 
-            this.textBoxDescriptionBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxDescriptionBackground.Location = new System.Drawing.Point(6, 57);
-            this.textBoxDescriptionBackground.Multiline = true;
-            this.textBoxDescriptionBackground.Name = "textBoxDescriptionBackground";
-            this.textBoxDescriptionBackground.PlaceholderText = "Описание";
-            this.textBoxDescriptionBackground.Size = new System.Drawing.Size(355, 60);
-            this.textBoxDescriptionBackground.TabIndex = 23;
+            textBoxDescriptionBackground.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxDescriptionBackground.Location = new Point(6, 57);
+            textBoxDescriptionBackground.Multiline = true;
+            textBoxDescriptionBackground.Name = "textBoxDescriptionBackground";
+            textBoxDescriptionBackground.PlaceholderText = "Описание";
+            textBoxDescriptionBackground.Size = new Size(355, 60);
+            textBoxDescriptionBackground.TabIndex = 23;
             // 
             // textBoxNameBackground
             // 
-            this.textBoxNameBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxNameBackground.Location = new System.Drawing.Point(6, 25);
-            this.textBoxNameBackground.Name = "textBoxNameBackground";
-            this.textBoxNameBackground.PlaceholderText = "Название";
-            this.textBoxNameBackground.Size = new System.Drawing.Size(355, 26);
-            this.textBoxNameBackground.TabIndex = 20;
+            textBoxNameBackground.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxNameBackground.Location = new Point(6, 25);
+            textBoxNameBackground.Name = "textBoxNameBackground";
+            textBoxNameBackground.PlaceholderText = "Название";
+            textBoxNameBackground.Size = new Size(355, 26);
+            textBoxNameBackground.TabIndex = 20;
             // 
             // buttonCancelBackground
             // 
-            this.buttonCancelBackground.Enabled = false;
-            this.buttonCancelBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCancelBackground.Location = new System.Drawing.Point(378, 91);
-            this.buttonCancelBackground.Name = "buttonCancelBackground";
-            this.buttonCancelBackground.Size = new System.Drawing.Size(126, 26);
-            this.buttonCancelBackground.TabIndex = 26;
-            this.buttonCancelBackground.Text = "Отменить";
-            this.buttonCancelBackground.UseVisualStyleBackColor = true;
-            this.buttonCancelBackground.Click += new System.EventHandler(this.buttonCancelBackground_Click);
+            buttonCancelBackground.Enabled = false;
+            buttonCancelBackground.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCancelBackground.Location = new Point(378, 91);
+            buttonCancelBackground.Name = "buttonCancelBackground";
+            buttonCancelBackground.Size = new Size(126, 26);
+            buttonCancelBackground.TabIndex = 26;
+            buttonCancelBackground.Text = "Отменить";
+            buttonCancelBackground.UseVisualStyleBackColor = true;
+            buttonCancelBackground.Click += buttonCancelBackground_Click;
             // 
             // buttonApplyBackground
             // 
-            this.buttonApplyBackground.Enabled = false;
-            this.buttonApplyBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonApplyBackground.Location = new System.Drawing.Point(378, 56);
-            this.buttonApplyBackground.Name = "buttonApplyBackground";
-            this.buttonApplyBackground.Size = new System.Drawing.Size(126, 26);
-            this.buttonApplyBackground.TabIndex = 25;
-            this.buttonApplyBackground.Text = "Сохранить";
-            this.buttonApplyBackground.UseVisualStyleBackColor = true;
-            this.buttonApplyBackground.Click += new System.EventHandler(this.buttonApplyBackground_Click);
+            buttonApplyBackground.Enabled = false;
+            buttonApplyBackground.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonApplyBackground.Location = new Point(378, 56);
+            buttonApplyBackground.Name = "buttonApplyBackground";
+            buttonApplyBackground.Size = new Size(126, 26);
+            buttonApplyBackground.TabIndex = 25;
+            buttonApplyBackground.Text = "Сохранить";
+            buttonApplyBackground.UseVisualStyleBackColor = true;
+            buttonApplyBackground.Click += buttonApplyBackground_Click;
             // 
             // buttonDeleteBackground
             // 
-            this.buttonDeleteBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonDeleteBackground.Location = new System.Drawing.Point(691, 24);
-            this.buttonDeleteBackground.Name = "buttonDeleteBackground";
-            this.buttonDeleteBackground.Size = new System.Drawing.Size(126, 26);
-            this.buttonDeleteBackground.TabIndex = 24;
-            this.buttonDeleteBackground.Text = "Удалить";
-            this.buttonDeleteBackground.UseVisualStyleBackColor = true;
-            this.buttonDeleteBackground.Click += new System.EventHandler(this.buttonDeleteBackground_Click);
+            buttonDeleteBackground.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDeleteBackground.Location = new Point(691, 24);
+            buttonDeleteBackground.Name = "buttonDeleteBackground";
+            buttonDeleteBackground.Size = new Size(126, 26);
+            buttonDeleteBackground.TabIndex = 24;
+            buttonDeleteBackground.Text = "Удалить";
+            buttonDeleteBackground.UseVisualStyleBackColor = true;
+            buttonDeleteBackground.Click += buttonDeleteBackground_Click;
             // 
             // buttonLoadBackground
             // 
-            this.buttonLoadBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonLoadBackground.Location = new System.Drawing.Point(378, 24);
-            this.buttonLoadBackground.Name = "buttonLoadBackground";
-            this.buttonLoadBackground.Size = new System.Drawing.Size(126, 26);
-            this.buttonLoadBackground.TabIndex = 22;
-            this.buttonLoadBackground.Text = "Редактировать";
-            this.buttonLoadBackground.UseVisualStyleBackColor = true;
-            this.buttonLoadBackground.Click += new System.EventHandler(this.buttonLoadBackground_Click);
+            buttonLoadBackground.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonLoadBackground.Location = new Point(378, 24);
+            buttonLoadBackground.Name = "buttonLoadBackground";
+            buttonLoadBackground.Size = new Size(126, 26);
+            buttonLoadBackground.TabIndex = 22;
+            buttonLoadBackground.Text = "Редактировать";
+            buttonLoadBackground.UseVisualStyleBackColor = true;
+            buttonLoadBackground.Click += buttonLoadBackground_Click;
             // 
             // buttonCreateBackground
             // 
-            this.buttonCreateBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCreateBackground.Location = new System.Drawing.Point(534, 24);
-            this.buttonCreateBackground.Name = "buttonCreateBackground";
-            this.buttonCreateBackground.Size = new System.Drawing.Size(126, 26);
-            this.buttonCreateBackground.TabIndex = 21;
-            this.buttonCreateBackground.Text = "Создать";
-            this.buttonCreateBackground.UseVisualStyleBackColor = true;
-            this.buttonCreateBackground.Click += new System.EventHandler(this.buttonCreateBackground_Click);
+            buttonCreateBackground.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCreateBackground.Location = new Point(534, 24);
+            buttonCreateBackground.Name = "buttonCreateBackground";
+            buttonCreateBackground.Size = new Size(126, 26);
+            buttonCreateBackground.TabIndex = 21;
+            buttonCreateBackground.Text = "Создать";
+            buttonCreateBackground.UseVisualStyleBackColor = true;
+            buttonCreateBackground.Click += buttonCreateBackground_Click;
             // 
             // labelBackground
             // 
-            this.labelBackground.AutoSize = true;
-            this.labelBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelBackground.Location = new System.Drawing.Point(6, 3);
-            this.labelBackground.Name = "labelBackground";
-            this.labelBackground.Size = new System.Drawing.Size(390, 19);
-            this.labelBackground.TabIndex = 19;
-            this.labelBackground.Text = "Выберете фон для редактирования или создайте новый.";
+            labelBackground.AutoSize = true;
+            labelBackground.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelBackground.Location = new Point(6, 3);
+            labelBackground.Name = "labelBackground";
+            labelBackground.Size = new Size(390, 19);
+            labelBackground.TabIndex = 19;
+            labelBackground.Text = "Выберете фон для редактирования или создайте новый.";
             // 
             // tabPageCastTypes
             // 
-            this.tabPageCastTypes.Controls.Add(this.textBoxSearchCastTypes);
-            this.tabPageCastTypes.Controls.Add(this.textBoxNameCastTypes);
-            this.tabPageCastTypes.Controls.Add(this.buttonCancelCastTypes);
-            this.tabPageCastTypes.Controls.Add(this.buttonApplyCastTypes);
-            this.tabPageCastTypes.Controls.Add(this.buttonDeleteCastTypes);
-            this.tabPageCastTypes.Controls.Add(this.buttonLoadCastTypes);
-            this.tabPageCastTypes.Controls.Add(this.buttonCreateCastTypes);
-            this.tabPageCastTypes.Controls.Add(this.labelCastType);
-            this.tabPageCastTypes.Controls.Add(this.panelCastTypes);
-            this.tabPageCastTypes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tabPageCastTypes.Location = new System.Drawing.Point(4, 34);
-            this.tabPageCastTypes.Name = "tabPageCastTypes";
-            this.tabPageCastTypes.Size = new System.Drawing.Size(1063, 694);
-            this.tabPageCastTypes.TabIndex = 7;
-            this.tabPageCastTypes.Text = "Типы кастов";
-            this.tabPageCastTypes.UseVisualStyleBackColor = true;
+            tabPageCastTypes.Controls.Add(textBoxSearchCastTypes);
+            tabPageCastTypes.Controls.Add(textBoxNameCastTypes);
+            tabPageCastTypes.Controls.Add(buttonCancelCastTypes);
+            tabPageCastTypes.Controls.Add(buttonApplyCastTypes);
+            tabPageCastTypes.Controls.Add(buttonDeleteCastTypes);
+            tabPageCastTypes.Controls.Add(buttonLoadCastTypes);
+            tabPageCastTypes.Controls.Add(buttonCreateCastTypes);
+            tabPageCastTypes.Controls.Add(labelCastType);
+            tabPageCastTypes.Controls.Add(panelCastTypes);
+            tabPageCastTypes.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tabPageCastTypes.Location = new Point(4, 34);
+            tabPageCastTypes.Name = "tabPageCastTypes";
+            tabPageCastTypes.Size = new Size(1063, 694);
+            tabPageCastTypes.TabIndex = 7;
+            tabPageCastTypes.Text = "Типы кастов";
+            tabPageCastTypes.UseVisualStyleBackColor = true;
             // 
             // textBoxSearchCastTypes
             // 
-            this.textBoxSearchCastTypes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSearchCastTypes.Location = new System.Drawing.Point(848, 32);
-            this.textBoxSearchCastTypes.Name = "textBoxSearchCastTypes";
-            this.textBoxSearchCastTypes.PlaceholderText = "Введите запрос для поиска.";
-            this.textBoxSearchCastTypes.Size = new System.Drawing.Size(204, 26);
-            this.textBoxSearchCastTypes.TabIndex = 39;
-            this.textBoxSearchCastTypes.TextChanged += new System.EventHandler(this.textBoxSearchCastTypes_TextChanged);
+            textBoxSearchCastTypes.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearchCastTypes.Location = new Point(848, 32);
+            textBoxSearchCastTypes.Name = "textBoxSearchCastTypes";
+            textBoxSearchCastTypes.PlaceholderText = "Введите запрос для поиска.";
+            textBoxSearchCastTypes.Size = new Size(204, 26);
+            textBoxSearchCastTypes.TabIndex = 39;
+            textBoxSearchCastTypes.TextChanged += textBoxSearchCastTypes_TextChanged;
             // 
             // textBoxNameCastTypes
             // 
-            this.textBoxNameCastTypes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxNameCastTypes.Location = new System.Drawing.Point(3, 32);
-            this.textBoxNameCastTypes.Name = "textBoxNameCastTypes";
-            this.textBoxNameCastTypes.PlaceholderText = "Название";
-            this.textBoxNameCastTypes.Size = new System.Drawing.Size(355, 26);
-            this.textBoxNameCastTypes.TabIndex = 31;
+            textBoxNameCastTypes.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxNameCastTypes.Location = new Point(3, 32);
+            textBoxNameCastTypes.Name = "textBoxNameCastTypes";
+            textBoxNameCastTypes.PlaceholderText = "Название";
+            textBoxNameCastTypes.Size = new Size(355, 26);
+            textBoxNameCastTypes.TabIndex = 31;
             // 
             // buttonCancelCastTypes
             // 
-            this.buttonCancelCastTypes.Enabled = false;
-            this.buttonCancelCastTypes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCancelCastTypes.Location = new System.Drawing.Point(375, 98);
-            this.buttonCancelCastTypes.Name = "buttonCancelCastTypes";
-            this.buttonCancelCastTypes.Size = new System.Drawing.Size(126, 26);
-            this.buttonCancelCastTypes.TabIndex = 37;
-            this.buttonCancelCastTypes.Text = "Отменить";
-            this.buttonCancelCastTypes.UseVisualStyleBackColor = true;
-            this.buttonCancelCastTypes.Click += new System.EventHandler(this.buttonCancelCastTypes_Click);
+            buttonCancelCastTypes.Enabled = false;
+            buttonCancelCastTypes.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCancelCastTypes.Location = new Point(375, 98);
+            buttonCancelCastTypes.Name = "buttonCancelCastTypes";
+            buttonCancelCastTypes.Size = new Size(126, 26);
+            buttonCancelCastTypes.TabIndex = 37;
+            buttonCancelCastTypes.Text = "Отменить";
+            buttonCancelCastTypes.UseVisualStyleBackColor = true;
+            buttonCancelCastTypes.Click += buttonCancelCastTypes_Click;
             // 
             // buttonApplyCastTypes
             // 
-            this.buttonApplyCastTypes.Enabled = false;
-            this.buttonApplyCastTypes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonApplyCastTypes.Location = new System.Drawing.Point(375, 63);
-            this.buttonApplyCastTypes.Name = "buttonApplyCastTypes";
-            this.buttonApplyCastTypes.Size = new System.Drawing.Size(126, 26);
-            this.buttonApplyCastTypes.TabIndex = 36;
-            this.buttonApplyCastTypes.Text = "Сохранить";
-            this.buttonApplyCastTypes.UseVisualStyleBackColor = true;
-            this.buttonApplyCastTypes.Click += new System.EventHandler(this.buttonApplyCastTypes_Click);
+            buttonApplyCastTypes.Enabled = false;
+            buttonApplyCastTypes.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonApplyCastTypes.Location = new Point(375, 63);
+            buttonApplyCastTypes.Name = "buttonApplyCastTypes";
+            buttonApplyCastTypes.Size = new Size(126, 26);
+            buttonApplyCastTypes.TabIndex = 36;
+            buttonApplyCastTypes.Text = "Сохранить";
+            buttonApplyCastTypes.UseVisualStyleBackColor = true;
+            buttonApplyCastTypes.Click += buttonApplyCastTypes_Click;
             // 
             // buttonDeleteCastTypes
             // 
-            this.buttonDeleteCastTypes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonDeleteCastTypes.Location = new System.Drawing.Point(688, 31);
-            this.buttonDeleteCastTypes.Name = "buttonDeleteCastTypes";
-            this.buttonDeleteCastTypes.Size = new System.Drawing.Size(126, 26);
-            this.buttonDeleteCastTypes.TabIndex = 35;
-            this.buttonDeleteCastTypes.Text = "Удалить";
-            this.buttonDeleteCastTypes.UseVisualStyleBackColor = true;
-            this.buttonDeleteCastTypes.Click += new System.EventHandler(this.buttonDeleteCastTypes_Click);
+            buttonDeleteCastTypes.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDeleteCastTypes.Location = new Point(688, 31);
+            buttonDeleteCastTypes.Name = "buttonDeleteCastTypes";
+            buttonDeleteCastTypes.Size = new Size(126, 26);
+            buttonDeleteCastTypes.TabIndex = 35;
+            buttonDeleteCastTypes.Text = "Удалить";
+            buttonDeleteCastTypes.UseVisualStyleBackColor = true;
+            buttonDeleteCastTypes.Click += buttonDeleteCastTypes_Click;
             // 
             // buttonLoadCastTypes
             // 
-            this.buttonLoadCastTypes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonLoadCastTypes.Location = new System.Drawing.Point(375, 31);
-            this.buttonLoadCastTypes.Name = "buttonLoadCastTypes";
-            this.buttonLoadCastTypes.Size = new System.Drawing.Size(126, 26);
-            this.buttonLoadCastTypes.TabIndex = 33;
-            this.buttonLoadCastTypes.Text = "Редактировать";
-            this.buttonLoadCastTypes.UseVisualStyleBackColor = true;
-            this.buttonLoadCastTypes.Click += new System.EventHandler(this.buttonLoadCastTypes_Click);
+            buttonLoadCastTypes.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonLoadCastTypes.Location = new Point(375, 31);
+            buttonLoadCastTypes.Name = "buttonLoadCastTypes";
+            buttonLoadCastTypes.Size = new Size(126, 26);
+            buttonLoadCastTypes.TabIndex = 33;
+            buttonLoadCastTypes.Text = "Редактировать";
+            buttonLoadCastTypes.UseVisualStyleBackColor = true;
+            buttonLoadCastTypes.Click += buttonLoadCastTypes_Click;
             // 
             // buttonCreateCastTypes
             // 
-            this.buttonCreateCastTypes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCreateCastTypes.Location = new System.Drawing.Point(531, 31);
-            this.buttonCreateCastTypes.Name = "buttonCreateCastTypes";
-            this.buttonCreateCastTypes.Size = new System.Drawing.Size(126, 26);
-            this.buttonCreateCastTypes.TabIndex = 32;
-            this.buttonCreateCastTypes.Text = "Создать";
-            this.buttonCreateCastTypes.UseVisualStyleBackColor = true;
-            this.buttonCreateCastTypes.Click += new System.EventHandler(this.buttonCreateCastTypes_Click);
+            buttonCreateCastTypes.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCreateCastTypes.Location = new Point(531, 31);
+            buttonCreateCastTypes.Name = "buttonCreateCastTypes";
+            buttonCreateCastTypes.Size = new Size(126, 26);
+            buttonCreateCastTypes.TabIndex = 32;
+            buttonCreateCastTypes.Text = "Создать";
+            buttonCreateCastTypes.UseVisualStyleBackColor = true;
+            buttonCreateCastTypes.Click += buttonCreateCastTypes_Click;
             // 
             // labelCastType
             // 
-            this.labelCastType.AutoSize = true;
-            this.labelCastType.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelCastType.Location = new System.Drawing.Point(3, 10);
-            this.labelCastType.Name = "labelCastType";
-            this.labelCastType.Size = new System.Drawing.Size(390, 19);
-            this.labelCastType.TabIndex = 30;
-            this.labelCastType.Text = "Выберете фон для редактирования или создайте новый.";
+            labelCastType.AutoSize = true;
+            labelCastType.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelCastType.Location = new Point(3, 10);
+            labelCastType.Name = "labelCastType";
+            labelCastType.Size = new Size(390, 19);
+            labelCastType.TabIndex = 30;
+            labelCastType.Text = "Выберете фон для редактирования или создайте новый.";
             // 
             // panelCastTypes
             // 
-            this.panelCastTypes.Controls.Add(this.dataGridViewCastTypes);
-            this.panelCastTypes.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelCastTypes.Location = new System.Drawing.Point(0, 149);
-            this.panelCastTypes.Name = "panelCastTypes";
-            this.panelCastTypes.Size = new System.Drawing.Size(1063, 545);
-            this.panelCastTypes.TabIndex = 0;
+            panelCastTypes.Controls.Add(dataGridViewCastTypes);
+            panelCastTypes.Dock = DockStyle.Bottom;
+            panelCastTypes.Location = new Point(0, 149);
+            panelCastTypes.Name = "panelCastTypes";
+            panelCastTypes.Size = new Size(1063, 545);
+            panelCastTypes.TabIndex = 0;
             // 
             // dataGridViewCastTypes
             // 
-            this.dataGridViewCastTypes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewCastTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCastTypes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewCastTypes.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewCastTypes.Name = "dataGridViewCastTypes";
-            this.dataGridViewCastTypes.RowTemplate.Height = 25;
-            this.dataGridViewCastTypes.Size = new System.Drawing.Size(1063, 545);
-            this.dataGridViewCastTypes.TabIndex = 38;
+            dataGridViewCastTypes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCastTypes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCastTypes.Dock = DockStyle.Fill;
+            dataGridViewCastTypes.Location = new Point(0, 0);
+            dataGridViewCastTypes.Name = "dataGridViewCastTypes";
+            dataGridViewCastTypes.RowTemplate.Height = 25;
+            dataGridViewCastTypes.Size = new Size(1063, 545);
+            dataGridViewCastTypes.TabIndex = 38;
             // 
             // tabPageObjects
             // 
-            this.tabPageObjects.Controls.Add(this.panelMorph);
-            this.tabPageObjects.Controls.Add(this.textBoxSearchMorph);
-            this.tabPageObjects.Controls.Add(this.textBoxSearchObjects);
-            this.tabPageObjects.Controls.Add(this.textBoxNameObjects);
-            this.tabPageObjects.Controls.Add(this.checkBoxIsMorph);
-            this.tabPageObjects.Controls.Add(this.buttonCancelObjects);
-            this.tabPageObjects.Controls.Add(this.buttonApplyObjects);
-            this.tabPageObjects.Controls.Add(this.buttonDeleteObjects);
-            this.tabPageObjects.Controls.Add(this.buttonLoadObjects);
-            this.tabPageObjects.Controls.Add(this.buttonCreateObject);
-            this.tabPageObjects.Controls.Add(this.labelObjects);
-            this.tabPageObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tabPageObjects.Location = new System.Drawing.Point(4, 34);
-            this.tabPageObjects.Name = "tabPageObjects";
-            this.tabPageObjects.Size = new System.Drawing.Size(1063, 694);
-            this.tabPageObjects.TabIndex = 3;
-            this.tabPageObjects.Text = "Предметы";
-            this.tabPageObjects.UseVisualStyleBackColor = true;
+            tabPageObjects.Controls.Add(panelMorph);
+            tabPageObjects.Controls.Add(textBoxSearchMorph);
+            tabPageObjects.Controls.Add(textBoxSearchObjects);
+            tabPageObjects.Controls.Add(textBoxNameObjects);
+            tabPageObjects.Controls.Add(checkBoxIsMorph);
+            tabPageObjects.Controls.Add(buttonCancelObjects);
+            tabPageObjects.Controls.Add(buttonApplyObjects);
+            tabPageObjects.Controls.Add(buttonDeleteObjects);
+            tabPageObjects.Controls.Add(buttonLoadObjects);
+            tabPageObjects.Controls.Add(buttonCreateObject);
+            tabPageObjects.Controls.Add(labelObjects);
+            tabPageObjects.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tabPageObjects.Location = new Point(4, 34);
+            tabPageObjects.Name = "tabPageObjects";
+            tabPageObjects.Size = new Size(1063, 694);
+            tabPageObjects.TabIndex = 3;
+            tabPageObjects.Text = "Предметы";
+            tabPageObjects.UseVisualStyleBackColor = true;
             // 
             // panelMorph
             // 
-            this.panelMorph.Controls.Add(this.panelObjects);
-            this.panelMorph.Controls.Add(this.buttonDefineFromMorph);
-            this.panelMorph.Controls.Add(this.dataGridViewObjToMorph);
-            this.panelMorph.Controls.Add(this.dataGridViewRecipeToMorph);
-            this.panelMorph.Controls.Add(this.buttonAddToMorph);
-            this.panelMorph.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelMorph.Location = new System.Drawing.Point(0, 120);
-            this.panelMorph.Name = "panelMorph";
-            this.panelMorph.Size = new System.Drawing.Size(1063, 574);
-            this.panelMorph.TabIndex = 46;
+            panelMorph.Controls.Add(panelObjects);
+            panelMorph.Controls.Add(buttonDefineFromMorph);
+            panelMorph.Controls.Add(dataGridViewObjToMorph);
+            panelMorph.Controls.Add(dataGridViewRecipeToMorph);
+            panelMorph.Controls.Add(buttonAddToMorph);
+            panelMorph.Dock = DockStyle.Bottom;
+            panelMorph.Location = new Point(0, 120);
+            panelMorph.Name = "panelMorph";
+            panelMorph.Size = new Size(1063, 574);
+            panelMorph.TabIndex = 46;
             // 
             // panelObjects
             // 
-            this.panelObjects.Controls.Add(this.dataGridViewObjects);
-            this.panelObjects.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelObjects.Location = new System.Drawing.Point(0, 294);
-            this.panelObjects.Name = "panelObjects";
-            this.panelObjects.Size = new System.Drawing.Size(1063, 280);
-            this.panelObjects.TabIndex = 46;
+            panelObjects.Controls.Add(dataGridViewObjects);
+            panelObjects.Dock = DockStyle.Bottom;
+            panelObjects.Location = new Point(0, 294);
+            panelObjects.Name = "panelObjects";
+            panelObjects.Size = new Size(1063, 280);
+            panelObjects.TabIndex = 46;
             // 
             // dataGridViewObjects
             // 
-            this.dataGridViewObjects.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewObjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewObjects.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewObjects.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewObjects.Name = "dataGridViewObjects";
-            this.dataGridViewObjects.RowTemplate.Height = 25;
-            this.dataGridViewObjects.Size = new System.Drawing.Size(1063, 280);
-            this.dataGridViewObjects.TabIndex = 38;
-            this.dataGridViewObjects.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewObjects_CellClick);
+            dataGridViewObjects.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewObjects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewObjects.Dock = DockStyle.Fill;
+            dataGridViewObjects.Location = new Point(0, 0);
+            dataGridViewObjects.Name = "dataGridViewObjects";
+            dataGridViewObjects.RowTemplate.Height = 25;
+            dataGridViewObjects.Size = new Size(1063, 280);
+            dataGridViewObjects.TabIndex = 38;
+            dataGridViewObjects.CellClick += dataGridViewObjects_CellClick;
             // 
             // buttonDefineFromMorph
             // 
-            this.buttonDefineFromMorph.Enabled = false;
-            this.buttonDefineFromMorph.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonDefineFromMorph.ForeColor = System.Drawing.Color.Red;
-            this.buttonDefineFromMorph.Location = new System.Drawing.Point(565, 6);
-            this.buttonDefineFromMorph.Name = "buttonDefineFromMorph";
-            this.buttonDefineFromMorph.Size = new System.Drawing.Size(41, 33);
-            this.buttonDefineFromMorph.TabIndex = 44;
-            this.buttonDefineFromMorph.Text = "-";
-            this.buttonDefineFromMorph.UseVisualStyleBackColor = true;
-            this.buttonDefineFromMorph.Click += new System.EventHandler(this.buttonDefineFromMorph_Click);
+            buttonDefineFromMorph.Enabled = false;
+            buttonDefineFromMorph.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonDefineFromMorph.ForeColor = Color.Red;
+            buttonDefineFromMorph.Location = new Point(565, 6);
+            buttonDefineFromMorph.Name = "buttonDefineFromMorph";
+            buttonDefineFromMorph.Size = new Size(41, 33);
+            buttonDefineFromMorph.TabIndex = 44;
+            buttonDefineFromMorph.Text = "-";
+            buttonDefineFromMorph.UseVisualStyleBackColor = true;
+            buttonDefineFromMorph.Click += buttonDefineFromMorph_Click;
             // 
             // dataGridViewObjToMorph
             // 
-            this.dataGridViewObjToMorph.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewObjToMorph.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewObjToMorph.Enabled = false;
-            this.dataGridViewObjToMorph.Location = new System.Drawing.Point(3, 45);
-            this.dataGridViewObjToMorph.Name = "dataGridViewObjToMorph";
-            this.dataGridViewObjToMorph.RowTemplate.Height = 25;
-            this.dataGridViewObjToMorph.Size = new System.Drawing.Size(508, 200);
-            this.dataGridViewObjToMorph.TabIndex = 42;
+            dataGridViewObjToMorph.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewObjToMorph.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewObjToMorph.Enabled = false;
+            dataGridViewObjToMorph.Location = new Point(3, 45);
+            dataGridViewObjToMorph.Name = "dataGridViewObjToMorph";
+            dataGridViewObjToMorph.RowTemplate.Height = 25;
+            dataGridViewObjToMorph.Size = new Size(508, 200);
+            dataGridViewObjToMorph.TabIndex = 42;
             // 
             // dataGridViewRecipeToMorph
             // 
-            this.dataGridViewRecipeToMorph.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewRecipeToMorph.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedHeaders;
-            this.dataGridViewRecipeToMorph.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewRecipeToMorph.Enabled = false;
-            this.dataGridViewRecipeToMorph.Location = new System.Drawing.Point(565, 45);
-            this.dataGridViewRecipeToMorph.Name = "dataGridViewRecipeToMorph";
-            this.dataGridViewRecipeToMorph.RowTemplate.Height = 25;
-            this.dataGridViewRecipeToMorph.Size = new System.Drawing.Size(495, 200);
-            this.dataGridViewRecipeToMorph.TabIndex = 45;
+            dataGridViewRecipeToMorph.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewRecipeToMorph.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedHeaders;
+            dataGridViewRecipeToMorph.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewRecipeToMorph.Enabled = false;
+            dataGridViewRecipeToMorph.Location = new Point(565, 45);
+            dataGridViewRecipeToMorph.Name = "dataGridViewRecipeToMorph";
+            dataGridViewRecipeToMorph.RowTemplate.Height = 25;
+            dataGridViewRecipeToMorph.Size = new Size(495, 200);
+            dataGridViewRecipeToMorph.TabIndex = 45;
             // 
             // buttonAddToMorph
             // 
-            this.buttonAddToMorph.Enabled = false;
-            this.buttonAddToMorph.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonAddToMorph.ForeColor = System.Drawing.Color.DarkGreen;
-            this.buttonAddToMorph.Location = new System.Drawing.Point(470, 6);
-            this.buttonAddToMorph.Name = "buttonAddToMorph";
-            this.buttonAddToMorph.Size = new System.Drawing.Size(41, 33);
-            this.buttonAddToMorph.TabIndex = 43;
-            this.buttonAddToMorph.Text = "+";
-            this.buttonAddToMorph.UseVisualStyleBackColor = true;
-            this.buttonAddToMorph.Click += new System.EventHandler(this.buttonAddToMorph_Click);
+            buttonAddToMorph.Enabled = false;
+            buttonAddToMorph.Font = new Font("Times New Roman", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAddToMorph.ForeColor = Color.DarkGreen;
+            buttonAddToMorph.Location = new Point(470, 6);
+            buttonAddToMorph.Name = "buttonAddToMorph";
+            buttonAddToMorph.Size = new Size(41, 33);
+            buttonAddToMorph.TabIndex = 43;
+            buttonAddToMorph.Text = "+";
+            buttonAddToMorph.UseVisualStyleBackColor = true;
+            buttonAddToMorph.Click += buttonAddToMorph_Click;
             // 
             // textBoxSearchMorph
             // 
-            this.textBoxSearchMorph.Enabled = false;
-            this.textBoxSearchMorph.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSearchMorph.Location = new System.Drawing.Point(3, 85);
-            this.textBoxSearchMorph.Name = "textBoxSearchMorph";
-            this.textBoxSearchMorph.PlaceholderText = "Введите запрос для поиска.";
-            this.textBoxSearchMorph.Size = new System.Drawing.Size(355, 26);
-            this.textBoxSearchMorph.TabIndex = 41;
-            this.textBoxSearchMorph.TextChanged += new System.EventHandler(this.textBoxSearchMorph_TextChanged);
+            textBoxSearchMorph.Enabled = false;
+            textBoxSearchMorph.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearchMorph.Location = new Point(3, 85);
+            textBoxSearchMorph.Name = "textBoxSearchMorph";
+            textBoxSearchMorph.PlaceholderText = "Введите запрос для поиска.";
+            textBoxSearchMorph.Size = new Size(355, 26);
+            textBoxSearchMorph.TabIndex = 41;
+            textBoxSearchMorph.TextChanged += textBoxSearchMorph_TextChanged;
             // 
             // textBoxSearchObjects
             // 
-            this.textBoxSearchObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSearchObjects.Location = new System.Drawing.Point(851, 21);
-            this.textBoxSearchObjects.Name = "textBoxSearchObjects";
-            this.textBoxSearchObjects.PlaceholderText = "Введите запрос для поиска.";
-            this.textBoxSearchObjects.Size = new System.Drawing.Size(204, 26);
-            this.textBoxSearchObjects.TabIndex = 39;
-            this.textBoxSearchObjects.TextChanged += new System.EventHandler(this.textBoxSearchObjects_TextChanged);
+            textBoxSearchObjects.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearchObjects.Location = new Point(851, 21);
+            textBoxSearchObjects.Name = "textBoxSearchObjects";
+            textBoxSearchObjects.PlaceholderText = "Введите запрос для поиска.";
+            textBoxSearchObjects.Size = new Size(204, 26);
+            textBoxSearchObjects.TabIndex = 39;
+            textBoxSearchObjects.TextChanged += textBoxSearchObjects_TextChanged;
             // 
             // textBoxNameObjects
             // 
-            this.textBoxNameObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxNameObjects.Location = new System.Drawing.Point(3, 25);
-            this.textBoxNameObjects.Name = "textBoxNameObjects";
-            this.textBoxNameObjects.PlaceholderText = "Название";
-            this.textBoxNameObjects.Size = new System.Drawing.Size(355, 26);
-            this.textBoxNameObjects.TabIndex = 31;
+            textBoxNameObjects.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxNameObjects.Location = new Point(3, 25);
+            textBoxNameObjects.Name = "textBoxNameObjects";
+            textBoxNameObjects.PlaceholderText = "Название";
+            textBoxNameObjects.Size = new Size(355, 26);
+            textBoxNameObjects.TabIndex = 31;
             // 
             // checkBoxIsMorph
             // 
-            this.checkBoxIsMorph.AutoSize = true;
-            this.checkBoxIsMorph.Location = new System.Drawing.Point(3, 56);
-            this.checkBoxIsMorph.Name = "checkBoxIsMorph";
-            this.checkBoxIsMorph.Size = new System.Drawing.Size(67, 23);
-            this.checkBoxIsMorph.TabIndex = 40;
-            this.checkBoxIsMorph.Text = "Морф";
-            this.checkBoxIsMorph.UseVisualStyleBackColor = true;
-            this.checkBoxIsMorph.CheckedChanged += new System.EventHandler(this.checkBoxIsMorph_CheckedChanged);
+            checkBoxIsMorph.AutoSize = true;
+            checkBoxIsMorph.Location = new Point(3, 56);
+            checkBoxIsMorph.Name = "checkBoxIsMorph";
+            checkBoxIsMorph.Size = new Size(67, 23);
+            checkBoxIsMorph.TabIndex = 40;
+            checkBoxIsMorph.Text = "Морф";
+            checkBoxIsMorph.UseVisualStyleBackColor = true;
+            checkBoxIsMorph.CheckedChanged += checkBoxIsMorph_CheckedChanged;
             // 
             // buttonCancelObjects
             // 
-            this.buttonCancelObjects.Enabled = false;
-            this.buttonCancelObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCancelObjects.Location = new System.Drawing.Point(381, 88);
-            this.buttonCancelObjects.Name = "buttonCancelObjects";
-            this.buttonCancelObjects.Size = new System.Drawing.Size(126, 26);
-            this.buttonCancelObjects.TabIndex = 37;
-            this.buttonCancelObjects.Text = "Отменить";
-            this.buttonCancelObjects.UseVisualStyleBackColor = true;
-            this.buttonCancelObjects.Click += new System.EventHandler(this.buttonCancelObjects_Click);
+            buttonCancelObjects.Enabled = false;
+            buttonCancelObjects.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCancelObjects.Location = new Point(381, 88);
+            buttonCancelObjects.Name = "buttonCancelObjects";
+            buttonCancelObjects.Size = new Size(126, 26);
+            buttonCancelObjects.TabIndex = 37;
+            buttonCancelObjects.Text = "Отменить";
+            buttonCancelObjects.UseVisualStyleBackColor = true;
+            buttonCancelObjects.Click += buttonCancelObjects_Click;
             // 
             // buttonApplyObjects
             // 
-            this.buttonApplyObjects.Enabled = false;
-            this.buttonApplyObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonApplyObjects.Location = new System.Drawing.Point(381, 53);
-            this.buttonApplyObjects.Name = "buttonApplyObjects";
-            this.buttonApplyObjects.Size = new System.Drawing.Size(126, 26);
-            this.buttonApplyObjects.TabIndex = 36;
-            this.buttonApplyObjects.Text = "Сохранить";
-            this.buttonApplyObjects.UseVisualStyleBackColor = true;
-            this.buttonApplyObjects.Click += new System.EventHandler(this.buttonApplyObjects_Click);
+            buttonApplyObjects.Enabled = false;
+            buttonApplyObjects.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonApplyObjects.Location = new Point(381, 53);
+            buttonApplyObjects.Name = "buttonApplyObjects";
+            buttonApplyObjects.Size = new Size(126, 26);
+            buttonApplyObjects.TabIndex = 36;
+            buttonApplyObjects.Text = "Сохранить";
+            buttonApplyObjects.UseVisualStyleBackColor = true;
+            buttonApplyObjects.Click += buttonApplyObjects_Click;
             // 
             // buttonDeleteObjects
             // 
-            this.buttonDeleteObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonDeleteObjects.Location = new System.Drawing.Point(698, 21);
-            this.buttonDeleteObjects.Name = "buttonDeleteObjects";
-            this.buttonDeleteObjects.Size = new System.Drawing.Size(126, 26);
-            this.buttonDeleteObjects.TabIndex = 35;
-            this.buttonDeleteObjects.Text = "Удалить";
-            this.buttonDeleteObjects.UseVisualStyleBackColor = true;
-            this.buttonDeleteObjects.Click += new System.EventHandler(this.buttonDeleteObjects_Click);
+            buttonDeleteObjects.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDeleteObjects.Location = new Point(698, 21);
+            buttonDeleteObjects.Name = "buttonDeleteObjects";
+            buttonDeleteObjects.Size = new Size(126, 26);
+            buttonDeleteObjects.TabIndex = 35;
+            buttonDeleteObjects.Text = "Удалить";
+            buttonDeleteObjects.UseVisualStyleBackColor = true;
+            buttonDeleteObjects.Click += buttonDeleteObjects_Click;
             // 
             // buttonLoadObjects
             // 
-            this.buttonLoadObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonLoadObjects.Location = new System.Drawing.Point(381, 21);
-            this.buttonLoadObjects.Name = "buttonLoadObjects";
-            this.buttonLoadObjects.Size = new System.Drawing.Size(126, 26);
-            this.buttonLoadObjects.TabIndex = 33;
-            this.buttonLoadObjects.Text = "Редактировать";
-            this.buttonLoadObjects.UseVisualStyleBackColor = true;
-            this.buttonLoadObjects.Click += new System.EventHandler(this.buttonLoadObjects_Click);
+            buttonLoadObjects.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonLoadObjects.Location = new Point(381, 21);
+            buttonLoadObjects.Name = "buttonLoadObjects";
+            buttonLoadObjects.Size = new Size(126, 26);
+            buttonLoadObjects.TabIndex = 33;
+            buttonLoadObjects.Text = "Редактировать";
+            buttonLoadObjects.UseVisualStyleBackColor = true;
+            buttonLoadObjects.Click += buttonLoadObjects_Click;
             // 
             // buttonCreateObject
             // 
-            this.buttonCreateObject.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCreateObject.Location = new System.Drawing.Point(541, 21);
-            this.buttonCreateObject.Name = "buttonCreateObject";
-            this.buttonCreateObject.Size = new System.Drawing.Size(126, 26);
-            this.buttonCreateObject.TabIndex = 32;
-            this.buttonCreateObject.Text = "Создать";
-            this.buttonCreateObject.UseVisualStyleBackColor = true;
-            this.buttonCreateObject.Click += new System.EventHandler(this.buttonCreateObject_Click);
+            buttonCreateObject.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCreateObject.Location = new Point(541, 21);
+            buttonCreateObject.Name = "buttonCreateObject";
+            buttonCreateObject.Size = new Size(126, 26);
+            buttonCreateObject.TabIndex = 32;
+            buttonCreateObject.Text = "Создать";
+            buttonCreateObject.UseVisualStyleBackColor = true;
+            buttonCreateObject.Click += buttonCreateObject_Click;
             // 
             // labelObjects
             // 
-            this.labelObjects.AutoSize = true;
-            this.labelObjects.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelObjects.Location = new System.Drawing.Point(0, 3);
-            this.labelObjects.Name = "labelObjects";
-            this.labelObjects.Size = new System.Drawing.Size(409, 19);
-            this.labelObjects.TabIndex = 30;
-            this.labelObjects.Text = "Выберете объект для редактирования или создайте новый.";
+            labelObjects.AutoSize = true;
+            labelObjects.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelObjects.Location = new Point(0, 3);
+            labelObjects.Name = "labelObjects";
+            labelObjects.Size = new Size(409, 19);
+            labelObjects.TabIndex = 30;
+            labelObjects.Text = "Выберете объект для редактирования или создайте новый.";
             // 
             // tabPageActivity
             // 
-            this.tabPageActivity.Controls.Add(this.comboBoxActivity);
-            this.tabPageActivity.Controls.Add(this.panelActivity);
-            this.tabPageActivity.Controls.Add(this.textBoxSearchActivity);
-            this.tabPageActivity.Controls.Add(this.textBoxDescriptionActivity);
-            this.tabPageActivity.Controls.Add(this.textBoxNameActivity);
-            this.tabPageActivity.Controls.Add(this.buttonCancelActivity);
-            this.tabPageActivity.Controls.Add(this.buttonApplyActivity);
-            this.tabPageActivity.Controls.Add(this.buttonDeleteActivity);
-            this.tabPageActivity.Controls.Add(this.buttonLoadActivity);
-            this.tabPageActivity.Controls.Add(this.buttonCreateActivity);
-            this.tabPageActivity.Controls.Add(this.labelActivity);
-            this.tabPageActivity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tabPageActivity.Location = new System.Drawing.Point(4, 34);
-            this.tabPageActivity.Name = "tabPageActivity";
-            this.tabPageActivity.Size = new System.Drawing.Size(1063, 694);
-            this.tabPageActivity.TabIndex = 2;
-            this.tabPageActivity.Text = "Активности";
-            this.tabPageActivity.UseVisualStyleBackColor = true;
+            tabPageActivity.Controls.Add(comboBoxActivity);
+            tabPageActivity.Controls.Add(panelActivity);
+            tabPageActivity.Controls.Add(textBoxSearchActivity);
+            tabPageActivity.Controls.Add(textBoxDescriptionActivity);
+            tabPageActivity.Controls.Add(textBoxNameActivity);
+            tabPageActivity.Controls.Add(buttonCancelActivity);
+            tabPageActivity.Controls.Add(buttonApplyActivity);
+            tabPageActivity.Controls.Add(buttonDeleteActivity);
+            tabPageActivity.Controls.Add(buttonLoadActivity);
+            tabPageActivity.Controls.Add(buttonCreateActivity);
+            tabPageActivity.Controls.Add(labelActivity);
+            tabPageActivity.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tabPageActivity.Location = new Point(4, 34);
+            tabPageActivity.Name = "tabPageActivity";
+            tabPageActivity.Size = new Size(1063, 694);
+            tabPageActivity.TabIndex = 2;
+            tabPageActivity.Text = "Активности";
+            tabPageActivity.UseVisualStyleBackColor = true;
             // 
             // comboBoxActivity
             // 
-            this.comboBoxActivity.FormattingEnabled = true;
-            this.comboBoxActivity.Location = new System.Drawing.Point(6, 106);
-            this.comboBoxActivity.Name = "comboBoxActivity";
-            this.comboBoxActivity.Size = new System.Drawing.Size(355, 27);
-            this.comboBoxActivity.TabIndex = 41;
+            comboBoxActivity.FormattingEnabled = true;
+            comboBoxActivity.Location = new Point(6, 106);
+            comboBoxActivity.Name = "comboBoxActivity";
+            comboBoxActivity.Size = new Size(355, 27);
+            comboBoxActivity.TabIndex = 41;
             // 
             // panelActivity
             // 
-            this.panelActivity.Controls.Add(this.dataGridViewActivity);
-            this.panelActivity.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelActivity.Location = new System.Drawing.Point(0, 151);
-            this.panelActivity.Name = "panelActivity";
-            this.panelActivity.Size = new System.Drawing.Size(1063, 543);
-            this.panelActivity.TabIndex = 40;
+            panelActivity.Controls.Add(dataGridViewActivity);
+            panelActivity.Dock = DockStyle.Bottom;
+            panelActivity.Location = new Point(0, 151);
+            panelActivity.Name = "panelActivity";
+            panelActivity.Size = new Size(1063, 543);
+            panelActivity.TabIndex = 40;
             // 
             // dataGridViewActivity
             // 
-            this.dataGridViewActivity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewActivity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewActivity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewActivity.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewActivity.Name = "dataGridViewActivity";
-            this.dataGridViewActivity.RowTemplate.Height = 25;
-            this.dataGridViewActivity.Size = new System.Drawing.Size(1063, 543);
-            this.dataGridViewActivity.TabIndex = 28;
+            dataGridViewActivity.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewActivity.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewActivity.Dock = DockStyle.Fill;
+            dataGridViewActivity.Location = new Point(0, 0);
+            dataGridViewActivity.Name = "dataGridViewActivity";
+            dataGridViewActivity.RowTemplate.Height = 25;
+            dataGridViewActivity.Size = new Size(1063, 543);
+            dataGridViewActivity.TabIndex = 28;
             // 
             // textBoxSearchActivity
             // 
-            this.textBoxSearchActivity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSearchActivity.Location = new System.Drawing.Point(851, 24);
-            this.textBoxSearchActivity.Name = "textBoxSearchActivity";
-            this.textBoxSearchActivity.PlaceholderText = "Введите запрос для поиска.";
-            this.textBoxSearchActivity.Size = new System.Drawing.Size(204, 26);
-            this.textBoxSearchActivity.TabIndex = 39;
-            this.textBoxSearchActivity.TextChanged += new System.EventHandler(this.textBoxSearchActivity_TextChanged);
+            textBoxSearchActivity.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearchActivity.Location = new Point(851, 24);
+            textBoxSearchActivity.Name = "textBoxSearchActivity";
+            textBoxSearchActivity.PlaceholderText = "Введите запрос для поиска.";
+            textBoxSearchActivity.Size = new Size(204, 26);
+            textBoxSearchActivity.TabIndex = 39;
+            textBoxSearchActivity.TextChanged += textBoxSearchActivity_TextChanged;
             // 
             // textBoxDescriptionActivity
             // 
-            this.textBoxDescriptionActivity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxDescriptionActivity.Location = new System.Drawing.Point(6, 56);
-            this.textBoxDescriptionActivity.Multiline = true;
-            this.textBoxDescriptionActivity.Name = "textBoxDescriptionActivity";
-            this.textBoxDescriptionActivity.PlaceholderText = "Описание";
-            this.textBoxDescriptionActivity.Size = new System.Drawing.Size(355, 44);
-            this.textBoxDescriptionActivity.TabIndex = 35;
+            textBoxDescriptionActivity.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxDescriptionActivity.Location = new Point(6, 56);
+            textBoxDescriptionActivity.Multiline = true;
+            textBoxDescriptionActivity.Name = "textBoxDescriptionActivity";
+            textBoxDescriptionActivity.PlaceholderText = "Описание";
+            textBoxDescriptionActivity.Size = new Size(355, 44);
+            textBoxDescriptionActivity.TabIndex = 35;
             // 
             // textBoxNameActivity
             // 
-            this.textBoxNameActivity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxNameActivity.Location = new System.Drawing.Point(6, 24);
-            this.textBoxNameActivity.Name = "textBoxNameActivity";
-            this.textBoxNameActivity.PlaceholderText = "Название";
-            this.textBoxNameActivity.Size = new System.Drawing.Size(355, 26);
-            this.textBoxNameActivity.TabIndex = 32;
+            textBoxNameActivity.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxNameActivity.Location = new Point(6, 24);
+            textBoxNameActivity.Name = "textBoxNameActivity";
+            textBoxNameActivity.PlaceholderText = "Название";
+            textBoxNameActivity.Size = new Size(355, 26);
+            textBoxNameActivity.TabIndex = 32;
             // 
             // buttonCancelActivity
             // 
-            this.buttonCancelActivity.Enabled = false;
-            this.buttonCancelActivity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCancelActivity.Location = new System.Drawing.Point(378, 90);
-            this.buttonCancelActivity.Name = "buttonCancelActivity";
-            this.buttonCancelActivity.Size = new System.Drawing.Size(126, 26);
-            this.buttonCancelActivity.TabIndex = 38;
-            this.buttonCancelActivity.Text = "Отменить";
-            this.buttonCancelActivity.UseVisualStyleBackColor = true;
-            this.buttonCancelActivity.Click += new System.EventHandler(this.buttonCancelActivity_Click);
+            buttonCancelActivity.Enabled = false;
+            buttonCancelActivity.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCancelActivity.Location = new Point(378, 90);
+            buttonCancelActivity.Name = "buttonCancelActivity";
+            buttonCancelActivity.Size = new Size(126, 26);
+            buttonCancelActivity.TabIndex = 38;
+            buttonCancelActivity.Text = "Отменить";
+            buttonCancelActivity.UseVisualStyleBackColor = true;
+            buttonCancelActivity.Click += buttonCancelActivity_Click;
             // 
             // buttonApplyActivity
             // 
-            this.buttonApplyActivity.Enabled = false;
-            this.buttonApplyActivity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonApplyActivity.Location = new System.Drawing.Point(378, 55);
-            this.buttonApplyActivity.Name = "buttonApplyActivity";
-            this.buttonApplyActivity.Size = new System.Drawing.Size(126, 26);
-            this.buttonApplyActivity.TabIndex = 37;
-            this.buttonApplyActivity.Text = "Сохранить";
-            this.buttonApplyActivity.UseVisualStyleBackColor = true;
-            this.buttonApplyActivity.Click += new System.EventHandler(this.buttonApplyActivity_Click);
+            buttonApplyActivity.Enabled = false;
+            buttonApplyActivity.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonApplyActivity.Location = new Point(378, 55);
+            buttonApplyActivity.Name = "buttonApplyActivity";
+            buttonApplyActivity.Size = new Size(126, 26);
+            buttonApplyActivity.TabIndex = 37;
+            buttonApplyActivity.Text = "Сохранить";
+            buttonApplyActivity.UseVisualStyleBackColor = true;
+            buttonApplyActivity.Click += buttonApplyActivity_Click;
             // 
             // buttonDeleteActivity
             // 
-            this.buttonDeleteActivity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonDeleteActivity.Location = new System.Drawing.Point(691, 23);
-            this.buttonDeleteActivity.Name = "buttonDeleteActivity";
-            this.buttonDeleteActivity.Size = new System.Drawing.Size(126, 26);
-            this.buttonDeleteActivity.TabIndex = 36;
-            this.buttonDeleteActivity.Text = "Удалить";
-            this.buttonDeleteActivity.UseVisualStyleBackColor = true;
-            this.buttonDeleteActivity.Click += new System.EventHandler(this.buttonDeleteActivity_Click);
+            buttonDeleteActivity.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDeleteActivity.Location = new Point(691, 23);
+            buttonDeleteActivity.Name = "buttonDeleteActivity";
+            buttonDeleteActivity.Size = new Size(126, 26);
+            buttonDeleteActivity.TabIndex = 36;
+            buttonDeleteActivity.Text = "Удалить";
+            buttonDeleteActivity.UseVisualStyleBackColor = true;
+            buttonDeleteActivity.Click += buttonDeleteActivity_Click;
             // 
             // buttonLoadActivity
             // 
-            this.buttonLoadActivity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonLoadActivity.Location = new System.Drawing.Point(378, 23);
-            this.buttonLoadActivity.Name = "buttonLoadActivity";
-            this.buttonLoadActivity.Size = new System.Drawing.Size(126, 26);
-            this.buttonLoadActivity.TabIndex = 34;
-            this.buttonLoadActivity.Text = "Редактировать";
-            this.buttonLoadActivity.UseVisualStyleBackColor = true;
-            this.buttonLoadActivity.Click += new System.EventHandler(this.buttonLoadActivity_Click);
+            buttonLoadActivity.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonLoadActivity.Location = new Point(378, 23);
+            buttonLoadActivity.Name = "buttonLoadActivity";
+            buttonLoadActivity.Size = new Size(126, 26);
+            buttonLoadActivity.TabIndex = 34;
+            buttonLoadActivity.Text = "Редактировать";
+            buttonLoadActivity.UseVisualStyleBackColor = true;
+            buttonLoadActivity.Click += buttonLoadActivity_Click;
             // 
             // buttonCreateActivity
             // 
-            this.buttonCreateActivity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCreateActivity.Location = new System.Drawing.Point(534, 23);
-            this.buttonCreateActivity.Name = "buttonCreateActivity";
-            this.buttonCreateActivity.Size = new System.Drawing.Size(126, 26);
-            this.buttonCreateActivity.TabIndex = 33;
-            this.buttonCreateActivity.Text = "Создать";
-            this.buttonCreateActivity.UseVisualStyleBackColor = true;
-            this.buttonCreateActivity.Click += new System.EventHandler(this.buttonCreateActiivity_Click);
+            buttonCreateActivity.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCreateActivity.Location = new Point(534, 23);
+            buttonCreateActivity.Name = "buttonCreateActivity";
+            buttonCreateActivity.Size = new Size(126, 26);
+            buttonCreateActivity.TabIndex = 33;
+            buttonCreateActivity.Text = "Создать";
+            buttonCreateActivity.UseVisualStyleBackColor = true;
+            buttonCreateActivity.Click += buttonCreateActiivity_Click;
             // 
             // labelActivity
             // 
-            this.labelActivity.AutoSize = true;
-            this.labelActivity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelActivity.Location = new System.Drawing.Point(6, 2);
-            this.labelActivity.Name = "labelActivity";
-            this.labelActivity.Size = new System.Drawing.Size(438, 19);
-            this.labelActivity.TabIndex = 31;
-            this.labelActivity.Text = "Выберете активность для редактирования или создайте новую.";
+            labelActivity.AutoSize = true;
+            labelActivity.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelActivity.Location = new Point(6, 2);
+            labelActivity.Name = "labelActivity";
+            labelActivity.Size = new Size(438, 19);
+            labelActivity.TabIndex = 31;
+            labelActivity.Text = "Выберете активность для редактирования или создайте новую.";
             // 
             // tabPageCast
             // 
-            this.tabPageCast.Controls.Add(this.panelCastParams);
-            this.tabPageCast.Controls.Add(this.panelCast);
-            this.tabPageCast.Controls.Add(this.textBoxSearchCast);
-            this.tabPageCast.Controls.Add(this.buttonCancelCast);
-            this.tabPageCast.Controls.Add(this.buttonApplyCast);
-            this.tabPageCast.Controls.Add(this.buttonDeleteCast);
-            this.tabPageCast.Controls.Add(this.buttonLoadCast);
-            this.tabPageCast.Controls.Add(this.buttonCreateCast);
-            this.tabPageCast.Controls.Add(this.labelCast);
-            this.tabPageCast.Location = new System.Drawing.Point(4, 34);
-            this.tabPageCast.Name = "tabPageCast";
-            this.tabPageCast.Size = new System.Drawing.Size(1063, 694);
-            this.tabPageCast.TabIndex = 8;
-            this.tabPageCast.Text = "Шаги";
-            this.tabPageCast.UseVisualStyleBackColor = true;
+            tabPageCast.Controls.Add(panelCastParams);
+            tabPageCast.Controls.Add(panelCast);
+            tabPageCast.Controls.Add(textBoxSearchCast);
+            tabPageCast.Controls.Add(buttonCancelCast);
+            tabPageCast.Controls.Add(buttonApplyCast);
+            tabPageCast.Controls.Add(buttonDeleteCast);
+            tabPageCast.Controls.Add(buttonLoadCast);
+            tabPageCast.Controls.Add(buttonCreateCast);
+            tabPageCast.Controls.Add(labelCast);
+            tabPageCast.Location = new Point(4, 34);
+            tabPageCast.Name = "tabPageCast";
+            tabPageCast.Size = new Size(1063, 694);
+            tabPageCast.TabIndex = 8;
+            tabPageCast.Text = "Шаги";
+            tabPageCast.UseVisualStyleBackColor = true;
             // 
             // panelCastParams
             // 
-            this.panelCastParams.Controls.Add(this.textBoxSearchCastActivity);
-            this.panelCastParams.Controls.Add(this.textBoxSearchCastType);
-            this.panelCastParams.Controls.Add(this.dataGridViewCastActivity);
-            this.panelCastParams.Controls.Add(this.dataGridViewCastType);
-            this.panelCastParams.Controls.Add(this.textBoxSearchCastObjectRecive);
-            this.panelCastParams.Controls.Add(this.textBoxSearchCastBackground);
-            this.panelCastParams.Controls.Add(this.dataGridViewCastObjectRecive);
-            this.panelCastParams.Controls.Add(this.dataGridViewCastBackground);
-            this.panelCastParams.Controls.Add(this.textBoxSearchCastObjectSpend);
-            this.panelCastParams.Controls.Add(this.dataGridViewCastObjectSpend);
-            this.panelCastParams.Controls.Add(this.textBoxDescriptionCast);
-            this.panelCastParams.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelCastParams.Location = new System.Drawing.Point(0, 55);
-            this.panelCastParams.Name = "panelCastParams";
-            this.panelCastParams.Size = new System.Drawing.Size(1063, 395);
-            this.panelCastParams.TabIndex = 67;
+            panelCastParams.Controls.Add(textBoxSearchCastActivity);
+            panelCastParams.Controls.Add(textBoxSearchCastType);
+            panelCastParams.Controls.Add(dataGridViewCastActivity);
+            panelCastParams.Controls.Add(dataGridViewCastType);
+            panelCastParams.Controls.Add(textBoxSearchCastObjectRecive);
+            panelCastParams.Controls.Add(textBoxSearchCastBackground);
+            panelCastParams.Controls.Add(dataGridViewCastObjectRecive);
+            panelCastParams.Controls.Add(dataGridViewCastBackground);
+            panelCastParams.Controls.Add(textBoxSearchCastObjectSpend);
+            panelCastParams.Controls.Add(dataGridViewCastObjectSpend);
+            panelCastParams.Controls.Add(textBoxDescriptionCast);
+            panelCastParams.Dock = DockStyle.Bottom;
+            panelCastParams.Location = new Point(0, 55);
+            panelCastParams.Name = "panelCastParams";
+            panelCastParams.Size = new Size(1063, 395);
+            panelCastParams.TabIndex = 67;
             // 
             // textBoxSearchCastActivity
             // 
-            this.textBoxSearchCastActivity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSearchCastActivity.Location = new System.Drawing.Point(689, 11);
-            this.textBoxSearchCastActivity.Name = "textBoxSearchCastActivity";
-            this.textBoxSearchCastActivity.PlaceholderText = "Введите запрос для поиска активности. ";
-            this.textBoxSearchCastActivity.Size = new System.Drawing.Size(332, 26);
-            this.textBoxSearchCastActivity.TabIndex = 66;
-            this.textBoxSearchCastActivity.TextChanged += new System.EventHandler(this.textBoxSearchCastActivity_TextChanged);
+            textBoxSearchCastActivity.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearchCastActivity.Location = new Point(689, 11);
+            textBoxSearchCastActivity.Name = "textBoxSearchCastActivity";
+            textBoxSearchCastActivity.PlaceholderText = "Введите запрос для поиска активности. ";
+            textBoxSearchCastActivity.Size = new Size(332, 26);
+            textBoxSearchCastActivity.TabIndex = 66;
+            textBoxSearchCastActivity.TextChanged += textBoxSearchCastActivity_TextChanged;
             // 
             // textBoxSearchCastType
             // 
-            this.textBoxSearchCastType.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSearchCastType.Location = new System.Drawing.Point(13, 201);
-            this.textBoxSearchCastType.Name = "textBoxSearchCastType";
-            this.textBoxSearchCastType.PlaceholderText = "Введите запрос для поиска типа применения.";
-            this.textBoxSearchCastType.Size = new System.Drawing.Size(332, 26);
-            this.textBoxSearchCastType.TabIndex = 60;
-            this.textBoxSearchCastType.TextChanged += new System.EventHandler(this.textBoxSearchCastType_TextChanged);
+            textBoxSearchCastType.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearchCastType.Location = new Point(13, 201);
+            textBoxSearchCastType.Name = "textBoxSearchCastType";
+            textBoxSearchCastType.PlaceholderText = "Введите запрос для поиска типа применения.";
+            textBoxSearchCastType.Size = new Size(332, 26);
+            textBoxSearchCastType.TabIndex = 60;
+            textBoxSearchCastType.TextChanged += textBoxSearchCastType_TextChanged;
             // 
             // dataGridViewCastActivity
             // 
-            this.dataGridViewCastActivity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCastActivity.Location = new System.Drawing.Point(689, 43);
-            this.dataGridViewCastActivity.Name = "dataGridViewCastActivity";
-            this.dataGridViewCastActivity.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dataGridViewCastActivity.RowTemplate.Height = 25;
-            this.dataGridViewCastActivity.Size = new System.Drawing.Size(332, 146);
-            this.dataGridViewCastActivity.TabIndex = 65;
+            dataGridViewCastActivity.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCastActivity.Location = new Point(689, 43);
+            dataGridViewCastActivity.Name = "dataGridViewCastActivity";
+            dataGridViewCastActivity.ReadOnly = true;
+            dataGridViewCastActivity.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            dataGridViewCastActivity.RowTemplate.Height = 25;
+            dataGridViewCastActivity.Size = new Size(332, 146);
+            dataGridViewCastActivity.TabIndex = 65;
+            dataGridViewCastActivity.CellClick += dataGridViewCastActivity_CellClick;
             // 
             // dataGridViewCastType
             // 
-            this.dataGridViewCastType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCastType.Location = new System.Drawing.Point(13, 243);
-            this.dataGridViewCastType.Name = "dataGridViewCastType";
-            this.dataGridViewCastType.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dataGridViewCastType.RowTemplate.Height = 25;
-            this.dataGridViewCastType.Size = new System.Drawing.Size(332, 146);
-            this.dataGridViewCastType.TabIndex = 59;
+            dataGridViewCastType.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCastType.Location = new Point(13, 243);
+            dataGridViewCastType.Name = "dataGridViewCastType";
+            dataGridViewCastType.ReadOnly = true;
+            dataGridViewCastType.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            dataGridViewCastType.RowTemplate.Height = 25;
+            dataGridViewCastType.Size = new Size(332, 146);
+            dataGridViewCastType.TabIndex = 59;
+            dataGridViewCastType.CellClick += dataGridViewCastType_CellClick;
             // 
             // textBoxSearchCastObjectRecive
             // 
-            this.textBoxSearchCastObjectRecive.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSearchCastObjectRecive.Location = new System.Drawing.Point(351, 201);
-            this.textBoxSearchCastObjectRecive.Name = "textBoxSearchCastObjectRecive";
-            this.textBoxSearchCastObjectRecive.PlaceholderText = "Введите запрос для полученного объекта.";
-            this.textBoxSearchCastObjectRecive.Size = new System.Drawing.Size(332, 26);
-            this.textBoxSearchCastObjectRecive.TabIndex = 64;
-            this.textBoxSearchCastObjectRecive.TextChanged += new System.EventHandler(this.textBoxSearchCastObjectRecive_TextChanged);
+            textBoxSearchCastObjectRecive.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearchCastObjectRecive.Location = new Point(351, 201);
+            textBoxSearchCastObjectRecive.Name = "textBoxSearchCastObjectRecive";
+            textBoxSearchCastObjectRecive.PlaceholderText = "Введите запрос для полученного объекта.";
+            textBoxSearchCastObjectRecive.Size = new Size(332, 26);
+            textBoxSearchCastObjectRecive.TabIndex = 64;
+            textBoxSearchCastObjectRecive.TextChanged += textBoxSearchCastObjectRecive_TextChanged;
             // 
             // textBoxSearchCastBackground
             // 
-            this.textBoxSearchCastBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSearchCastBackground.Location = new System.Drawing.Point(13, 11);
-            this.textBoxSearchCastBackground.Name = "textBoxSearchCastBackground";
-            this.textBoxSearchCastBackground.PlaceholderText = "Введите запрос для поиска фона. ";
-            this.textBoxSearchCastBackground.Size = new System.Drawing.Size(332, 26);
-            this.textBoxSearchCastBackground.TabIndex = 58;
-            this.textBoxSearchCastBackground.TextChanged += new System.EventHandler(this.textBoxSearchCastBackground_TextChanged);
+            textBoxSearchCastBackground.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearchCastBackground.Location = new Point(13, 11);
+            textBoxSearchCastBackground.Name = "textBoxSearchCastBackground";
+            textBoxSearchCastBackground.PlaceholderText = "Введите запрос для поиска фона. ";
+            textBoxSearchCastBackground.Size = new Size(332, 26);
+            textBoxSearchCastBackground.TabIndex = 58;
+            textBoxSearchCastBackground.TextChanged += textBoxSearchCastBackground_TextChanged;
             // 
             // dataGridViewCastObjectRecive
             // 
-            this.dataGridViewCastObjectRecive.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCastObjectRecive.Location = new System.Drawing.Point(351, 243);
-            this.dataGridViewCastObjectRecive.Name = "dataGridViewCastObjectRecive";
-            this.dataGridViewCastObjectRecive.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dataGridViewCastObjectRecive.RowTemplate.Height = 25;
-            this.dataGridViewCastObjectRecive.Size = new System.Drawing.Size(332, 146);
-            this.dataGridViewCastObjectRecive.TabIndex = 63;
-            this.dataGridViewCastObjectRecive.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCastObjectRecive_CellClick);
+            dataGridViewCastObjectRecive.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCastObjectRecive.Location = new Point(351, 243);
+            dataGridViewCastObjectRecive.Name = "dataGridViewCastObjectRecive";
+            dataGridViewCastObjectRecive.ReadOnly = true;
+            dataGridViewCastObjectRecive.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            dataGridViewCastObjectRecive.RowTemplate.Height = 25;
+            dataGridViewCastObjectRecive.Size = new Size(332, 146);
+            dataGridViewCastObjectRecive.TabIndex = 63;
+            dataGridViewCastObjectRecive.CellClick += dataGridViewCastObjectRecive_CellClick;
             // 
             // dataGridViewCastBackground
             // 
-            this.dataGridViewCastBackground.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCastBackground.Location = new System.Drawing.Point(13, 43);
-            this.dataGridViewCastBackground.Name = "dataGridViewCastBackground";
-            this.dataGridViewCastBackground.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dataGridViewCastBackground.RowTemplate.Height = 25;
-            this.dataGridViewCastBackground.Size = new System.Drawing.Size(332, 146);
-            this.dataGridViewCastBackground.TabIndex = 57;
+            dataGridViewCastBackground.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCastBackground.Location = new Point(13, 43);
+            dataGridViewCastBackground.Name = "dataGridViewCastBackground";
+            dataGridViewCastBackground.ReadOnly = true;
+            dataGridViewCastBackground.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            dataGridViewCastBackground.RowTemplate.Height = 25;
+            dataGridViewCastBackground.Size = new Size(332, 146);
+            dataGridViewCastBackground.TabIndex = 57;
+            dataGridViewCastBackground.CellClick += dataGridViewCastBackground_CellClick;
             // 
             // textBoxSearchCastObjectSpend
             // 
-            this.textBoxSearchCastObjectSpend.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSearchCastObjectSpend.Location = new System.Drawing.Point(351, 11);
-            this.textBoxSearchCastObjectSpend.Name = "textBoxSearchCastObjectSpend";
-            this.textBoxSearchCastObjectSpend.PlaceholderText = "Введите запрос для использованного объекта. ";
-            this.textBoxSearchCastObjectSpend.Size = new System.Drawing.Size(332, 26);
-            this.textBoxSearchCastObjectSpend.TabIndex = 62;
-            this.textBoxSearchCastObjectSpend.TextChanged += new System.EventHandler(this.textBoxSearchCastObjectSpend_TextChanged);
+            textBoxSearchCastObjectSpend.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearchCastObjectSpend.Location = new Point(351, 11);
+            textBoxSearchCastObjectSpend.Name = "textBoxSearchCastObjectSpend";
+            textBoxSearchCastObjectSpend.PlaceholderText = "Введите запрос для использованного объекта. ";
+            textBoxSearchCastObjectSpend.Size = new Size(332, 26);
+            textBoxSearchCastObjectSpend.TabIndex = 62;
+            textBoxSearchCastObjectSpend.TextChanged += textBoxSearchCastObjectSpend_TextChanged;
             // 
             // dataGridViewCastObjectSpend
             // 
-            this.dataGridViewCastObjectSpend.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCastObjectSpend.Location = new System.Drawing.Point(351, 43);
-            this.dataGridViewCastObjectSpend.Name = "dataGridViewCastObjectSpend";
-            this.dataGridViewCastObjectSpend.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dataGridViewCastObjectSpend.RowTemplate.Height = 25;
-            this.dataGridViewCastObjectSpend.Size = new System.Drawing.Size(332, 146);
-            this.dataGridViewCastObjectSpend.TabIndex = 61;
-            this.dataGridViewCastObjectSpend.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCastObjectSpend_CellClick);
+            dataGridViewCastObjectSpend.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCastObjectSpend.Location = new Point(351, 43);
+            dataGridViewCastObjectSpend.Name = "dataGridViewCastObjectSpend";
+            dataGridViewCastObjectSpend.ReadOnly = true;
+            dataGridViewCastObjectSpend.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            dataGridViewCastObjectSpend.RowTemplate.Height = 25;
+            dataGridViewCastObjectSpend.Size = new Size(332, 146);
+            dataGridViewCastObjectSpend.TabIndex = 61;
+            dataGridViewCastObjectSpend.CellClick += dataGridViewCastObjectSpend_CellClick;
             // 
             // textBoxDescriptionCast
             // 
-            this.textBoxDescriptionCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxDescriptionCast.Location = new System.Drawing.Point(689, 201);
-            this.textBoxDescriptionCast.Multiline = true;
-            this.textBoxDescriptionCast.Name = "textBoxDescriptionCast";
-            this.textBoxDescriptionCast.PlaceholderText = "Описание";
-            this.textBoxDescriptionCast.Size = new System.Drawing.Size(332, 188);
-            this.textBoxDescriptionCast.TabIndex = 46;
+            textBoxDescriptionCast.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxDescriptionCast.Location = new Point(689, 201);
+            textBoxDescriptionCast.Multiline = true;
+            textBoxDescriptionCast.Name = "textBoxDescriptionCast";
+            textBoxDescriptionCast.PlaceholderText = "Описание";
+            textBoxDescriptionCast.Size = new Size(332, 188);
+            textBoxDescriptionCast.TabIndex = 46;
+            textBoxDescriptionCast.TextChanged += textBoxDescriptionCast_TextChanged;
             // 
             // panelCast
             // 
-            this.panelCast.Controls.Add(this.buttonResetCreatebleCast);
-            this.panelCast.Controls.Add(this.label2);
-            this.panelCast.Controls.Add(this.labelCastActivity);
-            this.panelCast.Controls.Add(this.label1);
-            this.panelCast.Controls.Add(this.labelCastCastType);
-            this.panelCast.Controls.Add(this.labelCastBackgroundValue);
-            this.panelCast.Controls.Add(this.labelCastBackground);
-            this.panelCast.Controls.Add(this.labelObjectToReciveValue);
-            this.panelCast.Controls.Add(this.labelObjectToRecive);
-            this.panelCast.Controls.Add(this.labelObjectToSpendValue);
-            this.panelCast.Controls.Add(this.labelObjectToSpend);
-            this.panelCast.Controls.Add(this.dataGridViewCast);
-            this.panelCast.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelCast.Location = new System.Drawing.Point(0, 450);
-            this.panelCast.Name = "panelCast";
-            this.panelCast.Size = new System.Drawing.Size(1063, 244);
-            this.panelCast.TabIndex = 51;
+            panelCast.Controls.Add(checkBoxCastDescription);
+            panelCast.Controls.Add(labelCastDescription);
+            panelCast.Controls.Add(buttonResetCreatebleCast);
+            panelCast.Controls.Add(labelCastActivityValue);
+            panelCast.Controls.Add(labelCastActivity);
+            panelCast.Controls.Add(labelCastCastTypeValue);
+            panelCast.Controls.Add(labelCastCastType);
+            panelCast.Controls.Add(labelCastBackgroundValue);
+            panelCast.Controls.Add(labelCastBackground);
+            panelCast.Controls.Add(labelObjectToReciveValue);
+            panelCast.Controls.Add(labelObjectToRecive);
+            panelCast.Controls.Add(labelObjectToSpendValue);
+            panelCast.Controls.Add(labelObjectToSpend);
+            panelCast.Controls.Add(dataGridViewCast);
+            panelCast.Dock = DockStyle.Bottom;
+            panelCast.Location = new Point(0, 450);
+            panelCast.Name = "panelCast";
+            panelCast.Size = new Size(1063, 244);
+            panelCast.TabIndex = 51;
             // 
-            // dataGridViewCast
+            // checkBoxCastDescription
             // 
-            this.dataGridViewCast.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewCast.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCast.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dataGridViewCast.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewCast.Name = "dataGridViewCast";
-            this.dataGridViewCast.RowTemplate.Height = 25;
-            this.dataGridViewCast.Size = new System.Drawing.Size(683, 244);
-            this.dataGridViewCast.TabIndex = 28;
+            checkBoxCastDescription.AutoSize = true;
+            checkBoxCastDescription.Enabled = false;
+            checkBoxCastDescription.Location = new Point(859, 176);
+            checkBoxCastDescription.Name = "checkBoxCastDescription";
+            checkBoxCastDescription.Size = new Size(15, 14);
+            checkBoxCastDescription.TabIndex = 79;
+            checkBoxCastDescription.UseVisualStyleBackColor = true;
             // 
-            // textBoxSearchCast
+            // labelCastDescription
             // 
-            this.textBoxSearchCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSearchCast.Location = new System.Drawing.Point(832, 22);
-            this.textBoxSearchCast.Name = "textBoxSearchCast";
-            this.textBoxSearchCast.PlaceholderText = "Введите запрос для поиска.";
-            this.textBoxSearchCast.Size = new System.Drawing.Size(204, 26);
-            this.textBoxSearchCast.TabIndex = 50;
-            // 
-            // buttonCancelCast
-            // 
-            this.buttonCancelCast.Enabled = false;
-            this.buttonCancelCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCancelCast.Location = new System.Drawing.Point(270, 23);
-            this.buttonCancelCast.Name = "buttonCancelCast";
-            this.buttonCancelCast.Size = new System.Drawing.Size(126, 26);
-            this.buttonCancelCast.TabIndex = 49;
-            this.buttonCancelCast.Text = "Отменить";
-            this.buttonCancelCast.UseVisualStyleBackColor = true;
-            // 
-            // buttonApplyCast
-            // 
-            this.buttonApplyCast.Enabled = false;
-            this.buttonApplyCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonApplyCast.Location = new System.Drawing.Point(138, 23);
-            this.buttonApplyCast.Name = "buttonApplyCast";
-            this.buttonApplyCast.Size = new System.Drawing.Size(126, 26);
-            this.buttonApplyCast.TabIndex = 48;
-            this.buttonApplyCast.Text = "Сохранить";
-            this.buttonApplyCast.UseVisualStyleBackColor = true;
-            // 
-            // buttonDeleteCast
-            // 
-            this.buttonDeleteCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonDeleteCast.Location = new System.Drawing.Point(689, 22);
-            this.buttonDeleteCast.Name = "buttonDeleteCast";
-            this.buttonDeleteCast.Size = new System.Drawing.Size(126, 26);
-            this.buttonDeleteCast.TabIndex = 47;
-            this.buttonDeleteCast.Text = "Удалить";
-            this.buttonDeleteCast.UseVisualStyleBackColor = true;
-            // 
-            // buttonLoadCast
-            // 
-            this.buttonLoadCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonLoadCast.Location = new System.Drawing.Point(6, 23);
-            this.buttonLoadCast.Name = "buttonLoadCast";
-            this.buttonLoadCast.Size = new System.Drawing.Size(126, 26);
-            this.buttonLoadCast.TabIndex = 45;
-            this.buttonLoadCast.Text = "Редактировать";
-            this.buttonLoadCast.UseVisualStyleBackColor = true;
-            // 
-            // buttonCreateCast
-            // 
-            this.buttonCreateCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCreateCast.Location = new System.Drawing.Point(542, 23);
-            this.buttonCreateCast.Name = "buttonCreateCast";
-            this.buttonCreateCast.Size = new System.Drawing.Size(126, 26);
-            this.buttonCreateCast.TabIndex = 44;
-            this.buttonCreateCast.Text = "Создать";
-            this.buttonCreateCast.UseVisualStyleBackColor = true;
-            // 
-            // labelCast
-            // 
-            this.labelCast.AutoSize = true;
-            this.labelCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelCast.Location = new System.Drawing.Point(6, 1);
-            this.labelCast.Name = "labelCast";
-            this.labelCast.Size = new System.Drawing.Size(388, 19);
-            this.labelCast.TabIndex = 42;
-            this.labelCast.Text = "Выберете шаг для редактирования или создайте новый.";
-            // 
-            // tabPageTests
-            // 
-            this.tabPageTests.Location = new System.Drawing.Point(4, 34);
-            this.tabPageTests.Name = "tabPageTests";
-            this.tabPageTests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTests.Size = new System.Drawing.Size(1063, 694);
-            this.tabPageTests.TabIndex = 6;
-            this.tabPageTests.Text = "Проверки сценария";
-            this.tabPageTests.UseVisualStyleBackColor = true;
-            // 
-            // panelMainForm
-            // 
-            this.panelMainForm.Controls.Add(this.splitContainerMainForm);
-            this.panelMainForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMainForm.Location = new System.Drawing.Point(0, 0);
-            this.panelMainForm.Name = "panelMainForm";
-            this.panelMainForm.Size = new System.Drawing.Size(1451, 732);
-            this.panelMainForm.TabIndex = 0;
-            // 
-            // labelObjectToSpend
-            // 
-            this.labelObjectToSpend.AutoSize = true;
-            this.labelObjectToSpend.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelObjectToSpend.Location = new System.Drawing.Point(689, 83);
-            this.labelObjectToSpend.Name = "labelObjectToSpend";
-            this.labelObjectToSpend.Size = new System.Drawing.Size(132, 19);
-            this.labelObjectToSpend.TabIndex = 68;
-            this.labelObjectToSpend.Text = "Объект для траты:";
-            // 
-            // labelObjectToSpendValue
-            // 
-            this.labelObjectToSpendValue.AutoSize = true;
-            this.labelObjectToSpendValue.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelObjectToSpendValue.Location = new System.Drawing.Point(859, 83);
-            this.labelObjectToSpendValue.Name = "labelObjectToSpendValue";
-            this.labelObjectToSpendValue.Size = new System.Drawing.Size(15, 19);
-            this.labelObjectToSpendValue.TabIndex = 69;
-            this.labelObjectToSpendValue.Text = "-";
-            // 
-            // labelObjectToReciveValue
-            // 
-            this.labelObjectToReciveValue.AutoSize = true;
-            this.labelObjectToReciveValue.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelObjectToReciveValue.Location = new System.Drawing.Point(859, 112);
-            this.labelObjectToReciveValue.Name = "labelObjectToReciveValue";
-            this.labelObjectToReciveValue.Size = new System.Drawing.Size(15, 19);
-            this.labelObjectToReciveValue.TabIndex = 71;
-            this.labelObjectToReciveValue.Text = "-";
-            // 
-            // labelObjectToRecive
-            // 
-            this.labelObjectToRecive.AutoSize = true;
-            this.labelObjectToRecive.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelObjectToRecive.Location = new System.Drawing.Point(689, 112);
-            this.labelObjectToRecive.Name = "labelObjectToRecive";
-            this.labelObjectToRecive.Size = new System.Drawing.Size(164, 19);
-            this.labelObjectToRecive.TabIndex = 70;
-            this.labelObjectToRecive.Text = "Объект для получения:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(859, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(15, 19);
-            this.label1.TabIndex = 75;
-            this.label1.Text = "-";
-            // 
-            // labelCastCastType
-            // 
-            this.labelCastCastType.AutoSize = true;
-            this.labelCastCastType.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelCastCastType.Location = new System.Drawing.Point(689, 51);
-            this.labelCastCastType.Name = "labelCastCastType";
-            this.labelCastCastType.Size = new System.Drawing.Size(132, 19);
-            this.labelCastCastType.TabIndex = 74;
-            this.labelCastCastType.Text = "Объект для траты:";
-            // 
-            // labelCastBackgroundValue
-            // 
-            this.labelCastBackgroundValue.AutoSize = true;
-            this.labelCastBackgroundValue.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelCastBackgroundValue.Location = new System.Drawing.Point(859, 22);
-            this.labelCastBackgroundValue.Name = "labelCastBackgroundValue";
-            this.labelCastBackgroundValue.Size = new System.Drawing.Size(15, 19);
-            this.labelCastBackgroundValue.TabIndex = 73;
-            this.labelCastBackgroundValue.Text = "-";
-            // 
-            // labelCastBackground
-            // 
-            this.labelCastBackground.AutoSize = true;
-            this.labelCastBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelCastBackground.Location = new System.Drawing.Point(689, 22);
-            this.labelCastBackground.Name = "labelCastBackground";
-            this.labelCastBackground.Size = new System.Drawing.Size(42, 19);
-            this.labelCastBackground.TabIndex = 72;
-            this.labelCastBackground.Text = "Фон:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(859, 144);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(15, 19);
-            this.label2.TabIndex = 77;
-            this.label2.Text = "-";
-            // 
-            // labelCastActivity
-            // 
-            this.labelCastActivity.AutoSize = true;
-            this.labelCastActivity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelCastActivity.Location = new System.Drawing.Point(689, 144);
-            this.labelCastActivity.Name = "labelCastActivity";
-            this.labelCastActivity.Size = new System.Drawing.Size(92, 19);
-            this.labelCastActivity.TabIndex = 76;
-            this.labelCastActivity.Text = "Активность:";
+            labelCastDescription.AutoSize = true;
+            labelCastDescription.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelCastDescription.Location = new Point(689, 174);
+            labelCastDescription.Name = "labelCastDescription";
+            labelCastDescription.Size = new Size(81, 19);
+            labelCastDescription.TabIndex = 78;
+            labelCastDescription.Text = "Описание:";
             // 
             // buttonResetCreatebleCast
             // 
-            this.buttonResetCreatebleCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonResetCreatebleCast.Location = new System.Drawing.Point(689, 189);
-            this.buttonResetCreatebleCast.Name = "buttonResetCreatebleCast";
-            this.buttonResetCreatebleCast.Size = new System.Drawing.Size(126, 26);
-            this.buttonResetCreatebleCast.TabIndex = 68;
-            this.buttonResetCreatebleCast.Text = "Сброс";
-            this.buttonResetCreatebleCast.UseVisualStyleBackColor = true;
+            buttonResetCreatebleCast.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonResetCreatebleCast.Location = new Point(689, 210);
+            buttonResetCreatebleCast.Name = "buttonResetCreatebleCast";
+            buttonResetCreatebleCast.Size = new Size(126, 26);
+            buttonResetCreatebleCast.TabIndex = 68;
+            buttonResetCreatebleCast.Text = "Сброс";
+            buttonResetCreatebleCast.UseVisualStyleBackColor = true;
+            buttonResetCreatebleCast.Click += buttonResetCreatebleCast_Click;
+            // 
+            // labelCastActivityValue
+            // 
+            labelCastActivityValue.AutoSize = true;
+            labelCastActivityValue.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelCastActivityValue.Location = new Point(859, 144);
+            labelCastActivityValue.Name = "labelCastActivityValue";
+            labelCastActivityValue.Size = new Size(15, 19);
+            labelCastActivityValue.TabIndex = 77;
+            labelCastActivityValue.Text = "-";
+            // 
+            // labelCastActivity
+            // 
+            labelCastActivity.AutoSize = true;
+            labelCastActivity.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelCastActivity.Location = new Point(689, 144);
+            labelCastActivity.Name = "labelCastActivity";
+            labelCastActivity.Size = new Size(92, 19);
+            labelCastActivity.TabIndex = 76;
+            labelCastActivity.Text = "Активность:";
+            // 
+            // labelCastCastTypeValue
+            // 
+            labelCastCastTypeValue.AutoSize = true;
+            labelCastCastTypeValue.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelCastCastTypeValue.Location = new Point(859, 51);
+            labelCastCastTypeValue.Name = "labelCastCastTypeValue";
+            labelCastCastTypeValue.Size = new Size(15, 19);
+            labelCastCastTypeValue.TabIndex = 75;
+            labelCastCastTypeValue.Text = "-";
+            // 
+            // labelCastCastType
+            // 
+            labelCastCastType.AutoSize = true;
+            labelCastCastType.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelCastCastType.Location = new Point(689, 51);
+            labelCastCastType.Name = "labelCastCastType";
+            labelCastCastType.Size = new Size(78, 19);
+            labelCastCastType.TabIndex = 74;
+            labelCastCastType.Text = "Тип каста:";
+            // 
+            // labelCastBackgroundValue
+            // 
+            labelCastBackgroundValue.AutoSize = true;
+            labelCastBackgroundValue.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelCastBackgroundValue.Location = new Point(859, 22);
+            labelCastBackgroundValue.Name = "labelCastBackgroundValue";
+            labelCastBackgroundValue.Size = new Size(15, 19);
+            labelCastBackgroundValue.TabIndex = 73;
+            labelCastBackgroundValue.Text = "-";
+            // 
+            // labelCastBackground
+            // 
+            labelCastBackground.AutoSize = true;
+            labelCastBackground.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelCastBackground.Location = new Point(689, 22);
+            labelCastBackground.Name = "labelCastBackground";
+            labelCastBackground.Size = new Size(42, 19);
+            labelCastBackground.TabIndex = 72;
+            labelCastBackground.Text = "Фон:";
+            // 
+            // labelObjectToReciveValue
+            // 
+            labelObjectToReciveValue.AutoSize = true;
+            labelObjectToReciveValue.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelObjectToReciveValue.Location = new Point(859, 112);
+            labelObjectToReciveValue.Name = "labelObjectToReciveValue";
+            labelObjectToReciveValue.Size = new Size(15, 19);
+            labelObjectToReciveValue.TabIndex = 71;
+            labelObjectToReciveValue.Text = "-";
+            // 
+            // labelObjectToRecive
+            // 
+            labelObjectToRecive.AutoSize = true;
+            labelObjectToRecive.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelObjectToRecive.Location = new Point(689, 112);
+            labelObjectToRecive.Name = "labelObjectToRecive";
+            labelObjectToRecive.Size = new Size(164, 19);
+            labelObjectToRecive.TabIndex = 70;
+            labelObjectToRecive.Text = "Объект для получения:";
+            // 
+            // labelObjectToSpendValue
+            // 
+            labelObjectToSpendValue.AutoSize = true;
+            labelObjectToSpendValue.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelObjectToSpendValue.Location = new Point(859, 83);
+            labelObjectToSpendValue.Name = "labelObjectToSpendValue";
+            labelObjectToSpendValue.Size = new Size(15, 19);
+            labelObjectToSpendValue.TabIndex = 69;
+            labelObjectToSpendValue.Text = "-";
+            // 
+            // labelObjectToSpend
+            // 
+            labelObjectToSpend.AutoSize = true;
+            labelObjectToSpend.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelObjectToSpend.Location = new Point(689, 83);
+            labelObjectToSpend.Name = "labelObjectToSpend";
+            labelObjectToSpend.Size = new Size(132, 19);
+            labelObjectToSpend.TabIndex = 68;
+            labelObjectToSpend.Text = "Объект для траты:";
+            // 
+            // dataGridViewCast
+            // 
+            dataGridViewCast.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCast.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCast.Dock = DockStyle.Left;
+            dataGridViewCast.Location = new Point(0, 0);
+            dataGridViewCast.Name = "dataGridViewCast";
+            dataGridViewCast.RowTemplate.Height = 25;
+            dataGridViewCast.Size = new Size(683, 244);
+            dataGridViewCast.TabIndex = 28;
+            // 
+            // textBoxSearchCast
+            // 
+            textBoxSearchCast.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearchCast.Location = new Point(832, 22);
+            textBoxSearchCast.Name = "textBoxSearchCast";
+            textBoxSearchCast.PlaceholderText = "Введите запрос для поиска.";
+            textBoxSearchCast.Size = new Size(204, 26);
+            textBoxSearchCast.TabIndex = 50;
+            // 
+            // buttonCancelCast
+            // 
+            buttonCancelCast.Enabled = false;
+            buttonCancelCast.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCancelCast.Location = new Point(270, 23);
+            buttonCancelCast.Name = "buttonCancelCast";
+            buttonCancelCast.Size = new Size(126, 26);
+            buttonCancelCast.TabIndex = 49;
+            buttonCancelCast.Text = "Отменить";
+            buttonCancelCast.UseVisualStyleBackColor = true;
+            buttonCancelCast.Click += buttonCancelCast_Click;
+            // 
+            // buttonApplyCast
+            // 
+            buttonApplyCast.Enabled = false;
+            buttonApplyCast.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonApplyCast.Location = new Point(138, 23);
+            buttonApplyCast.Name = "buttonApplyCast";
+            buttonApplyCast.Size = new Size(126, 26);
+            buttonApplyCast.TabIndex = 48;
+            buttonApplyCast.Text = "Сохранить";
+            buttonApplyCast.UseVisualStyleBackColor = true;
+            buttonApplyCast.Click += buttonApplyCast_Click;
+            // 
+            // buttonDeleteCast
+            // 
+            buttonDeleteCast.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDeleteCast.Location = new Point(689, 22);
+            buttonDeleteCast.Name = "buttonDeleteCast";
+            buttonDeleteCast.Size = new Size(126, 26);
+            buttonDeleteCast.TabIndex = 47;
+            buttonDeleteCast.Text = "Удалить";
+            buttonDeleteCast.UseVisualStyleBackColor = true;
+            buttonDeleteCast.Click += buttonDeleteCast_Click;
+            // 
+            // buttonLoadCast
+            // 
+            buttonLoadCast.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonLoadCast.Location = new Point(6, 23);
+            buttonLoadCast.Name = "buttonLoadCast";
+            buttonLoadCast.Size = new Size(126, 26);
+            buttonLoadCast.TabIndex = 45;
+            buttonLoadCast.Text = "Редактировать";
+            buttonLoadCast.UseVisualStyleBackColor = true;
+            buttonLoadCast.Click += buttonLoadCast_Click;
+            // 
+            // buttonCreateCast
+            // 
+            buttonCreateCast.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCreateCast.Location = new Point(542, 23);
+            buttonCreateCast.Name = "buttonCreateCast";
+            buttonCreateCast.Size = new Size(126, 26);
+            buttonCreateCast.TabIndex = 44;
+            buttonCreateCast.Text = "Создать";
+            buttonCreateCast.UseVisualStyleBackColor = true;
+            buttonCreateCast.Click += buttonCreateCast_Click;
+            // 
+            // labelCast
+            // 
+            labelCast.AutoSize = true;
+            labelCast.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelCast.Location = new Point(6, 1);
+            labelCast.Name = "labelCast";
+            labelCast.Size = new Size(388, 19);
+            labelCast.TabIndex = 42;
+            labelCast.Text = "Выберете шаг для редактирования или создайте новый.";
+            // 
+            // tabPageTests
+            // 
+            tabPageTests.Location = new Point(4, 34);
+            tabPageTests.Name = "tabPageTests";
+            tabPageTests.Padding = new Padding(3);
+            tabPageTests.Size = new Size(1063, 694);
+            tabPageTests.TabIndex = 6;
+            tabPageTests.Text = "Проверки сценария";
+            tabPageTests.UseVisualStyleBackColor = true;
+            // 
+            // panelMainForm
+            // 
+            panelMainForm.Controls.Add(splitContainerMainForm);
+            panelMainForm.Dock = DockStyle.Fill;
+            panelMainForm.Location = new Point(0, 0);
+            panelMainForm.Name = "panelMainForm";
+            panelMainForm.Size = new Size(1451, 732);
+            panelMainForm.TabIndex = 0;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1451, 732);
-            this.Controls.Add(this.panelMainForm);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "MainForm";
-            this.Text = "Редактор сценариста";
-            this.splitContainerMainForm.Panel1.ResumeLayout(false);
-            this.splitContainerMainForm.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMainForm)).EndInit();
-            this.splitContainerMainForm.ResumeLayout(false);
-            this.tabControlScenario.ResumeLayout(false);
-            this.tabPageScript.ResumeLayout(false);
-            this.tabPageScript.PerformLayout();
-            this.panelScript.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewScript)).EndInit();
-            this.tabPageBlock.ResumeLayout(false);
-            this.tabPageBlock.PerformLayout();
-            this.panelBlock.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBlock)).EndInit();
-            this.tabPageBackground.ResumeLayout(false);
-            this.tabPageBackground.PerformLayout();
-            this.panelBackground.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBackground)).EndInit();
-            this.tabPageCastTypes.ResumeLayout(false);
-            this.tabPageCastTypes.PerformLayout();
-            this.panelCastTypes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastTypes)).EndInit();
-            this.tabPageObjects.ResumeLayout(false);
-            this.tabPageObjects.PerformLayout();
-            this.panelMorph.ResumeLayout(false);
-            this.panelObjects.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjects)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewObjToMorph)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecipeToMorph)).EndInit();
-            this.tabPageActivity.ResumeLayout(false);
-            this.tabPageActivity.PerformLayout();
-            this.panelActivity.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActivity)).EndInit();
-            this.tabPageCast.ResumeLayout(false);
-            this.tabPageCast.PerformLayout();
-            this.panelCastParams.ResumeLayout(false);
-            this.panelCastParams.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastActivity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastObjectRecive)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastBackground)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastObjectSpend)).EndInit();
-            this.panelCast.ResumeLayout(false);
-            this.panelCast.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCast)).EndInit();
-            this.panelMainForm.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1451, 732);
+            Controls.Add(panelMainForm);
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "MainForm";
+            Text = "Редактор сценариста";
+            splitContainerMainForm.Panel1.ResumeLayout(false);
+            splitContainerMainForm.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerMainForm).EndInit();
+            splitContainerMainForm.ResumeLayout(false);
+            tabControlScenario.ResumeLayout(false);
+            tabPageScript.ResumeLayout(false);
+            tabPageScript.PerformLayout();
+            panelScript.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewScript).EndInit();
+            tabPageBlock.ResumeLayout(false);
+            tabPageBlock.PerformLayout();
+            panelBlock.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewBlock).EndInit();
+            tabPageBackground.ResumeLayout(false);
+            tabPageBackground.PerformLayout();
+            panelBackground.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewBackground).EndInit();
+            tabPageCastTypes.ResumeLayout(false);
+            tabPageCastTypes.PerformLayout();
+            panelCastTypes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCastTypes).EndInit();
+            tabPageObjects.ResumeLayout(false);
+            tabPageObjects.PerformLayout();
+            panelMorph.ResumeLayout(false);
+            panelObjects.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewObjects).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewObjToMorph).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewRecipeToMorph).EndInit();
+            tabPageActivity.ResumeLayout(false);
+            tabPageActivity.PerformLayout();
+            panelActivity.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewActivity).EndInit();
+            tabPageCast.ResumeLayout(false);
+            tabPageCast.PerformLayout();
+            panelCastParams.ResumeLayout(false);
+            panelCastParams.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCastActivity).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCastType).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCastObjectRecive).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCastBackground).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCastObjectSpend).EndInit();
+            panelCast.ResumeLayout(false);
+            panelCast.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCast).EndInit();
+            panelMainForm.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -1683,12 +1721,14 @@
         private Label labelObjectToSpendValue;
         private Label labelObjectToReciveValue;
         private Label labelObjectToRecive;
-        private Label label1;
+        private Label labelCastCastTypeValue;
         private Label labelCastCastType;
         private Label labelCastBackgroundValue;
         private Label labelCastBackground;
-        private Label label2;
+        private Label labelCastActivityValue;
         private Label labelCastActivity;
         private Button buttonResetCreatebleCast;
+        private Label labelCastDescription;
+        private CheckBox checkBoxCastDescription;
     }
 }

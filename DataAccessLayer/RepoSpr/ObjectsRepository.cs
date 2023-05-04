@@ -21,7 +21,7 @@ namespace DataAccessLayer.RepoSpr
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-               db.Query($@"insert into {_tableName} values({Convert.ToInt32(obj.Morph)},'{obj.Name}')");
+               db.Query($@"insert into {_tableName} values({Convert.ToInt32(obj.Morph)}, N'{obj.Name}')");
             }
         }
 
@@ -53,7 +53,7 @@ namespace DataAccessLayer.RepoSpr
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"UPDATE {_tableName} SET Name = '{obj.Name}', Morph={Convert.ToInt32(obj.Morph)} WHERE id={obj.Id}");
+                db.Query($@"UPDATE {_tableName} SET Name = N'{obj.Name}', Morph={Convert.ToInt32(obj.Morph)} WHERE id={obj.Id}");
             }
         }
     }

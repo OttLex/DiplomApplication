@@ -24,7 +24,7 @@ namespace DataAccessLayer.RepoRel
                 db.Query($@"insert into {_tableName} values({obj.IdBlock}, {obj.IdBackground}, 
                                                             {obj.IdActivity}, {obj.IdStep}, 
                                                             {obj.IdCastType}, {obj.IdObjectSpent},
-                                                            {obj.IdObjectRecive}, {obj.Description})");
+                                                            {obj.IdObjectRecive}, N'{obj.Description}')");
             }
         }
 
@@ -60,7 +60,7 @@ namespace DataAccessLayer.RepoRel
                 db.Query($@"UPDATE {_tableName} SET IdBlock = {obj.IdBlock}, IdBackground={obj.IdBackground},
                                                     IdActivity={obj.IdActivity}, IdStep={obj.IdStep},
                                                     IdCastType={obj.IdCastType}, IdObjectSpent={obj.IdObjectSpent},
-                                                    IdObjectRecive={obj.IdObjectRecive}, Description={obj.Description},
+                                                    IdObjectRecive={obj.IdObjectRecive}, Description=N'{obj.Description}'
                                                     WHERE id={obj.Id}");
             }
         }
