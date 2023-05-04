@@ -1000,10 +1000,32 @@ namespace WinFormsAppDiplom
         }
         private void textBoxSearchBlock_TextChanged(object sender, EventArgs e)
         {
+            if (dataGridViewBlock.DataSource != null && textBoxSearchBlock.Text != "")
+            {
+                SearchByDataGridService<Block> searhBlock =
+                                        new SearchByDataGridService<Block>(
+                                                    (List<Block>)dataGridViewBlock.DataSource,
+                                                                                        textBoxSearchBlock.Text);
+                dataGridViewBlock.DataSource = searhBlock.Search();
+                return;
+            }
 
+            dataGridViewBlock.DataSource = _blockRepository.GetObjects();
         }
         private void textBoxSearchBackground_TextChanged(object sender, EventArgs e)
         {
+
+            if (dataGridViewBackground.DataSource != null && textBoxSearchBackground.Text != "")
+            {
+                SearchByDataGridService<Background> searhBackgound =
+                                                        new SearchByDataGridService<Background>(
+                                                                    (List<Background>)dataGridViewBackground.DataSource,
+                                                                                                        textBoxSearchBackground.Text);
+                dataGridViewBackground.DataSource = searhBackgound.Search();
+                return;
+            }
+
+            dataGridViewBackground.DataSource = _backgroundRepository.GetObjects();
 
         }
         private void textBoxSearchCastTypes_TextChanged(object sender, EventArgs e)
