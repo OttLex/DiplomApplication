@@ -85,23 +85,19 @@ namespace WinFormsAppDiplom
         }
         private void FillDataGridViewBlock()
         {
-            if (_currentWorkScript == null)
-            {
-                dataGridViewBlock.DataSource = _blockRepository.GetObjects();
-            }
-            else
+            if (_currentWorkScript != null)
             {
                 var repo = new BlockRepository(_connectionString);
                 dataGridViewBlock.DataSource = repo.GetObjects(_currentWorkScript.Id);
+                dataGridViewBlock.Columns[0].Visible = false;
+                dataGridViewBlock.AutoSize = true;
+                dataGridViewBlock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridViewBlock.Columns["Id"].Visible = false;
+                dataGridViewBlock.Columns["Name"].HeaderText = "Название";
+                dataGridViewBlock.Columns["Name"].DisplayIndex = 1;
+                dataGridViewBlock.Columns["Description"].HeaderText = "Описание";
+                dataGridViewBlock.Columns["Description"].DisplayIndex = 2;
             }
-            dataGridViewBlock.Columns[0].Visible = false;
-            dataGridViewBlock.AutoSize = true;
-            dataGridViewBlock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewBlock.Columns["Id"].Visible = false;
-            dataGridViewBlock.Columns["Name"].HeaderText = "Название";
-            dataGridViewBlock.Columns["Name"].DisplayIndex = 1;
-            dataGridViewBlock.Columns["Description"].HeaderText = "Описание";
-            dataGridViewBlock.Columns["Description"].DisplayIndex = 2;
         }
         private void FillDataGridViewBackground()
         {
@@ -227,6 +223,10 @@ namespace WinFormsAppDiplom
 
             comboBoxActivity.DisplayMember = "Name";
             comboBoxActivity.ValueMember = "Id";
+        }
+        private void FillDataGridViewCast()
+        {
+
         }
 
         private void buttonCreateScript_Click(object sender, EventArgs e)
@@ -518,7 +518,7 @@ namespace WinFormsAppDiplom
                     textBoxNameBlock.Text = row.Cells["Name"].Value.ToString();
                     try
                     {
-                        textBoxDescriptionScript.Text = row.Cells["Description"].Value.ToString();
+                        textBoxDescriptionBlock.Text = row.Cells["Description"].Value.ToString();
                     }
                     catch { }
                     ChangeEnalableBlockButtons(true);
@@ -647,7 +647,10 @@ namespace WinFormsAppDiplom
                     {
                         _currentEditableScript.Description = textBoxDescriptionScript.Text;
                     }
-                    catch { }
+                    catch
+                    {
+                        _currentEditableScript.Description = "";
+                    }
                     _scriptRepository.Update(_currentEditableScript);
 
                     FillDataGridViewScript();
@@ -664,16 +667,20 @@ namespace WinFormsAppDiplom
         }
         private void buttonApplyBlock_Click(object sender, EventArgs e)
         {
-            if (_currentEditableBlock != null)
+            if (_currentEditableBlock != null && _currentWorkScript!= null)
             {
                 if (textBoxNameBlock.Text != "")
                 {
                     _currentEditableBlock.Name = textBoxNameBlock.Text;
+                    _currentEditableBlock.IdScript = _currentWorkScript.Id;
                     try
                     {
                         _currentEditableBlock.Description = textBoxDescriptionBlock.Text;
                     }
-                    catch { }
+                    catch 
+                    {
+                        _currentEditableBlock.Description = "";
+                    }
                     _blockRepository.Update(_currentEditableBlock);
 
                     FillDataGridViewBlock();
@@ -870,6 +877,7 @@ namespace WinFormsAppDiplom
                 MessageBox.Show("Выделите нужный блок.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             FillDataGridViewBlock();
+            ConfigureTreeView();
         }
         private void buttonDeleteBackground_Click(object sender, EventArgs e)
         {
@@ -973,26 +981,6 @@ namespace WinFormsAppDiplom
             }
 
         }
-        //private void buttonChoseBackground_Click(object sender, EventArgs e)
-        //{
-
-        //    if (dataGridViewBackground.CurrentCell != null)
-        //    {
-        //        var row = dataGridViewBackground.CurrentCell.OwningRow;
-        //        _currentWorkBackground = new();
-        //        _currentWorkBackground.Id = (int)row.Cells[0].Value;
-        //        _currentWorkBackground.Name = row.Cells[1].Value.ToString();
-        //        _currentWorkBackground.Description = row.Cells[2].Value.ToString();
-
-        //        ConfigureTreeView();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Выделите нужный фон.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-
-        //}
-
 
         private void textBoxSearchScript_TextChanged(object sender, EventArgs e)
         {
@@ -1012,34 +1000,10 @@ namespace WinFormsAppDiplom
         }
         private void textBoxSearchBlock_TextChanged(object sender, EventArgs e)
         {
-            if (dataGridViewBlock.DataSource != null && textBoxSearchBlock.Text != "")
-            {
-
-                SearchByDataGridService<Block> searhBlock =
-                                        new SearchByDataGridService<Block>(
-                                                    (List<Block>)dataGridViewBlock.DataSource,
-                                                                                        textBoxSearchBlock.Text);
-                dataGridViewBlock.DataSource = searhBlock.Search();
-                return;
-            }
-
-            dataGridViewBlock.DataSource = _blockRepository.GetObjects();
 
         }
         private void textBoxSearchBackground_TextChanged(object sender, EventArgs e)
         {
-
-            if (dataGridViewBackground.DataSource != null && textBoxSearchBackground.Text != "")
-            {
-                SearchByDataGridService<Background> searhBackgound =
-                                                        new SearchByDataGridService<Background>(
-                                                                    (List<Background>)dataGridViewBackground.DataSource,
-                                                                                                        textBoxSearchBackground.Text);
-                dataGridViewBackground.DataSource = searhBackgound.Search();
-                return;
-            }
-
-            dataGridViewBackground.DataSource = _backgroundRepository.GetObjects();
 
         }
         private void textBoxSearchCastTypes_TextChanged(object sender, EventArgs e)
