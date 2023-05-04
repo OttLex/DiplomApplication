@@ -30,8 +30,19 @@ namespace WinFormsAppDiplom
         private List<Morph>? _currentEditableMorph;
 
         private Activity? _currentEditableActivity;
-        private ActivityType? _currentActivityType;
-        List<ActivityType>? _activityTypesList;
+        private List<ActivityType>? _activityTypesList;
+
+        private ObjectCast? _objectCastCreatable;
+
+        //private List<ObjectCast>? _castsDSCast = _objectCastRepository.GetObjects();
+        //private List<Block>? _blocksDSCast = _blockRepository.GetObjects();
+        //private List<Background>? _backgroundsDSCast = _backgroundRepository.GetObjects();
+
+        //private List<Activity>? _activitiesDSCast = _activityRepository.GetObjects();
+        //private List<CastTypes>? _castTypesDSCast = _castTypesRepository.GetObjects();
+        //private List<Objects>? _objectsDSCast = _objectRepository.GetObjects();
+
+
 
         private IRepository<Script> _scriptRepository;
         private IRepository<Block> _blockRepository;
@@ -41,6 +52,7 @@ namespace WinFormsAppDiplom
         private IRepository<Morph> _morphRepository;
         private IRepository<Activity> _activityRepository;
         private IRepository<ActivityType> _activityTypeRepository;
+        private IRepository<ObjectCast> _objectCastRepository;
 
 
         public MainForm(string connString, User user)
@@ -65,6 +77,7 @@ namespace WinFormsAppDiplom
             _morphRepository = new MorphRepository(_connectionString);
             _activityRepository = new ActivityRepository(_connectionString);
             _activityTypeRepository = new ActivityTypeRepository(_connectionString);
+            _objectCastRepository= new ObjectCastRepository(_connectionString);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -110,7 +123,6 @@ namespace WinFormsAppDiplom
             dataGridViewBackground.Columns["Description"].HeaderText = "Описание";
             dataGridViewBackground.Columns["Description"].DisplayIndex = 2;
         }
-
         private void FillDataGridViewCastTypes()
         {
             dataGridViewCastTypes.DataSource = _castTypesRepository.GetObjects();
@@ -226,8 +238,162 @@ namespace WinFormsAppDiplom
         }
         private void FillDataGridViewCast()
         {
+            _objectCastCreatable = new ObjectCast();
+
+            List<ObjectCastDTO> currentCasts = new();
+            List<ObjectCast> casts = _objectCastRepository.GetObjects();
+            List<Block> blocks = _blockRepository.GetObjects();
+            List<Background> backgrounds = _backgroundRepository.GetObjects();
+
+            List<Activity> activities = _activityRepository.GetObjects();
+            List<CastTypes> castTypes= _castTypesRepository.GetObjects();
+            List<Objects> objects = _objectRepository.GetObjects();
+
+
+            foreach (ObjectCast cast in casts)
+            {
+                ObjectCastDTO dto= new ObjectCastDTO();
+
+                dto.Id= cast.Id;
+                dto.IdBlock= cast.IdBlock;
+                dto.NameBlock = blocks.Where(bl => bl.Id == cast.IdBlock).First().Name;
+
+                dto.IdStep= cast.IdStep;
+                dto.IdBackground = cast.IdBackground;
+                dto.NameBackground = backgrounds.Where(bg => bg.Id == cast.IdBackground).First().Name;
+
+                dto.IdActivity = cast.IdActivity;
+                dto.NameActivity= activities.Where(acts=> acts.Id== cast.IdActivity).First().Name;
+
+                dto.IdCastType = cast.IdCastType;
+                dto.NameCastType= castTypes.Where(ct=> ct.Id ==cast.IdCastType).First().Name;
+
+                dto.IdObjectSpent = cast.IdObjectSpent;
+                dto.IdObjectRecive = cast.IdObjectRecive;
+
+                dto.NameObjectSpent=objects.Where(o=>o.Id== cast.IdObjectSpent).First().Name;
+                dto.NameObjectRecive = objects.Where(o => o.Id == cast.IdObjectRecive).First().Name;
+
+                dto.Description = cast.Description;
+
+                currentCasts.Add(dto);
+            }
+
+            dataGridViewCast.DataSource= currentCasts;
+
+            dataGridViewCast.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCast.Columns["Id"].Visible = false;
+            dataGridViewCast.Columns["IdBlock"].Visible = false;
+            dataGridViewCast.Columns["IdBackground"].Visible = false;
+            dataGridViewCast.Columns["IdActivity"].Visible = false;
+            dataGridViewCast.Columns["IdCastType"].Visible = false;
+            dataGridViewCast.Columns["IdObjectSpent"].Visible = false;
+            dataGridViewCast.Columns["IdObjectRecive"].Visible = false;
+
+            dataGridViewCast.Columns["NameBlock"].HeaderText = "Блок";
+            dataGridViewCast.Columns["NameBlock"].DisplayIndex = 1;
+            dataGridViewCast.Columns["IdStep"].HeaderText = "Шаг";
+
+            dataGridViewCast.Columns["NameBackground"].HeaderText = "Фон";
+            dataGridViewCast.Columns["NameActivity"].HeaderText = "Тип автивности";
+            dataGridViewCast.Columns["NameCastType"].HeaderText = "Тип применения";
+
+            dataGridViewCast.Columns["NameObjectSpent"].HeaderText = "Использованный объект";
+            dataGridViewCast.Columns["NameObjectRecive"].HeaderText = "Полученный объект";
+            dataGridViewCast.Columns["Description"].HeaderText = "Описание";
 
         }
+
+        private void FillCastParamsViews()
+        {
+            FilldataGridViewCastBackground();
+            FilldataGridViewCastType();
+            FilldataGridViewCastObjectSpend();
+            FilldataGridViewCastObjectRecive();
+            FilldataGridViewCastActivity();
+            FilldataGridViewObjectsInOperation();
+        }
+        private void FilldataGridViewCastBackground()
+        {
+            dataGridViewCastBackground.DataSource = _backgroundRepository.GetObjects();
+            dataGridViewCastBackground.Columns["Id"].Visible = false;
+            dataGridViewCastBackground.AutoSize = true;
+            dataGridViewCastBackground.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dataGridViewCastBackground.Columns["Name"].HeaderText = "Название";
+            dataGridViewCastBackground.Columns["Name"].DisplayIndex = 1;
+            dataGridViewCastBackground.Columns["Description"].HeaderText = "Описание";
+            dataGridViewCastBackground.Columns["Description"].DisplayIndex = 2;
+        }
+        private void FilldataGridViewCastType()
+        {
+            dataGridViewCastType.DataSource = _castTypesRepository.GetObjects();
+            dataGridViewCastType.Columns["Id"].Visible = false;
+            dataGridViewCastType.AutoSize = true;
+            dataGridViewCastType.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridViewCastType.Columns["Name"].HeaderText = "Название";
+            dataGridViewCastType.Columns["Name"].DisplayIndex = 1;
+        }
+        private void FilldataGridViewCastObjectSpend()
+        {
+            dataGridViewCastObjectSpend.DataSource = _objectRepository.GetObjects();
+            dataGridViewCastObjectSpend.AutoSize = true;
+            dataGridViewCastObjectSpend.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dataGridViewCastObjectSpend.Columns["Id"].Visible = false;
+            dataGridViewCastObjectSpend.Columns["Name"].HeaderText = "Название";
+            dataGridViewCastObjectSpend.Columns["Name"].DisplayIndex = 1;
+            dataGridViewCastObjectSpend.Columns["Morph"].HeaderText = "Составной";
+            dataGridViewCastObjectSpend.Columns["Morph"].DisplayIndex = 2;
+        }
+        private void FilldataGridViewCastObjectRecive()
+        {
+            dataGridViewCastObjectRecive.DataSource = _objectRepository.GetObjects();
+            dataGridViewCastObjectRecive.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dataGridViewCastObjectRecive.Columns["Id"].Visible = false;
+            dataGridViewCastObjectRecive.AutoSize = true;
+            dataGridViewCastObjectRecive.Columns["Name"].HeaderText = "Название";
+            dataGridViewCastObjectRecive.Columns["Name"].DisplayIndex = 1;
+            dataGridViewCastObjectRecive.Columns["Morph"].HeaderText = "Составной";
+            dataGridViewCastObjectRecive.Columns["Morph"].DisplayIndex = 2;
+        }
+        private void FilldataGridViewCastActivity()
+        {
+            List<Activity> activities = _activityRepository.GetObjects();
+            if (_activityTypesList == null)
+            {
+                _activityTypesList = _activityTypeRepository.GetObjects();
+            }
+
+            List<ActivityDTO> dtos = activities.Join(_activityTypesList, act => act.ActivityTypeId, actT => actT.Id, (act, actT) => new ActivityDTO
+            {
+                Id = act.Id,
+                Name = act.Name,
+                ActivityTypeId = act.ActivityTypeId,
+                ActivityName = actT.Name,
+                Description = act.Description,
+            }).ToList();
+
+            dataGridViewCastActivity.DataSource = dtos;
+
+            dataGridViewCastActivity.Columns["ActivityTypeId"].Visible = false;
+            dataGridViewCastActivity.Columns["Id"].Visible = false;
+            dataGridViewCastActivity.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dataGridViewCastActivity.Columns["Name"].HeaderText = "Название";
+            dataGridViewCastActivity.Columns["Name"].DisplayIndex = 1;
+            dataGridViewCastActivity.Columns["ActivityName"].HeaderText = "Тип автивности";
+            dataGridViewCastActivity.Columns["Description"].HeaderText = "Описание";
+        }
+        private void FilldataGridViewObjectsInOperation()
+        {
+            dataGridViewObjectsToAdd.DataSource = new List<Objects>();
+            dataGridViewCastObjectSpend.AutoSize = true;
+            dataGridViewCastObjectSpend.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dataGridViewCastObjectSpend.Columns["Id"].Visible = false;
+            dataGridViewCastObjectSpend.Columns["Name"].HeaderText = "Название";
+            dataGridViewCastObjectSpend.Columns["Name"].DisplayIndex = 1;
+            dataGridViewCastObjectSpend.Columns["Morph"].HeaderText = "Составной";
+            dataGridViewCastObjectSpend.Columns["Morph"].DisplayIndex = 2;
+        }
+
 
         private void buttonCreateScript_Click(object sender, EventArgs e)
         {
@@ -351,6 +517,17 @@ namespace WinFormsAppDiplom
                 FillDataGridViewActivity();
 
                 CleanActivityTextBoxes();
+            }
+            else
+            {
+                MessageBox.Show("Заполните поля ввода.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void buttonCreateCast_Click(object sender, EventArgs e)
+        {
+            if (textBoxNameActivity.Text != "" && comboBoxActivity.SelectedIndex != -1)
+            {
+                //
             }
             else
             {
@@ -1093,6 +1270,79 @@ namespace WinFormsAppDiplom
 
         }
 
+        private void textBoxSearchCastBackground_TextChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewCastBackground.DataSource != null && textBoxSearchCastBackground.Text != "")
+            {
+                SearchByDataGridService<Background> searhBackgound =
+                                                        new SearchByDataGridService<Background>(
+                                                                    (List<Background>)dataGridViewCastBackground.DataSource,
+                                                                                                        textBoxSearchCastBackground.Text);
+                dataGridViewCastBackground.DataSource = searhBackgound.Search();
+                return;
+            }
+
+            FilldataGridViewCastBackground();
+        }
+        private void textBoxSearchCastType_TextChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewCastType.DataSource != null && textBoxSearchCastType.Text != "")
+            {
+                SearchByDataGridService<CastTypes> searchCastTypes =
+                                                        new SearchByDataGridService<CastTypes>(
+                                                                    (List<CastTypes>)dataGridViewCastType.DataSource,
+                                                                                                        textBoxSearchCastType.Text);
+                dataGridViewCastType.DataSource = searchCastTypes.Search();
+                return;
+            }
+
+            FilldataGridViewCastType();
+        }
+        private void textBoxSearchCastObjectSpend_TextChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewCastObjectSpend.DataSource != null && textBoxSearchCastObjectSpend.Text != "")
+            {
+
+                SearchByDataGridService<Objects> searhObjects =
+                                        new SearchByDataGridService<Objects>(
+                                                    (List<Objects>)dataGridViewCastObjectSpend.DataSource,
+                                                                                        textBoxSearchCastObjectSpend.Text);
+                dataGridViewCastObjectSpend.DataSource = searhObjects.Search();
+                return;
+            }
+
+            FilldataGridViewCastObjectSpend();
+        }
+        private void textBoxSearchCastObjectRecive_TextChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewCastObjectRecive.DataSource != null && textBoxSearchCastObjectRecive.Text != "")
+            {
+
+                SearchByDataGridService<Objects> searhObjects =
+                                        new SearchByDataGridService<Objects>(
+                                                    (List<Objects>)dataGridViewCastObjectRecive.DataSource,
+                                                                                        textBoxSearchCastObjectRecive.Text);
+                dataGridViewCastObjectRecive.DataSource = searhObjects.Search();
+                return;
+            }
+
+            FilldataGridViewCastObjectRecive();
+        }
+        private void textBoxSearchCastActivity_TextChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewCastActivity.DataSource != null && textBoxSearchCastActivity.Text != "")
+            {
+                SearchByDataGridService<ActivityDTO> searhActivity =
+                                                        new SearchByDataGridService<ActivityDTO>(
+                                                                    (List<ActivityDTO>)dataGridViewCastActivity.DataSource,
+                                                                                                        textBoxSearchCastActivity.Text);
+                dataGridViewCastActivity.DataSource = searhActivity.Search();
+                return;
+            }
+
+            FilldataGridViewCastActivity();
+        }
+
 
         private void buttonAddToMorph_Click(object sender, EventArgs e)
         {
@@ -1183,6 +1433,58 @@ namespace WinFormsAppDiplom
             }
         }
 
+
+        //private void dataGridViewCastObjectSpend_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (dataGridViewCastObjectSpend.CurrentCell != null)
+        //    {
+        //        var row = dataGridViewCastObjectSpend.CurrentCell.OwningRow;
+        //        if (row != null)
+        //        {
+        //            //Objects spendObject = new();
+        //            //spendObject.Id= Convert.ToInt32(row.Cells["Id"].Value);
+        //            //spendObject.Name= Convert.ToString(row.Cells["Name"].Value);
+        //            //spendObject.Morph = Convert.ToBoolean(row.Cells["Morph"].Value);
+        //            dataGridViewObjectsToAdd.Rows.Add(row);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Выделите нужный объект.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //    }
+        //}
+        //private void dataGridViewCastObjectRecive_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (dataGridViewCastObjectRecive.CurrentCell != null)
+        //    {
+        //        var row = dataGridViewCastObjectRecive.CurrentCell.OwningRow;
+        //        if (row != null)
+        //        {
+        //            dataGridViewObjectsToAdd.Rows.Add(row);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Выделите нужный объект.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //    }
+
+        //}
+        //private void dataGridViewObjectsToAdd_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (dataGridViewObjectsToAdd.CurrentCell != null)
+        //    {
+        //        var row = dataGridViewObjectsToAdd.CurrentCell.OwningRow;
+        //        if (row != null)
+        //        {
+        //            dataGridViewObjectsToAdd.Rows.Remove(row);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Выделите нужный объект.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //    }
+        //}
+
         private void ConfigureTreeView()
         {
             try
@@ -1251,6 +1553,7 @@ namespace WinFormsAppDiplom
                     break;
                 case 6:                    
                     FillDataGridViewCast();
+                    FillCastParamsViews();
                     break;
             }
 

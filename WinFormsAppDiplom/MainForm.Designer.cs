@@ -112,12 +112,21 @@
             this.buttonCreateActivity = new System.Windows.Forms.Button();
             this.labelActivity = new System.Windows.Forms.Label();
             this.tabPageCast = new System.Windows.Forms.TabPage();
+            this.panelCastParams = new System.Windows.Forms.Panel();
+            this.textBoxSearchCastActivity = new System.Windows.Forms.TextBox();
+            this.textBoxSearchCastType = new System.Windows.Forms.TextBox();
+            this.dataGridViewCastActivity = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCastType = new System.Windows.Forms.DataGridView();
+            this.textBoxSearchCastObjectRecive = new System.Windows.Forms.TextBox();
+            this.textBoxSearchCastBackground = new System.Windows.Forms.TextBox();
+            this.dataGridViewCastObjectRecive = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCastBackground = new System.Windows.Forms.DataGridView();
+            this.textBoxSearchCastObjectSpend = new System.Windows.Forms.TextBox();
+            this.dataGridViewCastObjectSpend = new System.Windows.Forms.DataGridView();
+            this.textBoxDescriptionCast = new System.Windows.Forms.TextBox();
             this.panelCast = new System.Windows.Forms.Panel();
             this.dataGridViewCast = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBoxSearchCast = new System.Windows.Forms.TextBox();
-            this.textBoxDescriptionCast = new System.Windows.Forms.TextBox();
-            this.textBoxNameCast = new System.Windows.Forms.TextBox();
             this.buttonCancelCast = new System.Windows.Forms.Button();
             this.buttonApplyCast = new System.Windows.Forms.Button();
             this.buttonDeleteCast = new System.Windows.Forms.Button();
@@ -126,6 +135,17 @@
             this.labelCast = new System.Windows.Forms.Label();
             this.tabPageTests = new System.Windows.Forms.TabPage();
             this.panelMainForm = new System.Windows.Forms.Panel();
+            this.labelObjectToSpend = new System.Windows.Forms.Label();
+            this.labelObjectToSpendValue = new System.Windows.Forms.Label();
+            this.labelObjectToReciveValue = new System.Windows.Forms.Label();
+            this.labelObjectToRecive = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelCastCastType = new System.Windows.Forms.Label();
+            this.labelCastBackgroundValue = new System.Windows.Forms.Label();
+            this.labelCastBackground = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelCastActivity = new System.Windows.Forms.Label();
+            this.buttonResetCreatebleCast = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMainForm)).BeginInit();
             this.splitContainerMainForm.Panel1.SuspendLayout();
             this.splitContainerMainForm.Panel2.SuspendLayout();
@@ -153,6 +173,12 @@
             this.panelActivity.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActivity)).BeginInit();
             this.tabPageCast.SuspendLayout();
+            this.panelCastParams.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastActivity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastObjectRecive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastBackground)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastObjectSpend)).BeginInit();
             this.panelCast.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCast)).BeginInit();
             this.panelMainForm.SuspendLayout();
@@ -1108,11 +1134,9 @@
             // 
             // tabPageCast
             // 
+            this.tabPageCast.Controls.Add(this.panelCastParams);
             this.tabPageCast.Controls.Add(this.panelCast);
-            this.tabPageCast.Controls.Add(this.comboBox1);
             this.tabPageCast.Controls.Add(this.textBoxSearchCast);
-            this.tabPageCast.Controls.Add(this.textBoxDescriptionCast);
-            this.tabPageCast.Controls.Add(this.textBoxNameCast);
             this.tabPageCast.Controls.Add(this.buttonCancelCast);
             this.tabPageCast.Controls.Add(this.buttonApplyCast);
             this.tabPageCast.Controls.Add(this.buttonDeleteCast);
@@ -1126,13 +1150,155 @@
             this.tabPageCast.Text = "Шаги";
             this.tabPageCast.UseVisualStyleBackColor = true;
             // 
+            // panelCastParams
+            // 
+            this.panelCastParams.Controls.Add(this.textBoxSearchCastActivity);
+            this.panelCastParams.Controls.Add(this.textBoxSearchCastType);
+            this.panelCastParams.Controls.Add(this.dataGridViewCastActivity);
+            this.panelCastParams.Controls.Add(this.dataGridViewCastType);
+            this.panelCastParams.Controls.Add(this.textBoxSearchCastObjectRecive);
+            this.panelCastParams.Controls.Add(this.textBoxSearchCastBackground);
+            this.panelCastParams.Controls.Add(this.dataGridViewCastObjectRecive);
+            this.panelCastParams.Controls.Add(this.dataGridViewCastBackground);
+            this.panelCastParams.Controls.Add(this.textBoxSearchCastObjectSpend);
+            this.panelCastParams.Controls.Add(this.dataGridViewCastObjectSpend);
+            this.panelCastParams.Controls.Add(this.textBoxDescriptionCast);
+            this.panelCastParams.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelCastParams.Location = new System.Drawing.Point(0, 55);
+            this.panelCastParams.Name = "panelCastParams";
+            this.panelCastParams.Size = new System.Drawing.Size(1063, 395);
+            this.panelCastParams.TabIndex = 67;
+            // 
+            // textBoxSearchCastActivity
+            // 
+            this.textBoxSearchCastActivity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSearchCastActivity.Location = new System.Drawing.Point(689, 11);
+            this.textBoxSearchCastActivity.Name = "textBoxSearchCastActivity";
+            this.textBoxSearchCastActivity.PlaceholderText = "Введите запрос для поиска активности. ";
+            this.textBoxSearchCastActivity.Size = new System.Drawing.Size(332, 26);
+            this.textBoxSearchCastActivity.TabIndex = 66;
+            this.textBoxSearchCastActivity.TextChanged += new System.EventHandler(this.textBoxSearchCastActivity_TextChanged);
+            // 
+            // textBoxSearchCastType
+            // 
+            this.textBoxSearchCastType.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSearchCastType.Location = new System.Drawing.Point(13, 201);
+            this.textBoxSearchCastType.Name = "textBoxSearchCastType";
+            this.textBoxSearchCastType.PlaceholderText = "Введите запрос для поиска типа применения.";
+            this.textBoxSearchCastType.Size = new System.Drawing.Size(332, 26);
+            this.textBoxSearchCastType.TabIndex = 60;
+            this.textBoxSearchCastType.TextChanged += new System.EventHandler(this.textBoxSearchCastType_TextChanged);
+            // 
+            // dataGridViewCastActivity
+            // 
+            this.dataGridViewCastActivity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCastActivity.Location = new System.Drawing.Point(689, 43);
+            this.dataGridViewCastActivity.Name = "dataGridViewCastActivity";
+            this.dataGridViewCastActivity.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridViewCastActivity.RowTemplate.Height = 25;
+            this.dataGridViewCastActivity.Size = new System.Drawing.Size(332, 146);
+            this.dataGridViewCastActivity.TabIndex = 65;
+            // 
+            // dataGridViewCastType
+            // 
+            this.dataGridViewCastType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCastType.Location = new System.Drawing.Point(13, 243);
+            this.dataGridViewCastType.Name = "dataGridViewCastType";
+            this.dataGridViewCastType.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridViewCastType.RowTemplate.Height = 25;
+            this.dataGridViewCastType.Size = new System.Drawing.Size(332, 146);
+            this.dataGridViewCastType.TabIndex = 59;
+            // 
+            // textBoxSearchCastObjectRecive
+            // 
+            this.textBoxSearchCastObjectRecive.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSearchCastObjectRecive.Location = new System.Drawing.Point(351, 201);
+            this.textBoxSearchCastObjectRecive.Name = "textBoxSearchCastObjectRecive";
+            this.textBoxSearchCastObjectRecive.PlaceholderText = "Введите запрос для полученного объекта.";
+            this.textBoxSearchCastObjectRecive.Size = new System.Drawing.Size(332, 26);
+            this.textBoxSearchCastObjectRecive.TabIndex = 64;
+            this.textBoxSearchCastObjectRecive.TextChanged += new System.EventHandler(this.textBoxSearchCastObjectRecive_TextChanged);
+            // 
+            // textBoxSearchCastBackground
+            // 
+            this.textBoxSearchCastBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSearchCastBackground.Location = new System.Drawing.Point(13, 11);
+            this.textBoxSearchCastBackground.Name = "textBoxSearchCastBackground";
+            this.textBoxSearchCastBackground.PlaceholderText = "Введите запрос для поиска фона. ";
+            this.textBoxSearchCastBackground.Size = new System.Drawing.Size(332, 26);
+            this.textBoxSearchCastBackground.TabIndex = 58;
+            this.textBoxSearchCastBackground.TextChanged += new System.EventHandler(this.textBoxSearchCastBackground_TextChanged);
+            // 
+            // dataGridViewCastObjectRecive
+            // 
+            this.dataGridViewCastObjectRecive.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCastObjectRecive.Location = new System.Drawing.Point(351, 243);
+            this.dataGridViewCastObjectRecive.Name = "dataGridViewCastObjectRecive";
+            this.dataGridViewCastObjectRecive.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridViewCastObjectRecive.RowTemplate.Height = 25;
+            this.dataGridViewCastObjectRecive.Size = new System.Drawing.Size(332, 146);
+            this.dataGridViewCastObjectRecive.TabIndex = 63;
+            this.dataGridViewCastObjectRecive.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCastObjectRecive_CellClick);
+            // 
+            // dataGridViewCastBackground
+            // 
+            this.dataGridViewCastBackground.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCastBackground.Location = new System.Drawing.Point(13, 43);
+            this.dataGridViewCastBackground.Name = "dataGridViewCastBackground";
+            this.dataGridViewCastBackground.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridViewCastBackground.RowTemplate.Height = 25;
+            this.dataGridViewCastBackground.Size = new System.Drawing.Size(332, 146);
+            this.dataGridViewCastBackground.TabIndex = 57;
+            // 
+            // textBoxSearchCastObjectSpend
+            // 
+            this.textBoxSearchCastObjectSpend.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSearchCastObjectSpend.Location = new System.Drawing.Point(351, 11);
+            this.textBoxSearchCastObjectSpend.Name = "textBoxSearchCastObjectSpend";
+            this.textBoxSearchCastObjectSpend.PlaceholderText = "Введите запрос для использованного объекта. ";
+            this.textBoxSearchCastObjectSpend.Size = new System.Drawing.Size(332, 26);
+            this.textBoxSearchCastObjectSpend.TabIndex = 62;
+            this.textBoxSearchCastObjectSpend.TextChanged += new System.EventHandler(this.textBoxSearchCastObjectSpend_TextChanged);
+            // 
+            // dataGridViewCastObjectSpend
+            // 
+            this.dataGridViewCastObjectSpend.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCastObjectSpend.Location = new System.Drawing.Point(351, 43);
+            this.dataGridViewCastObjectSpend.Name = "dataGridViewCastObjectSpend";
+            this.dataGridViewCastObjectSpend.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridViewCastObjectSpend.RowTemplate.Height = 25;
+            this.dataGridViewCastObjectSpend.Size = new System.Drawing.Size(332, 146);
+            this.dataGridViewCastObjectSpend.TabIndex = 61;
+            this.dataGridViewCastObjectSpend.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCastObjectSpend_CellClick);
+            // 
+            // textBoxDescriptionCast
+            // 
+            this.textBoxDescriptionCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxDescriptionCast.Location = new System.Drawing.Point(689, 201);
+            this.textBoxDescriptionCast.Multiline = true;
+            this.textBoxDescriptionCast.Name = "textBoxDescriptionCast";
+            this.textBoxDescriptionCast.PlaceholderText = "Описание";
+            this.textBoxDescriptionCast.Size = new System.Drawing.Size(332, 188);
+            this.textBoxDescriptionCast.TabIndex = 46;
+            // 
             // panelCast
             // 
+            this.panelCast.Controls.Add(this.buttonResetCreatebleCast);
+            this.panelCast.Controls.Add(this.label2);
+            this.panelCast.Controls.Add(this.labelCastActivity);
+            this.panelCast.Controls.Add(this.label1);
+            this.panelCast.Controls.Add(this.labelCastCastType);
+            this.panelCast.Controls.Add(this.labelCastBackgroundValue);
+            this.panelCast.Controls.Add(this.labelCastBackground);
+            this.panelCast.Controls.Add(this.labelObjectToReciveValue);
+            this.panelCast.Controls.Add(this.labelObjectToRecive);
+            this.panelCast.Controls.Add(this.labelObjectToSpendValue);
+            this.panelCast.Controls.Add(this.labelObjectToSpend);
             this.panelCast.Controls.Add(this.dataGridViewCast);
             this.panelCast.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelCast.Location = new System.Drawing.Point(0, 151);
+            this.panelCast.Location = new System.Drawing.Point(0, 450);
             this.panelCast.Name = "panelCast";
-            this.panelCast.Size = new System.Drawing.Size(1063, 543);
+            this.panelCast.Size = new System.Drawing.Size(1063, 244);
             this.panelCast.TabIndex = 51;
             // 
             // dataGridViewCast
@@ -1143,50 +1309,23 @@
             this.dataGridViewCast.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewCast.Name = "dataGridViewCast";
             this.dataGridViewCast.RowTemplate.Height = 25;
-            this.dataGridViewCast.Size = new System.Drawing.Size(504, 543);
+            this.dataGridViewCast.Size = new System.Drawing.Size(683, 244);
             this.dataGridViewCast.TabIndex = 28;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 105);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(355, 23);
-            this.comboBox1.TabIndex = 52;
             // 
             // textBoxSearchCast
             // 
             this.textBoxSearchCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSearchCast.Location = new System.Drawing.Point(851, 23);
+            this.textBoxSearchCast.Location = new System.Drawing.Point(832, 22);
             this.textBoxSearchCast.Name = "textBoxSearchCast";
             this.textBoxSearchCast.PlaceholderText = "Введите запрос для поиска.";
             this.textBoxSearchCast.Size = new System.Drawing.Size(204, 26);
             this.textBoxSearchCast.TabIndex = 50;
             // 
-            // textBoxDescriptionCast
-            // 
-            this.textBoxDescriptionCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxDescriptionCast.Location = new System.Drawing.Point(6, 55);
-            this.textBoxDescriptionCast.Multiline = true;
-            this.textBoxDescriptionCast.Name = "textBoxDescriptionCast";
-            this.textBoxDescriptionCast.PlaceholderText = "Описание";
-            this.textBoxDescriptionCast.Size = new System.Drawing.Size(355, 44);
-            this.textBoxDescriptionCast.TabIndex = 46;
-            // 
-            // textBoxNameCast
-            // 
-            this.textBoxNameCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxNameCast.Location = new System.Drawing.Point(6, 23);
-            this.textBoxNameCast.Name = "textBoxNameCast";
-            this.textBoxNameCast.PlaceholderText = "Название";
-            this.textBoxNameCast.Size = new System.Drawing.Size(355, 26);
-            this.textBoxNameCast.TabIndex = 43;
-            // 
             // buttonCancelCast
             // 
             this.buttonCancelCast.Enabled = false;
             this.buttonCancelCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCancelCast.Location = new System.Drawing.Point(378, 89);
+            this.buttonCancelCast.Location = new System.Drawing.Point(270, 23);
             this.buttonCancelCast.Name = "buttonCancelCast";
             this.buttonCancelCast.Size = new System.Drawing.Size(126, 26);
             this.buttonCancelCast.TabIndex = 49;
@@ -1197,7 +1336,7 @@
             // 
             this.buttonApplyCast.Enabled = false;
             this.buttonApplyCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonApplyCast.Location = new System.Drawing.Point(378, 54);
+            this.buttonApplyCast.Location = new System.Drawing.Point(138, 23);
             this.buttonApplyCast.Name = "buttonApplyCast";
             this.buttonApplyCast.Size = new System.Drawing.Size(126, 26);
             this.buttonApplyCast.TabIndex = 48;
@@ -1207,7 +1346,7 @@
             // buttonDeleteCast
             // 
             this.buttonDeleteCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonDeleteCast.Location = new System.Drawing.Point(691, 22);
+            this.buttonDeleteCast.Location = new System.Drawing.Point(689, 22);
             this.buttonDeleteCast.Name = "buttonDeleteCast";
             this.buttonDeleteCast.Size = new System.Drawing.Size(126, 26);
             this.buttonDeleteCast.TabIndex = 47;
@@ -1217,7 +1356,7 @@
             // buttonLoadCast
             // 
             this.buttonLoadCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonLoadCast.Location = new System.Drawing.Point(378, 22);
+            this.buttonLoadCast.Location = new System.Drawing.Point(6, 23);
             this.buttonLoadCast.Name = "buttonLoadCast";
             this.buttonLoadCast.Size = new System.Drawing.Size(126, 26);
             this.buttonLoadCast.TabIndex = 45;
@@ -1227,7 +1366,7 @@
             // buttonCreateCast
             // 
             this.buttonCreateCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCreateCast.Location = new System.Drawing.Point(534, 22);
+            this.buttonCreateCast.Location = new System.Drawing.Point(542, 23);
             this.buttonCreateCast.Name = "buttonCreateCast";
             this.buttonCreateCast.Size = new System.Drawing.Size(126, 26);
             this.buttonCreateCast.TabIndex = 44;
@@ -1262,6 +1401,116 @@
             this.panelMainForm.Name = "panelMainForm";
             this.panelMainForm.Size = new System.Drawing.Size(1451, 732);
             this.panelMainForm.TabIndex = 0;
+            // 
+            // labelObjectToSpend
+            // 
+            this.labelObjectToSpend.AutoSize = true;
+            this.labelObjectToSpend.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelObjectToSpend.Location = new System.Drawing.Point(689, 83);
+            this.labelObjectToSpend.Name = "labelObjectToSpend";
+            this.labelObjectToSpend.Size = new System.Drawing.Size(132, 19);
+            this.labelObjectToSpend.TabIndex = 68;
+            this.labelObjectToSpend.Text = "Объект для траты:";
+            // 
+            // labelObjectToSpendValue
+            // 
+            this.labelObjectToSpendValue.AutoSize = true;
+            this.labelObjectToSpendValue.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelObjectToSpendValue.Location = new System.Drawing.Point(859, 83);
+            this.labelObjectToSpendValue.Name = "labelObjectToSpendValue";
+            this.labelObjectToSpendValue.Size = new System.Drawing.Size(15, 19);
+            this.labelObjectToSpendValue.TabIndex = 69;
+            this.labelObjectToSpendValue.Text = "-";
+            // 
+            // labelObjectToReciveValue
+            // 
+            this.labelObjectToReciveValue.AutoSize = true;
+            this.labelObjectToReciveValue.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelObjectToReciveValue.Location = new System.Drawing.Point(859, 112);
+            this.labelObjectToReciveValue.Name = "labelObjectToReciveValue";
+            this.labelObjectToReciveValue.Size = new System.Drawing.Size(15, 19);
+            this.labelObjectToReciveValue.TabIndex = 71;
+            this.labelObjectToReciveValue.Text = "-";
+            // 
+            // labelObjectToRecive
+            // 
+            this.labelObjectToRecive.AutoSize = true;
+            this.labelObjectToRecive.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelObjectToRecive.Location = new System.Drawing.Point(689, 112);
+            this.labelObjectToRecive.Name = "labelObjectToRecive";
+            this.labelObjectToRecive.Size = new System.Drawing.Size(164, 19);
+            this.labelObjectToRecive.TabIndex = 70;
+            this.labelObjectToRecive.Text = "Объект для получения:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(859, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(15, 19);
+            this.label1.TabIndex = 75;
+            this.label1.Text = "-";
+            // 
+            // labelCastCastType
+            // 
+            this.labelCastCastType.AutoSize = true;
+            this.labelCastCastType.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelCastCastType.Location = new System.Drawing.Point(689, 51);
+            this.labelCastCastType.Name = "labelCastCastType";
+            this.labelCastCastType.Size = new System.Drawing.Size(132, 19);
+            this.labelCastCastType.TabIndex = 74;
+            this.labelCastCastType.Text = "Объект для траты:";
+            // 
+            // labelCastBackgroundValue
+            // 
+            this.labelCastBackgroundValue.AutoSize = true;
+            this.labelCastBackgroundValue.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelCastBackgroundValue.Location = new System.Drawing.Point(859, 22);
+            this.labelCastBackgroundValue.Name = "labelCastBackgroundValue";
+            this.labelCastBackgroundValue.Size = new System.Drawing.Size(15, 19);
+            this.labelCastBackgroundValue.TabIndex = 73;
+            this.labelCastBackgroundValue.Text = "-";
+            // 
+            // labelCastBackground
+            // 
+            this.labelCastBackground.AutoSize = true;
+            this.labelCastBackground.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelCastBackground.Location = new System.Drawing.Point(689, 22);
+            this.labelCastBackground.Name = "labelCastBackground";
+            this.labelCastBackground.Size = new System.Drawing.Size(42, 19);
+            this.labelCastBackground.TabIndex = 72;
+            this.labelCastBackground.Text = "Фон:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(859, 144);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(15, 19);
+            this.label2.TabIndex = 77;
+            this.label2.Text = "-";
+            // 
+            // labelCastActivity
+            // 
+            this.labelCastActivity.AutoSize = true;
+            this.labelCastActivity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelCastActivity.Location = new System.Drawing.Point(689, 144);
+            this.labelCastActivity.Name = "labelCastActivity";
+            this.labelCastActivity.Size = new System.Drawing.Size(92, 19);
+            this.labelCastActivity.TabIndex = 76;
+            this.labelCastActivity.Text = "Активность:";
+            // 
+            // buttonResetCreatebleCast
+            // 
+            this.buttonResetCreatebleCast.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonResetCreatebleCast.Location = new System.Drawing.Point(689, 189);
+            this.buttonResetCreatebleCast.Name = "buttonResetCreatebleCast";
+            this.buttonResetCreatebleCast.Size = new System.Drawing.Size(126, 26);
+            this.buttonResetCreatebleCast.TabIndex = 68;
+            this.buttonResetCreatebleCast.Text = "Сброс";
+            this.buttonResetCreatebleCast.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -1306,7 +1555,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActivity)).EndInit();
             this.tabPageCast.ResumeLayout(false);
             this.tabPageCast.PerformLayout();
+            this.panelCastParams.ResumeLayout(false);
+            this.panelCastParams.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastActivity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastObjectRecive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastBackground)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCastObjectSpend)).EndInit();
             this.panelCast.ResumeLayout(false);
+            this.panelCast.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCast)).EndInit();
             this.panelMainForm.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -1403,15 +1660,35 @@
         private TabPage tabPageCast;
         private Panel panelCast;
         private DataGridView dataGridViewCast;
-        private ComboBox comboBox1;
         private TextBox textBoxSearchCast;
         private TextBox textBoxDescriptionCast;
-        private TextBox textBoxNameCast;
         private Button buttonCancelCast;
         private Button buttonApplyCast;
         private Button buttonDeleteCast;
         private Button buttonLoadCast;
         private Button buttonCreateCast;
         private Label labelCast;
+        private TextBox textBoxSearchCastActivity;
+        private DataGridView dataGridViewCastActivity;
+        private TextBox textBoxSearchCastObjectRecive;
+        private DataGridView dataGridViewCastObjectRecive;
+        private TextBox textBoxSearchCastObjectSpend;
+        private DataGridView dataGridViewCastObjectSpend;
+        private TextBox textBoxSearchCastType;
+        private DataGridView dataGridViewCastType;
+        private TextBox textBoxSearchCastBackground;
+        private DataGridView dataGridViewCastBackground;
+        private Panel panelCastParams;
+        private Label labelObjectToSpend;
+        private Label labelObjectToSpendValue;
+        private Label labelObjectToReciveValue;
+        private Label labelObjectToRecive;
+        private Label label1;
+        private Label labelCastCastType;
+        private Label labelCastBackgroundValue;
+        private Label labelCastBackground;
+        private Label label2;
+        private Label labelCastActivity;
+        private Button buttonResetCreatebleCast;
     }
 }
