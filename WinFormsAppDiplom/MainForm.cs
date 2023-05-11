@@ -166,7 +166,7 @@ namespace WinFormsAppDiplom
                     IdMorph = m.IdMorph,
                     NameMorph = obj.Name,
                     IdObjectInTheComposition = m.IdObjectInTheComposition,
-                    NameObjectInTheComposition = objects.Where(o => o.Id == m.IdObjectInTheComposition).First().Name
+                    NameObjectInTheComposition = objects.Where(o => o.Id == m.IdObjectInTheComposition).FirstOrDefault().Name
                 }).ToList();
 
                 dataGridViewRecipeToMorph.DataSource = dtos;
@@ -175,7 +175,7 @@ namespace WinFormsAppDiplom
             dataGridViewRecipeToMorph.Columns["Id"].Visible = false;
             dataGridViewRecipeToMorph.Columns["IdMorph"].Visible = false;
             dataGridViewRecipeToMorph.Columns["IdObjectInTheComposition"].Visible = false;
-            dataGridViewRecipeToMorph.AutoSize = true;
+            //dataGridViewRecipeToMorph.AutoSize = true;
             dataGridViewRecipeToMorph.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewRecipeToMorph.Columns["NameMorph"].HeaderText = "Название";
             dataGridViewRecipeToMorph.Columns["NameMorph"].DisplayIndex = 1;
@@ -605,11 +605,18 @@ namespace WinFormsAppDiplom
 
             if (dataGridViewRecipeToMorph.DataSource != null)
             {
-                List<Morph> actualRecipe = (List<Morph>)dataGridViewRecipeToMorph.DataSource;
-                // actualRecipe = actualRecipe.Where(x => x.IdMorph == id).ToList(); строчка для редактирования
+                //var MorphDto = _currentEditableMorph.Join(objects, m => m.IdObjectInTheComposition, o => o.Id, (m, o) => new
+                //{
+                //    idObj = m.IdMorph,
+                //    nameObj = textBoxNameObjects.Text,
+                //    idObjInConposition = m.IdObjectInTheComposition,
+                //    nameMorph = o.Name
+                //}).ToList();
+
+                List<MorphDTO> MorphDto= (List<MorphDTO>)dataGridViewRecipeToMorph.DataSource;
 
 
-                foreach (var objInComposition in actualRecipe)
+                foreach (var objInComposition in MorphDto)
                 {
                     Morph morph = new Morph();
                     morph.IdMorph = id;
@@ -688,6 +695,7 @@ namespace WinFormsAppDiplom
         {
             buttonApplyObjects.Enabled = isEnalable;
             buttonCancelObjects.Enabled = isEnalable;
+            dataGridViewRecipeToMorph.Enabled = isEnalable;
         }
         private void ChangeEnalableMorphButtons(bool isEnalable)
         {
@@ -819,7 +827,20 @@ namespace WinFormsAppDiplom
                         ChangeEnalableMorphButtons(checkBoxIsMorph.Checked);
                         if (dataGridViewRecipeToMorph.DataSource != null)
                         {
-                            _currentEditableMorph = (List<Morph>)dataGridViewRecipeToMorph.DataSource;
+                            var morphDTOs = (List<MorphDTO>)dataGridViewRecipeToMorph.DataSource;
+                            foreach (var dto in morphDTOs)
+                            {
+                                Morph morph = new Morph();
+                                morph.Id = dto.Id;
+                                morph.IdMorph= dto.IdMorph;
+                                morph.IdObjectInTheComposition = dto.IdObjectInTheComposition;
+
+                                if (_currentEditableMorph == null)
+                                {
+                                    _currentEditableMorph= new List<Morph>();
+                                }
+                                _currentEditableMorph.Add(morph);
+                            }
                         }
                     }
                 }
@@ -1230,7 +1251,7 @@ namespace WinFormsAppDiplom
             if (dataGridViewObjects.CurrentCell != null)
             {
                 var row = dataGridViewObjects.CurrentCell.OwningRow;
-                int id = Convert.ToInt32(row.Cells[0].Value);
+                int id = Convert.ToInt32(row.Cells["Id"].Value);
                 Objects obj = _objectRepository.GetObject(id);
                 if (obj.Morph == true)
                 {
@@ -1527,12 +1548,34 @@ namespace WinFormsAppDiplom
                 }
 
 
+                List<Objects> objects = (List<Objects>)dataGridViewObjects.DataSource;
+
                 morph.IdMorph = idForCurrentObj;
                 morph.IdObjectInTheComposition = Convert.ToInt32(row.Cells["Id"].Value);
-
                 _currentEditableMorph.Add(morph);
+
+                var MorphDto = _currentEditableMorph.Join(objects, m => m.IdObjectInTheComposition, o => o.Id, (m, o) => new MorphDTO()
+                {
+                    IdMorph = m.IdMorph,
+                    NameMorph = textBoxNameObjects.Text,
+                    IdObjectInTheComposition = m.IdObjectInTheComposition,
+                    NameObjectInTheComposition = o.Name
+                }).ToList();
+
                 dataGridViewRecipeToMorph.DataSource = null;
-                dataGridViewRecipeToMorph.DataSource = _currentEditableMorph;
+                dataGridViewRecipeToMorph.DataSource = MorphDto;
+
+                dataGridViewRecipeToMorph.Columns["Id"].Visible = false;
+                dataGridViewRecipeToMorph.Columns["IdMorph"].Visible = false;
+                dataGridViewRecipeToMorph.Columns["IdObjectInTheComposition"].Visible = false;
+                //dataGridViewRecipeToMorph.AutoSize = true;
+                dataGridViewRecipeToMorph.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridViewRecipeToMorph.Columns["NameMorph"].HeaderText = "Название";
+                dataGridViewRecipeToMorph.Columns["NameMorph"].DisplayIndex = 1;
+                dataGridViewRecipeToMorph.Columns["NameObjectInTheComposition"].HeaderText = "Состав";
+                dataGridViewRecipeToMorph.Columns["NameObjectInTheComposition"].DisplayIndex = 2;
+
+
             }
             else
             {
@@ -1546,8 +1589,8 @@ namespace WinFormsAppDiplom
                 var row = dataGridViewRecipeToMorph.CurrentCell.OwningRow;
                 Morph morphForRemoving = new();
 
-                morphForRemoving.IdMorph = Convert.ToInt32(row.Cells[1].Value);
-                morphForRemoving.IdObjectInTheComposition = Convert.ToInt32(row.Cells[2].Value);
+                morphForRemoving.IdMorph = Convert.ToInt32(row.Cells["IdMorph"].Value);
+                morphForRemoving.IdObjectInTheComposition = Convert.ToInt32(row.Cells["IdObjectInTheComposition"].Value);
 
                 morphForRemoving = _currentEditableMorph.Where(m =>
                                                 m.IdMorph == morphForRemoving.IdMorph &&
@@ -1566,6 +1609,7 @@ namespace WinFormsAppDiplom
             buttonAddToMorph.Enabled = checkBoxIsMorph.Checked;
             buttonDefineFromMorph.Enabled = checkBoxIsMorph.Checked;
             dataGridViewRecipeToMorph.Enabled = checkBoxIsMorph.Checked;
+            dataGridViewRecipeToMorph.DataSource = null;
 
             if (checkBoxIsMorph.Checked)
             {

@@ -29,7 +29,7 @@ namespace DataAccessLayer.RepoSpr
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"delete {_tableName}  where id= {id}");
+                db.Query($@"delete {_tableName}  where id= {id}; delete from Morph where IdObjectInTheComposition={id}");
             }
         }
 

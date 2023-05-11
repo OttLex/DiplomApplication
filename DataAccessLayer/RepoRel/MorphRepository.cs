@@ -35,7 +35,7 @@ namespace DataAccessLayer.RepoRel
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                db.Query($@"delete {_tableName}  where IdIdMorph= {id}");
+                db.Query($@"delete {_tableName}  where IdMorph= {id}");
             }
         }
 
