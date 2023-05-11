@@ -261,40 +261,20 @@ namespace WinFormsAppDiplom
 
                 dto.IdStep = cast.IdStep;
                 dto.IdBackground = cast.IdBackground;
-                try
-                {
-                    dto.NameBackground = backgrounds.Where(bg => bg.Id == cast.IdBackground).FirstOrDefault().Name;
-                }
-                catch {  }
+
+                dto.NameBackground = backgrounds.Where(bg => bg.Id == cast.IdBackground).FirstOrDefault().Name;
 
                 dto.IdActivity = cast.IdActivity;
-                try
-                {
-                    dto.NameActivity = activities.Where(acts => acts.Id == cast.IdActivity).FirstOrDefault().Name;
-                }
-                catch {  }
+                dto.NameActivity = activities.Where(acts => acts.Id == cast.IdActivity).FirstOrDefault().Name;
 
                 dto.IdCastType = cast.IdCastType;
-                try
-                {
-                    dto.NameCastType = castTypes.Where(ct => ct.Id == cast.IdCastType).FirstOrDefault().Name;
-                }
-                catch {   }
+                dto.NameCastType = castTypes.Where(ct => ct.Id == cast.IdCastType).FirstOrDefault().Name;
 
                 dto.IdObjectSpent = cast.IdObjectSpent;
                 dto.IdObjectRecive = cast.IdObjectRecive;
 
-                try
-                {
-                    dto.NameObjectSpent = objects.Where(o => o.Id == cast.IdObjectSpent).FirstOrDefault().Name;
-                }
-                catch {   }
-
-                try
-                {
-                    dto.NameObjectRecive = objects.Where(o => o.Id == cast.IdObjectRecive).FirstOrDefault().Name;
-                }
-                catch {  }
+                dto.NameObjectSpent = objects.Where(o => o.Id == cast.IdObjectSpent).FirstOrDefault().Name;
+                dto.NameObjectRecive = objects.Where(o => o.Id == cast.IdObjectRecive).FirstOrDefault().Name;
 
                 dto.Description = cast.Description;
 
