@@ -55,9 +55,62 @@ namespace WinFormsAppDiplom
             _connectionString = connString;
             _currentUser = user;
 
+            ConfigureAccessLevel();
 
             ConfigureRepositorys();
             FillDataGridViewScript();
+        }
+
+        private void ConfigureAccessLevel()
+        {          
+            bool canEdit= _currentUser.AccessLevelId == 1 ?  true: false;
+
+            buttonCreateScript.Visible= canEdit;
+            buttonDeleteScript.Visible= canEdit;
+            buttonLoadScript.Visible = canEdit;
+            buttonApplyScript.Visible= canEdit;
+            buttonCancelScript.Visible = canEdit;
+
+            buttonCreateBlock.Visible = canEdit;
+            buttonDeleteBlock.Visible = canEdit;
+            buttonLoadBlock.Visible = canEdit;
+            buttonApplyBlock.Visible = canEdit;
+            buttonCancelBlock.Visible = canEdit;
+
+            buttonCreateBackground.Visible = canEdit;
+            buttonDeleteBackground.Visible = canEdit;
+            buttonLoadBackground.Visible = canEdit;
+            buttonApplyBackground.Visible = canEdit;
+            buttonCancelBackground.Visible = canEdit;
+
+            buttonCreateCastTypes.Visible = canEdit;
+            buttonDeleteCastTypes.Visible = canEdit;
+            buttonLoadCastTypes.Visible = canEdit;
+            buttonApplyCastTypes.Visible = canEdit;
+            buttonCancelCastTypes.Visible = canEdit;
+
+            buttonCreateObject.Visible = canEdit;
+            buttonDeleteObjects.Visible = canEdit;
+            buttonLoadObjects.Visible = canEdit;
+            buttonApplyObjects.Visible = canEdit;
+            buttonCancelObjects.Visible = canEdit;
+            buttonAddToMorph.Visible = canEdit;
+            buttonDefineFromMorph.Visible = canEdit;
+
+            buttonCreateActivity.Visible = canEdit;
+            buttonDeleteActivity.Visible = canEdit;
+            buttonLoadActivity.Visible = canEdit;
+            buttonApplyActivity.Visible = canEdit;
+            buttonCancelActivity.Visible = canEdit;
+            comboBoxActivity.Visible = canEdit;
+
+            buttonCreateCast.Visible = canEdit;
+            buttonDeleteCast.Visible = canEdit;
+            buttonLoadCast.Visible = canEdit;
+            buttonApplyCast.Visible = canEdit;
+            buttonCancelCast.Visible = canEdit;
+
+            buttonTestInventorySpendRecive.Visible = canEdit;
         }
 
         private void ConfigureRepositorys()
