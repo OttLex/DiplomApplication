@@ -315,19 +315,27 @@ namespace WinFormsAppDiplom
                 dto.IdStep = cast.IdStep;
                 dto.IdBackground = cast.IdBackground;
 
-                dto.NameBackground = backgrounds.Where(bg => bg.Id == cast.IdBackground).FirstOrDefault().Name;
+                string nameBackground = backgrounds.Where(bg => bg.Id == cast.IdBackground).FirstOrDefault().Name;
+                dto.NameBackground = nameBackground == null ? "" : nameBackground;
 
                 dto.IdActivity = cast.IdActivity;
-                dto.NameActivity = activities.Where(acts => acts.Id == cast.IdActivity).FirstOrDefault().Name;
+
+                string nameActivity = activities.Where(acts => acts.Id == cast.IdActivity).FirstOrDefault().Name;
+                dto.NameActivity = nameActivity == null ? "" : nameActivity;
 
                 dto.IdCastType = cast.IdCastType;
-                dto.NameCastType = castTypes.Where(ct => ct.Id == cast.IdCastType).FirstOrDefault().Name;
+
+                string nameCastType = castTypes.Where(ct => ct.Id == cast.IdCastType).FirstOrDefault().Name;
+                dto.NameCastType = nameCastType == null ? "" : nameCastType;
 
                 dto.IdObjectSpent = cast.IdObjectSpent;
                 dto.IdObjectRecive = cast.IdObjectRecive;
 
-                dto.NameObjectSpent = objects.Where(o => o.Id == cast.IdObjectSpent).FirstOrDefault().Name;
-                dto.NameObjectRecive = objects.Where(o => o.Id == cast.IdObjectRecive).FirstOrDefault().Name;
+                string nameObjectSpent = objects.Where(o => o.Id == cast.IdObjectSpent).FirstOrDefault().Name;
+                dto.NameObjectSpent = nameObjectSpent == null ? "" : nameObjectSpent;
+
+                string nameObjectRecive = objects.Where(o => o.Id == cast.IdObjectRecive).FirstOrDefault().Name;
+                dto.NameObjectRecive = nameObjectRecive == null ? "" : nameObjectRecive;
 
                 dto.Description = cast.Description;
 
@@ -363,7 +371,7 @@ namespace WinFormsAppDiplom
         {
             FilldataGridViewCastBackground();
             FilldataGridViewCastType();
-            FilldataGridViewCastObjectSpend();
+            FilldataGridViewCastObjectSpend();FillDataGridViewCast
             FilldataGridViewCastObjectRecive();
             FilldataGridViewCastActivity();
             FilldataGridViewObjectsInOperation();

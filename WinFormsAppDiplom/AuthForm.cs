@@ -18,14 +18,16 @@ namespace WinFormsAppDiplom
         private AuthQuery _authQuerys;
         public AuthForm(string connString)
         {
-            using (var context = new AppDBContext())
+            _connectionString = connString;
+            _authQuerys = new AuthQuery(connString);
+
+            using (var context = new AppDBContext(_connectionString))
             {
                 context.Database.EnsureCreated();
             }
 
             InitializeComponent();
-            _connectionString = connString;
-            _authQuerys = new AuthQuery(connString);
+
         }
 
         private void AuthButton_Click(object sender, EventArgs e)

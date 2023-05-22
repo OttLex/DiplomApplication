@@ -12,11 +12,13 @@ namespace Model.EF
 {
     public class AppDBContext : DbContext
     {
+        string _connetctionString = "";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=ScenarioEditor;Trusted_Connection=True;");
-            
+            optionsBuilder.UseSqlServer(_connetctionString);
+
+            //optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=ScenarioEditor;Trusted_Connection=True;");
         }
 
         public DbSet<Morph> Morph => Set<Morph>();
@@ -53,11 +55,13 @@ namespace Model.EF
                             new ActivityType { Id = 1, Name = "Zoom" },
                             new ActivityType { Id = 2, Name = "Hidden object"},
                             new ActivityType { Id = 3, Name = "Dialog"},
-                            new ActivityType { Id = 4, Name = "Mini-game" });
+                            new ActivityType { Id = 4, Name = "Mini-game" },
+                            new ActivityType { Id = 5, Name = "Cat-scene" });
         }
 
-        public AppDBContext() 
+        public AppDBContext(string connString) 
         {
+            _connetctionString=connString;
             //Database.EnsureDeleted();
             //Database.EnsureCreated();
         }
