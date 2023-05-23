@@ -371,7 +371,8 @@ namespace WinFormsAppDiplom
         {
             FilldataGridViewCastBackground();
             FilldataGridViewCastType();
-            FilldataGridViewCastObjectSpend();FillDataGridViewCast
+            FilldataGridViewCastObjectSpend();
+            FillDataGridViewCast();
             FilldataGridViewCastObjectRecive();
             FilldataGridViewCastActivity();
             FilldataGridViewObjectsInOperation();
