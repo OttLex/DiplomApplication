@@ -315,27 +315,43 @@ namespace WinFormsAppDiplom
                 dto.IdStep = cast.IdStep;
                 dto.IdBackground = cast.IdBackground;
 
-                string nameBackground = backgrounds.Where(bg => bg.Id == cast.IdBackground).FirstOrDefault().Name;
-                dto.NameBackground = nameBackground == null ? "" : nameBackground;
+                var rawNameBack = backgrounds.Where(bg => bg.Id == cast.IdBackground);
+                dto.NameBackground = rawNameBack.Count() > 0 ? rawNameBack.First().Name : "";
+
+                //string nameBackground = backgrounds.Where(bg => bg.Id == cast.IdBackground).FirstOrDefault().Name;
+                //dto.NameBackground = nameBackground == null ? "" : nameBackground;
 
                 dto.IdActivity = cast.IdActivity;
 
-                string nameActivity = activities.Where(acts => acts.Id == cast.IdActivity).FirstOrDefault().Name;
-                dto.NameActivity = nameActivity == null ? "" : nameActivity;
+                var rawNameAct = activities.Where(acts => acts.Id == cast.IdActivity);
+                dto.NameActivity = rawNameAct.Count() > 0 ? rawNameAct.First().Name : "";
+
+                //string nameActivity = activities.Where(acts => acts.Id == cast.IdActivity).FirstOrDefault().Name;
+                //dto.NameActivity = nameActivity == null ? "" : nameActivity;
 
                 dto.IdCastType = cast.IdCastType;
 
-                string nameCastType = castTypes.Where(ct => ct.Id == cast.IdCastType).FirstOrDefault().Name;
-                dto.NameCastType = nameCastType == null ? "" : nameCastType;
+                var rawNameCastType = castTypes.Where(ct => ct.Id == cast.IdCastType);
+                dto.NameCastType = rawNameCastType.Count() > 0 ? rawNameCastType.First().Name : "";
+
+                //string nameCastType = castTypes.Where(ct => ct.Id == cast.IdCastType).FirstOrDefault().Name;
+                //dto.NameCastType = nameCastType == null ? "" : nameCastType;
 
                 dto.IdObjectSpent = cast.IdObjectSpent;
                 dto.IdObjectRecive = cast.IdObjectRecive;
 
-                string nameObjectSpent = objects.Where(o => o.Id == cast.IdObjectSpent).FirstOrDefault().Name;
-                dto.NameObjectSpent = nameObjectSpent == null ? "" : nameObjectSpent;
 
-                string nameObjectRecive = objects.Where(o => o.Id == cast.IdObjectRecive).FirstOrDefault().Name;
-                dto.NameObjectRecive = nameObjectRecive == null ? "" : nameObjectRecive;
+                var rawObjSpent = objects.Where(o => o.Id == cast.IdObjectSpent);
+                dto.NameObjectSpent = rawObjSpent.Count() > 0 ? rawObjSpent.First().Name : "";
+
+                //string nameObjectSpent = objects.Where(o => o.Id == cast.IdObjectSpent).FirstOrDefault().Name;
+                //dto.NameObjectSpent = nameObjectSpent == null ? "" : nameObjectSpent;
+
+                var rawObjRecive = objects.Where(o => o.Id == cast.IdObjectRecive);
+                dto.NameObjectRecive = rawObjRecive.Count() > 0 ? rawObjRecive.First().Name : "";
+
+                //string nameObjectRecive = objects.Where(o => o.Id == cast.IdObjectRecive).FirstOrDefault().Name;
+                //dto.NameObjectRecive = nameObjectRecive == null ? "" : nameObjectRecive;
 
                 dto.Description = cast.Description;
 
@@ -372,10 +388,10 @@ namespace WinFormsAppDiplom
             FilldataGridViewCastBackground();
             FilldataGridViewCastType();
             FilldataGridViewCastObjectSpend();
-            FillDataGridViewCast();
             FilldataGridViewCastObjectRecive();
             FilldataGridViewCastActivity();
             FilldataGridViewObjectsInOperation();
+            FillDataGridViewCast();
         }
         private void FilldataGridViewCastBackground()
         {
@@ -588,32 +604,37 @@ namespace WinFormsAppDiplom
         }
         private void buttonCreateCast_Click(object sender, EventArgs e)
         {
-            if (_objectCastCreatable != null && _currentWorkBlock != null
-                && _objectCastCreatable.IdBackground != null)
+            if (_objectCastCreatable != null && _currentWorkBlock != null)
             {
-
-                List<ObjectCast> objectCasts = _objectCastRepository.GetObjects();
-
-                if (objectCasts.Count > 0)
+                if (_objectCastCreatable.IdBackground != null)
                 {
-                    _objectCastCreatable.IdStep = _objectCastRepository.GetObjects()
-                        .Where(obj => obj.IdBlock == _objectCastCreatable.IdBlock)
-                        .Select(o => o.IdStep)
-                        .Max()+1;
-                       
+
+                    List<ObjectCast> objectCasts = _objectCastRepository.GetObjects().Where(objc => objc.IdBlock == _objectCastCreatable.IdBlock).ToList();
+
+
+                    if (objectCasts.Count > 0)
+                    {
+                        _objectCastCreatable.IdStep = _objectCastRepository.GetObjects()
+                            .Where(obj => obj.IdBlock == _objectCastCreatable.IdBlock)
+                            .Select(o => o.IdStep)
+                            .Max() + 1;
+
+                    }
+                    else
+                    {
+                        _objectCastCreatable.IdStep = 1;
+                    }
+
+                    _objectCastRepository.Create(_objectCastCreatable);
+
+                    ResetObjectCast();
+                    FillDataGridViewCast();
+                    ConfigureTreeView();
                 }
                 else
                 {
-                    _objectCastCreatable.IdStep = 1;
+                    MessageBox.Show("Укажите фон.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
-                _objectCastRepository.Create(_objectCastCreatable);
-
-                _objectCastCreatable = new();
-                _objectCastCreatable.IdBlock = _currentWorkBlock.Id;
-
-                FillDataGridViewCast();
-                ConfigureTreeView();
             }
             else
             {
@@ -1327,12 +1348,13 @@ namespace WinFormsAppDiplom
             {
                 var row = dataGridViewCast.CurrentCell.OwningRow;
                 _objectCastRepository.Delete(Convert.ToInt32(row.Cells["Id"].Value));
+                FillDataGridViewCast();
+                ConfigureTreeView();
             }
             else
             {
                 MessageBox.Show("Выделите нужный шаг.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            FillDataGridViewCast();
         }
 
         private void buttonChoseScript_Click(object sender, EventArgs e)
@@ -1847,7 +1869,7 @@ namespace WinFormsAppDiplom
                                 currentBlock.BackColor = Color.LightGreen;
                                 try
                                 {
-                                    int count = objectCasts.Where(oc => oc.IdBlock == block.Id).Select(objs => objs.IdStep).First();
+                                    int count = objectCasts.Where(oc => oc.IdBlock == block.Id).Select(objs => objs.IdStep).Last();
                                     currentBlock.Nodes.Add(new TreeNode("Количество шагов: " + count.ToString()));
                                 }
                                 catch { }
@@ -1900,7 +1922,7 @@ namespace WinFormsAppDiplom
                     break;
                 case 6:
                     FillCastParamsViews();
-                    FillDataGridViewCast();
+                    //FillDataGridViewCast();
                     break;
             }
 

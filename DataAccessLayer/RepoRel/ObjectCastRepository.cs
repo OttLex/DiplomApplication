@@ -86,7 +86,7 @@ namespace DataAccessLayer.RepoRel
             using (IDbConnection db = new SqlConnection(connectionString))
             {
 
-                string idActivity = obj.IdActivity != null ? obj.IdBlock.ToString() : null;
+                string idActivity = obj.IdActivity != null ? obj.IdActivity.ToString() : null;
                 string idCastType = obj.IdCastType != null ? obj.IdCastType.ToString() : null;
                 string idObjectSpent = obj.IdObjectSpent != null ? obj.IdObjectSpent.ToString() : null;
                 string idObjectRecive = obj.IdObjectRecive != null ? obj.IdObjectRecive.ToString() : null;
